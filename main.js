@@ -1,4 +1,46 @@
 document.body.classList.add('js-loaded');
+
+/* ── TRACKING: terra_eid + fbc cookies ── */
+(function() {
+  function getCookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m[2] : null;
+  }
+
+  function setCookie(name, value, maxAge, sameSite) {
+    document.cookie = name + '=' + value + ';path=/;max-age=' + maxAge + ';SameSite=' + (sameSite || 'Lax');
+  }
+
+  // Bloque A: terra_eid (deduplicación CAPI)
+  var eid = getCookie('terra_eid');
+  if (!eid) {
+    eid = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : 'terra_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    setCookie('terra_eid', eid, 1800); // 30 min
+  }
+  window.terra_eid = eid;
+
+  // Bloque B: fbc (Facebook Click ID)
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var fbclid = params.get('fbclid');
+    if (fbclid && !getCookie('_fbc')) {
+      var fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      setCookie('_fbc', fbc, 7776000); // 90 días
+    }
+  } catch(e) { /* URLSearchParams not supported — skip */ }
+
+  // Función helper: getCAPIUserData
+  window.getCAPIUserData = function() {
+    return {
+      fbc: getCookie('_fbc') || null,
+      fbp: getCookie('_fbp') || null,
+      event_id: getCookie('terra_eid') || null
+    };
+  };
+})();
+
 /* ── NAV SCROLL ── */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -131,7 +173,13 @@ document.getElementById('equipCarousel').addEventListener('mouseleave', () => {
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const eventId = 'terra_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  // Generar nuevo terra_eid para este submit (deduplicación CAPI)
+  const eventId = typeof crypto !== 'undefined' && crypto.randomUUID
+    ? crypto.randomUUID()
+    : 'terra_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  document.cookie = 'terra_eid=' + eventId + ';path=/;max-age=1800;SameSite=Lax';
+  window.terra_eid = eventId;
+
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: 'terra_form_submit-02',
