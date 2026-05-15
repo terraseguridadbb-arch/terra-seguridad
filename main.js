@@ -189,11 +189,11 @@ async function handleSubmit(e) {
   const btn = e.target.querySelector('.form-submit');
   const originalText = btn.innerHTML;
   btn.disabled = true;
-  btn.innerHTML = <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Enviando...;
+  btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Enviando...`;
 
   const PORTAL_ID = "50951167";
   const FORM_ID   = "098cb86d-732c-44b7-869c-4df7ab498aee";
-  const HUBSPOT_URL = https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID};
+  const HUBSPOT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
 
   const data = Object.fromEntries(new FormData(e.target).entries());
 
@@ -202,7 +202,7 @@ async function handleSubmit(e) {
       { name: "firstname", value: data.nombre },
       { name: "lastname",  value: data.apellido },
       { name: "email",     value: data.email },
-      { name: "phone",     value: ${data.codarea} ${data.telefono} },
+      { name: "phone",     value: `${data.codarea} ${data.telefono}` },
       { name: "terra_event_id", value: eventId }
     ],
     context: {
