@@ -197,13 +197,28 @@ async function handleSubmit(e) {
 
   const data = Object.fromEntries(new FormData(e.target).entries());
 
+  // Captura señales para Meta CAPI (EMQ boost)
+  function getCookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m[2] : null;
+  }
+  let clientIp = '';
+  try {
+    const ipRes = await fetch('https://api.ipify.org?format=json', { signal: AbortSignal.timeout(2000) });
+    if (ipRes.ok) clientIp = (await ipRes.json()).ip || '';
+  } catch (_) { /* ipify timeout/fail — seguir sin client_ip */ }
+
   const requestBody = {
     fields: [
       { name: "firstname", value: data.nombre },
       { name: "lastname",  value: data.apellido },
       { name: "email",     value: data.email },
       { name: "phone",     value: `${data.codarea} ${data.telefono}` },
-      { name: "terra_event_id", value: eventId }
+      { name: "terra_event_id", value: eventId },
+      { name: "fbc", value: getCookie('_fbc') || '' },
+      { name: "fbp", value: getCookie('_fbp') || '' },
+      { name: "client_ip", value: clientIp },
+      { name: "client_user_agent", value: navigator.userAgent || '' }
     ],
     context: {
       pageUri:  window.location.href,
