@@ -234,6 +234,22 @@ async function handleSubmit(e) {
     });
 
     if (response.ok) {
+      // ENRICHMENT 2026-05-28: backfill fbc/fbp/client_ip/client_user_agent al contacto HubSpot.
+      // El Forms API descarta esos hidden fields (catch-22 v3/v4 documentado), workaround: PATCH via Contacts API.
+      // sendBeacon garantiza delivery cross-navigate (no se cancela al redirect como fetch).
+      try {
+        var enrichPayload = JSON.stringify({
+          email: data.email,
+          terra_event_id: eventId,
+          fbc: getCookie('_fbc') || null,
+          fbp: getCookie('_fbp') || null,
+          client_ip: clientIp || null,
+          client_user_agent: navigator.userAgent || null
+        });
+        var enrichBlob = new Blob([enrichPayload], { type: 'application/json' });
+        navigator.sendBeacon('https://n8n-production-ec32.up.railway.app/webhook/terra-enrichment', enrichBlob);
+      } catch (_) { /* sendBeacon no soportado o fallo - silencioso, no bloquea el flujo */ }
+
       fbq('init', '689271596885956', {
         em: data.email,
         ph: data.codarea + data.telefono,
