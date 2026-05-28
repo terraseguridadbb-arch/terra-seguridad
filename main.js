@@ -256,18 +256,17 @@ async function handleSubmit(e) {
         fn: data.nombre,
         ln: data.apellido
       });
-      // FIX 2026-05-28: navigate race fix + value alineado con WF1 server (default Terra promedio kits 394738 ARS)
-      // eventCallback espera el beacon Pixel antes de navegar; eventTimeout 2s evita quedar colgado si Meta no responde.
+      // HOTFIX 2026-05-28: setTimeout en lugar de eventCallback.
+      // eventCallback NO dispara con ad-blockers o si Pixel se carga lento -> user queda bloqueado en el form.
+      // setTimeout 600ms da margen al Pixel beacon (~200-300ms tipico) y al sendBeacon de enrichment, sin depender del Pixel.
       fbq('track', 'Lead', {
         value: 394738,
         currency: 'ARS',
         event_id: eventId
-      }, {
-        eventCallback: function() {
-          window.location.href = 'gracias.html';
-        },
-        eventTimeout: 2000
       });
+      setTimeout(function() {
+        window.location.href = 'gracias.html';
+      }, 600);
     } else {
       console.error("Error HubSpot:", response.status);
       showFormError(btn, originalText, "❌ Hubo un error al enviar tus datos. Intentá nuevamente.");
