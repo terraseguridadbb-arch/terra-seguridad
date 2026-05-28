@@ -236,19 +236,23 @@ async function handleSubmit(e) {
     if (response.ok) {
       // ENRICHMENT 2026-05-28: backfill fbc/fbp/client_ip/client_user_agent al contacto HubSpot.
       // El Forms API descarta esos hidden fields (catch-22 v3/v4 documentado), workaround: PATCH via Contacts API.
-      // sendBeacon garantiza delivery cross-navigate (no se cancela al redirect como fetch).
+      // HOTFIX: fetch + keepalive (reemplaza sendBeacon que no llegaba al webhook en pruebas reales).
+      // keepalive: true le dice al browser que comprometa el request aun si la pagina se descarga.
       try {
-        var enrichPayload = JSON.stringify({
-          email: data.email,
-          terra_event_id: eventId,
-          fbc: getCookie('_fbc') || null,
-          fbp: getCookie('_fbp') || null,
-          client_ip: clientIp || null,
-          client_user_agent: navigator.userAgent || null
-        });
-        var enrichBlob = new Blob([enrichPayload], { type: 'application/json' });
-        navigator.sendBeacon('https://n8n-production-ec32.up.railway.app/webhook/terra-enrichment', enrichBlob);
-      } catch (_) { /* sendBeacon no soportado o fallo - silencioso, no bloquea el flujo */ }
+        fetch('https://n8n-production-ec32.up.railway.app/webhook/terra-enrichment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: data.email,
+            terra_event_id: eventId,
+            fbc: getCookie('_fbc') || null,
+            fbp: getCookie('_fbp') || null,
+            client_ip: clientIp || null,
+            client_user_agent: navigator.userAgent || null
+          }),
+          keepalive: true
+        }).catch(function() { /* silencioso */ });
+      } catch (_) { /* fetch no disponible o fallo sincronico - silencioso */ }
 
       fbq('init', '689271596885956', {
         em: data.email,
