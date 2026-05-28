@@ -240,12 +240,18 @@ async function handleSubmit(e) {
         fn: data.nombre,
         ln: data.apellido
       });
+      // FIX 2026-05-28: navigate race fix + value alineado con WF1 server (default Terra promedio kits 394738 ARS)
+      // eventCallback espera el beacon Pixel antes de navegar; eventTimeout 2s evita quedar colgado si Meta no responde.
       fbq('track', 'Lead', {
-        value: 170503.90,
+        value: 394738,
         currency: 'ARS',
         event_id: eventId
+      }, {
+        eventCallback: function() {
+          window.location.href = 'gracias.html';
+        },
+        eventTimeout: 2000
       });
-      window.location.href = 'gracias.html';
     } else {
       console.error("Error HubSpot:", response.status);
       showFormError(btn, originalText, "❌ Hubo un error al enviar tus datos. Intentá nuevamente.");
