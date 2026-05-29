@@ -711,5 +711,31 @@
 
   <script src="main.js"></script>
   <!-- <script type="module" src="/src/main.jsx"></script> -->
+  <script>
+  (function() {
+    function removeBadNode() {
+      var walker = document.createTreeWalker(
+        document.body, NodeFilter.SHOW_TEXT, null, false
+      );
+      var n;
+      while (n = walker.nextNode()) {
+        if (n.nodeValue && n.nodeValue.indexOf('Actualiz') !== -1 &&
+            n.nodeValue.indexOf('DLV') !== -1) {
+          var el = n.parentElement;
+          if (el && el !== document.body) el.remove();
+          else n.remove();
+          return;
+        }
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', removeBadNode);
+    } else {
+      removeBadNode();
+    }
+    var obs = new MutationObserver(removeBadNode);
+    obs.observe(document.body, { childList: true, subtree: true });
+  })();
+  </script>
 </body>
 </html>
