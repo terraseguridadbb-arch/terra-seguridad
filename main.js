@@ -268,6 +268,51 @@ async function handleSubmit(e) {
         currency: 'ARS',
         event_id: eventId
       });
+
+      // Advanced Matching persist 2026-06-02:
+      // guardar hashes SHA-256 (trim+lowercase) en localStorage para que el PageView
+      // de visitas futuras incluya em/ph/fn/ln/external_id desde el init en index.html.
+      // TTL 30 días. Solo hashes — nunca PII plaintext.
+      try {
+        const enc = new TextEncoder();
+        const hashHex = async function(v) {
+          if (v == null) return null;
+          const norm = String(v).trim().toLowerCase();
+          if (!norm) return null;
+          const buf = await crypto.subtle.digest('SHA-256', enc.encode(norm));
+          return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+        };
+        // Normalización de teléfono igual a WF1 normalizePhone (digits-only + 54 prefix AR)
+        const normalizePhoneAM = function(codarea, telefono) {
+          let d = String((codarea||'') + (telefono||'')).replace(/\D/g, '');
+          if (!d) return null;
+          let result;
+          if (d.startsWith('54')) {
+            if (d.length >= 13 && d[2] === '9') d = '54' + d.slice(3);
+            result = d;
+          } else if (d.startsWith('0')) {
+            result = '54' + d.slice(1);
+          } else if (d.startsWith('15') && d.length === 10) {
+            return null;
+          } else {
+            result = '54' + d;
+          }
+          return (result.length >= 10 && result.length <= 15) ? result : null;
+        };
+        const phoneNorm = normalizePhoneAM(data.codarea, data.telefono);
+        const am = {
+          em: await hashHex(data.email),
+          ph: phoneNorm ? await hashHex(phoneNorm) : null,
+          fn: await hashHex(data.nombre),
+          ln: await hashHex(data.apellido),
+          external_id: await hashHex(data.email),  // sha256(email) como id estable client-side
+          ts: Date.now()
+        };
+        const cleaned = { ts: am.ts };
+        ['em','ph','fn','ln','external_id'].forEach(function(k){ if (am[k]) cleaned[k] = am[k]; });
+        localStorage.setItem('terra_am', JSON.stringify(cleaned));
+      } catch (_) { /* localStorage o crypto.subtle no disponibles — silencioso */ }
+
       setTimeout(function() {
         window.location.href = 'gracias.html';
       }, 600);

@@ -16,7 +16,7 @@
     gtag('js', new Date());
     gtag('config', 'G-QRZ0RHZ71N');
   </script>
-  <!-- Meta Pixel Base Code -->
+  <!-- Meta Pixel Base Code with Advanced Matching desde localStorage -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,8 +26,29 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '689271596885956');
-    fbq('track', 'PageView');
+    // Advanced Matching: si el usuario ya completó el form en una visita previa,
+    // leemos los hashes SHA-256 de localStorage (TTL 30 días) y los pasamos al init
+    // para que el PageView llegue con em/ph/fn/ln/external_id populados.
+    (function(){
+      var amData = {};
+      try {
+        var stored = localStorage.getItem('terra_am');
+        if (stored) {
+          var p = JSON.parse(stored);
+          if (p && p.ts && (Date.now() - p.ts) < 30 * 24 * 60 * 60 * 1000) {
+            ['em','ph','fn','ln','external_id'].forEach(function(k){ if (p[k]) amData[k] = p[k]; });
+          } else {
+            localStorage.removeItem('terra_am');
+          }
+        }
+      } catch (_) { /* localStorage bloqueado — degradar silencioso */ }
+      if (Object.keys(amData).length > 0) {
+        fbq('init', '689271596885956', amData);
+      } else {
+        fbq('init', '689271596885956');
+      }
+      fbq('track', 'PageView');
+    })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=689271596885956&ev=PageView&noscript=1"/></noscript>
