@@ -274,7 +274,9 @@ async function handleSubmit(e) {
       // guardar hashes SHA-256 (trim+lowercase) en localStorage para que el PageView
       // de visitas futuras incluya em/ph/fn/ln/external_id desde el init en index.html.
       // TTL 30 días. Solo hashes — nunca PII plaintext.
+      // DIAGNOSTIC LOGS 2026-06-02 — temporal hasta identificar por qué terra_am no se persiste
       try {
+        console.log('[terra_am] persist block reached. data keys:', Object.keys(data || {}));
         const enc = new TextEncoder();
         const hashHex = async function(v) {
           if (v == null) return null;
@@ -309,10 +311,15 @@ async function handleSubmit(e) {
           external_id: await hashHex(data.email),  // sha256(email) como id estable client-side
           ts: Date.now()
         };
+        console.log('[terra_am] hashes computed. presence:', { em: !!am.em, ph: !!am.ph, fn: !!am.fn, ln: !!am.ln, external_id: !!am.external_id });
         const cleaned = { ts: am.ts };
         ['em','ph','fn','ln','external_id'].forEach(function(k){ if (am[k]) cleaned[k] = am[k]; });
+        console.log('[terra_am] about to setItem. cleaned keys:', Object.keys(cleaned));
         localStorage.setItem('terra_am', JSON.stringify(cleaned));
-      } catch (_) { /* localStorage o crypto.subtle no disponibles — silencioso */ }
+        console.log('[terra_am] setItem OK ✓ localStorage updated');
+      } catch (e) {
+        console.error('[terra_am] persist FAILED:', e && e.name, e && e.message, e);
+      }
 
       setTimeout(function() {
         window.location.href = 'gracias.html';
