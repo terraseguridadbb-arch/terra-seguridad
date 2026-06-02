@@ -11,6 +11,7 @@
 
   <!-- Meta Pixel Base Code with Advanced Matching desde localStorage -->
   <script>
+    console.log('[pixel-gracias] script block START');
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -19,12 +20,15 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    console.log('[pixel-gracias] base snippet ran. window.fbq type:', typeof window.fbq, 'queue len:', (window.fbq && window.fbq.queue) ? window.fbq.queue.length : 'n/a');
     // Advanced Matching: lee hashes SHA-256 de localStorage (TTL 30 días) para que
     // el PageView de gracias.html llegue con em/ph/fn/ln/external_id populados.
     (function(){
+      console.log('[pixel-gracias] IIFE start');
       var amData = {};
       try {
         var stored = localStorage.getItem('terra_am');
+        console.log('[pixel-gracias] terra_am present:', !!stored, 'value len:', stored ? stored.length : 0);
         if (stored) {
           var p = JSON.parse(stored);
           if (p && p.ts && (Date.now() - p.ts) < 30 * 24 * 60 * 60 * 1000) {
@@ -33,13 +37,17 @@
             localStorage.removeItem('terra_am');
           }
         }
-      } catch (_) { /* localStorage bloqueado — degradar silencioso */ }
+      } catch (e) {
+        console.error('[pixel-gracias] localStorage/JSON parse failed:', e && e.name, e && e.message);
+      }
+      console.log('[pixel-gracias] amData keys after parse:', Object.keys(amData));
       if (Object.keys(amData).length > 0) {
         fbq('init', '689271596885956', amData);
       } else {
         fbq('init', '689271596885956');
       }
       fbq('track', 'PageView');
+      console.log('[pixel-gracias] dispatched fbq init+PageView. queue len now:', (window.fbq && window.fbq.queue) ? window.fbq.queue.length : 'n/a');
     })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
