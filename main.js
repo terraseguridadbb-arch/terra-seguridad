@@ -254,12 +254,13 @@ async function handleSubmit(e) {
         }).catch(function() { /* silencioso */ });
       } catch (_) { /* fetch no disponible o fallo sincronico - silencioso */ }
 
-      fbq('init', '689271596885956', {
-        em: data.email,
-        ph: data.codarea + data.telefono,
-        fn: data.nombre,
-        ln: data.apellido
-      });
+      // FIX 2026-06-02: removido el segundo fbq('init', PIXEL_ID, {em,ph,fn,ln})
+      // que causaba warning "Duplicate Pixel ID" en consola.
+      // Ahora el init único ocurre en index.html con AM desde localStorage['terra_am'].
+      // Para first-time submits, el browser Lead va sin AM en user_data — pero
+      // WF1 server-side envía el mismo Lead via CAPI con em/ph/fn/ln/fbc/fbp/ip/ua/country
+      // y Meta deduplica via event_id, mergeando los user_data. Sin pérdida real de match quality.
+      //
       // HOTFIX 2026-05-28: setTimeout en lugar de eventCallback.
       // eventCallback NO dispara con ad-blockers o si Pixel se carga lento -> user queda bloqueado en el form.
       // setTimeout 600ms da margen al Pixel beacon (~200-300ms tipico) y al sendBeacon de enrichment, sin depender del Pixel.
