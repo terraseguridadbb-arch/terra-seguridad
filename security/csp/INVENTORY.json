@@ -1,0 +1,645 @@
+{
+  "_about": "Inventario CSP generado por security/csp/inventory.mjs (WP-SEC-11). Solo conteos y hashes: no contiene el contenido de los scripts. Regenerar: node security/csp/inventory.mjs --write",
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 52004,
+      "sha256": "ff2c49e0f2ccf7ab57df07232883fffd5664956490ced9db5fc10f0363d5a1b1",
+      "line_endings": "CRLF"
+    },
+    {
+      "path": "gracias.html",
+      "bytes": 5141,
+      "sha256": "d891c781fba9d1608729815292e09e5e925e02e5fd9db5c59592c3e31e72cb02",
+      "line_endings": "CRLF"
+    },
+    {
+      "path": "politicas.html",
+      "bytes": 6736,
+      "sha256": "d56fc3a18ea3523e79c268ba0ca316f6e3d52968854e03e92cbca6cff15edb8e",
+      "line_endings": "CRLF"
+    },
+    {
+      "path": "main.js",
+      "bytes": 14311,
+      "sha256": "13d97635f98c8161d1c9e47e0a438d21ce8b61d60fa9c73cd7a5115f4c2ae19e",
+      "line_endings": "CRLF"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 37647,
+      "sha256": "b7f6049f71a85d19ec84a40680d64174108248dfe20e7cba6f438f8a746d1d9d",
+      "line_endings": "CRLF"
+    }
+  ],
+  "origins_by_directive": {
+    "script-src": [
+      "https://connect.facebook.net",
+      "https://www.google-analytics.com",
+      "https://www.googletagmanager.com"
+    ],
+    "style-src": [
+      "https://fonts.googleapis.com"
+    ],
+    "img-src": [
+      "https://www.facebook.com",
+      "https://www.google-analytics.com",
+      "https://www.googletagmanager.com"
+    ],
+    "font-src": [
+      "https://fonts.gstatic.com"
+    ],
+    "connect-src": [
+      "https://analytics.google.com",
+      "https://api.hsforms.com",
+      "https://api.ipify.org",
+      "https://n8n-production-ec32.up.railway.app",
+      "https://region1.google-analytics.com",
+      "https://www.facebook.com",
+      "https://www.google-analytics.com",
+      "https://www.googletagmanager.com"
+    ],
+    "frame-src": [
+      "https://www.googletagmanager.com"
+    ],
+    "form-action": []
+  },
+  "origin_details": [
+    {
+      "origin": "https://api.hsforms.com",
+      "directive": "connect-src",
+      "file": "main.js",
+      "line": 196,
+      "source": "js-literal-network-url"
+    },
+    {
+      "origin": "https://api.ipify.org",
+      "directive": "connect-src",
+      "file": "main.js",
+      "line": 207,
+      "source": "js-literal-network-url"
+    },
+    {
+      "origin": "https://n8n-production-ec32.up.railway.app",
+      "directive": "connect-src",
+      "file": "main.js",
+      "line": 242,
+      "source": "js-literal-network-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "gracias.html",
+      "line": 65,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "index.html",
+      "line": 70,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "gracias.html",
+      "line": 53,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "index.html",
+      "line": 53,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "gracias.html",
+      "line": 22,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "index.html",
+      "line": 28,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "gracias.html",
+      "line": 8,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "index.html",
+      "line": 8,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "index.html",
+      "line": 12,
+      "source": "script[src]"
+    },
+    {
+      "origin": "https://fonts.googleapis.com",
+      "directive": "style-src",
+      "file": "gracias.html",
+      "line": 61,
+      "source": "link[rel=stylesheet]"
+    },
+    {
+      "origin": "https://fonts.googleapis.com",
+      "directive": "style-src",
+      "file": "index.html",
+      "line": 64,
+      "source": "link[rel=stylesheet]"
+    },
+    {
+      "origin": "https://fonts.googleapis.com",
+      "directive": "style-src",
+      "file": "politicas.html",
+      "line": 10,
+      "source": "link[rel=stylesheet]"
+    }
+  ],
+  "derived_origins": [
+    {
+      "origin": "https://fonts.gstatic.com",
+      "directive": "font-src",
+      "reason": "la hoja de fonts.googleapis.com referencia archivos de fuente alojados en fonts.gstatic.com"
+    }
+  ],
+  "runtime_expected_origins": [
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "reason": "GTM carga gtag/js y el contenedor desde el mismo host"
+    },
+    {
+      "origin": "https://www.google-analytics.com",
+      "directive": "script-src",
+      "reason": "GA4 puede cargar analytics.js / ga-audiences desde este host"
+    },
+    {
+      "origin": "https://www.google-analytics.com",
+      "directive": "connect-src",
+      "reason": "GA4 envia hits por beacon/fetch"
+    },
+    {
+      "origin": "https://region1.google-analytics.com",
+      "directive": "connect-src",
+      "reason": "GA4 rutea hits a endpoints regionales"
+    },
+    {
+      "origin": "https://analytics.google.com",
+      "directive": "connect-src",
+      "reason": "GA4 sincroniza audiencias y consent"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "connect-src",
+      "reason": "GTM descarga la configuracion del contenedor"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "connect-src",
+      "reason": "fbevents.js envia eventos a /tr por fetch o imagen"
+    },
+    {
+      "origin": "https://www.google-analytics.com",
+      "directive": "img-src",
+      "reason": "GA4 usa pixeles de fallback"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "img-src",
+      "reason": "GTM usa pixeles de fallback"
+    }
+  ],
+  "non_directive_origins": [
+    {
+      "origin": "https://fonts.googleapis.com",
+      "occurrences": 3,
+      "note": "link[rel=preconnect]: preconnect/dns-prefetch no requiere directiva"
+    },
+    {
+      "origin": "https://fonts.gstatic.com",
+      "occurrences": 3,
+      "note": "link[rel=preconnect]: preconnect/dns-prefetch no requiere directiva"
+    },
+    {
+      "origin": "https://wa.me",
+      "occurrences": 7,
+      "note": "a[href]: navegacion de usuario, CSP no la cubre"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "occurrences": 2,
+      "note": "a[href]: navegacion de usuario, CSP no la cubre"
+    },
+    {
+      "origin": "https://www.instagram.com",
+      "occurrences": 2,
+      "note": "a[href]: navegacion de usuario, CSP no la cubre"
+    },
+    {
+      "origin": "https://www.leandroheffes.com",
+      "occurrences": 1,
+      "note": "a[href]: navegacion de usuario, CSP no la cubre"
+    }
+  ],
+  "inline_scripts": [
+    {
+      "file": "index.html",
+      "index": 0,
+      "line": 4,
+      "bytes": 372,
+      "sha256_csp": "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc="
+    },
+    {
+      "file": "index.html",
+      "index": 1,
+      "line": 13,
+      "bytes": 167,
+      "sha256_csp": "sha256-OL6ppbMdJ/FW2rwttPTi+XLk2o3eljlmsIUE3kECEKo="
+    },
+    {
+      "file": "index.html",
+      "index": 2,
+      "line": 20,
+      "bytes": 1402,
+      "sha256_csp": "sha256-ryh7DtDUn/QPhzTHhx/FUfmf76nZ9sQnf/IRZcGZCrI="
+    },
+    {
+      "file": "index.html",
+      "index": 3,
+      "line": 735,
+      "bytes": 798,
+      "sha256_csp": "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks="
+    },
+    {
+      "file": "gracias.html",
+      "index": 0,
+      "line": 4,
+      "bytes": 372,
+      "sha256_csp": "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc="
+    },
+    {
+      "file": "gracias.html",
+      "index": 1,
+      "line": 13,
+      "bytes": 2009,
+      "sha256_csp": "sha256-HM6R+RBFVMRcVbDc8gFULvCeHW3A5WJbl4y/b+Ee2Ws="
+    },
+    {
+      "file": "politicas.html",
+      "index": 0,
+      "line": 107,
+      "bytes": 171,
+      "sha256_csp": "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
+    }
+  ],
+  "inline_script_hashes": [
+    "sha256-HM6R+RBFVMRcVbDc8gFULvCeHW3A5WJbl4y/b+Ee2Ws=",
+    "sha256-OL6ppbMdJ/FW2rwttPTi+XLk2o3eljlmsIUE3kECEKo=",
+    "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks=",
+    "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc=",
+    "sha256-ryh7DtDUn/QPhzTHhx/FUfmf76nZ9sQnf/IRZcGZCrI=",
+    "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
+  ],
+  "inline_style_elements": [],
+  "inline_style_attribute_count": 14,
+  "event_handler_attributes": [
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-1AYyrTXPMQRU2AXGumZfG3OHGhliItfL4dfpJHCPOt4=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        327
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-5byYdk+bjP4AXf7V9CLD2wP9GrBElahyxIn3XqtYPjo=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        700
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-HpLFhD9Y9tz/NU7y/pgAhL5GqA3tMX65nYa9cUSEAA0=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        326
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-jEKFne+S0IvP5VYobbWolubzwLACD0QxWYinKH6/1pg=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        329
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-kKw4Y+xZBQ5s29HZjkR+brZ35Thvc21detELjqIFXt0=",
+      "has_html_entities": false,
+      "count": 6,
+      "lines": [
+        95,
+        96,
+        97,
+        98,
+        99,
+        100
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-UYiXg3DFvUtp9oU7OLpghTsAQOUWHLNW9qgjXW+sKRY=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        328
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onclick",
+      "sha256_csp": "sha256-y/Pu1fqJEJ/VST+6nQ+rlimQxLLvFvD7f4V8nsPr7Rc=",
+      "has_html_entities": false,
+      "count": 7,
+      "lines": [
+        532,
+        539,
+        546,
+        553,
+        560,
+        567,
+        574
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onerror",
+      "sha256_csp": "sha256-pwQduWxX3Cm7lLbQmAos7n73RLP4QrsCDFejmsBdZ78=",
+      "has_html_entities": false,
+      "count": 2,
+      "lines": [
+        76,
+        655
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onmouseout",
+      "sha256_csp": "sha256-abQ3hHSZ+yCTsfFZBtfxvgk+pOaCCySGMIp1zrfE/KI=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        716
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onmouseout",
+      "sha256_csp": "sha256-uDLhupj4CSo9neUkIEl9OG0KPzularnrz/aANdwgn9s=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        722
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onmouseover",
+      "sha256_csp": "sha256-uGod9aWOPy3S7O4q/TdT/ztzlP6xJ8/RrPd2VbNXCrI=",
+      "has_html_entities": false,
+      "count": 2,
+      "lines": [
+        716,
+        722
+      ]
+    },
+    {
+      "file": "index.html",
+      "attribute": "onsubmit",
+      "sha256_csp": "sha256-hcvqj83YuWMcnGd6FEoRAS1kfQEEg76M3ihWwZmjviM=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        604
+      ]
+    },
+    {
+      "file": "politicas.html",
+      "attribute": "onerror",
+      "sha256_csp": "sha256-pwQduWxX3Cm7lLbQmAos7n73RLP4QrsCDFejmsBdZ78=",
+      "has_html_entities": false,
+      "count": 1,
+      "lines": [
+        19
+      ]
+    }
+  ],
+  "event_handler_hashes": [
+    "sha256-1AYyrTXPMQRU2AXGumZfG3OHGhliItfL4dfpJHCPOt4=",
+    "sha256-5byYdk+bjP4AXf7V9CLD2wP9GrBElahyxIn3XqtYPjo=",
+    "sha256-HpLFhD9Y9tz/NU7y/pgAhL5GqA3tMX65nYa9cUSEAA0=",
+    "sha256-UYiXg3DFvUtp9oU7OLpghTsAQOUWHLNW9qgjXW+sKRY=",
+    "sha256-abQ3hHSZ+yCTsfFZBtfxvgk+pOaCCySGMIp1zrfE/KI=",
+    "sha256-hcvqj83YuWMcnGd6FEoRAS1kfQEEg76M3ihWwZmjviM=",
+    "sha256-jEKFne+S0IvP5VYobbWolubzwLACD0QxWYinKH6/1pg=",
+    "sha256-kKw4Y+xZBQ5s29HZjkR+brZ35Thvc21detELjqIFXt0=",
+    "sha256-pwQduWxX3Cm7lLbQmAos7n73RLP4QrsCDFejmsBdZ78=",
+    "sha256-uDLhupj4CSo9neUkIEl9OG0KPzularnrz/aANdwgn9s=",
+    "sha256-uGod9aWOPy3S7O4q/TdT/ztzlP6xJ8/RrPd2VbNXCrI=",
+    "sha256-y/Pu1fqJEJ/VST+6nQ+rlimQxLLvFvD7f4V8nsPr7Rc="
+  ],
+  "dynamic_script_injection": [
+    {
+      "file": "gracias.html",
+      "line": 7,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "gracias.html",
+      "line": 19,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "index.html",
+      "line": 7,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "index.html",
+      "line": 25,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    }
+  ],
+  "forms": [
+    {
+      "file": "index.html",
+      "line": 604,
+      "has_action_attribute": false,
+      "action_origin": null
+    }
+  ],
+  "eval_or_new_function_occurrences": 0,
+  "css_data_url_count": 1,
+  "legacy_enforcing_csp": {
+    "present": true,
+    "sha256": "c14cbc3928257e9b1d9378f1060fa02a3ec393cdc1d3b4a7b1238be418b5355a",
+    "sources_by_directive": {
+      "default-src": [
+        "'self'",
+        "https:",
+        "data:",
+        "blob:",
+        "'unsafe-inline'",
+        "'unsafe-eval'"
+      ],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        "https://*.googletagmanager.com",
+        "https://*.tagmanager.google.com",
+        "https://*.google-analytics.com",
+        "https://*.facebook.net",
+        "https://*.facebook.com",
+        "https://*.hsforms.net",
+        "https://*.hsforms.com",
+        "https://*.stapecdn.com",
+        "https://*.stape.io",
+        "blob:"
+      ],
+      "script-src-elem": [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        "https:",
+        "https://*.googletagmanager.com",
+        "https://*.tagmanager.google.com",
+        "https://*.google-analytics.com",
+        "https://*.facebook.net",
+        "https://*.facebook.com",
+        "https://*.hsforms.net",
+        "https://*.hsforms.com",
+        "https://*.stapecdn.com"
+      ],
+      "connect-src": [
+        "'self'",
+        "https:",
+        "https://*.google-analytics.com",
+        "https://*.analytics.google.com",
+        "https://*.googletagmanager.com",
+        "https://*.tagmanager.google.com",
+        "https://*.g.doubleclick.net",
+        "https://*.terraseguridad.com.ar",
+        "https://*.hsforms.com",
+        "https://*.facebook.com",
+        "https://*.a.run.app",
+        "https://*.conversionsapigateway.com"
+      ],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https:",
+        "https://*.google-analytics.com",
+        "https://*.googletagmanager.com",
+        "https://*.tagmanager.google.com",
+        "https://*.facebook.com",
+        "https://*.terraseguridad.com.ar"
+      ],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https:",
+        "https://*.tagmanager.google.com",
+        "https://fonts.googleapis.com"
+      ],
+      "font-src": [
+        "'self'",
+        "data:",
+        "https://fonts.gstatic.com"
+      ],
+      "frame-src": [
+        "'self'",
+        "https:",
+        "https://*.googletagmanager.com",
+        "https://*.tagmanager.google.com",
+        "https://*.facebook.com",
+        "https://*.terraseguridad.com.ar"
+      ]
+    },
+    "wildcard_sources": [
+      "connect-src https:",
+      "connect-src https://*.a.run.app",
+      "connect-src https://*.analytics.google.com",
+      "connect-src https://*.conversionsapigateway.com",
+      "connect-src https://*.facebook.com",
+      "connect-src https://*.g.doubleclick.net",
+      "connect-src https://*.google-analytics.com",
+      "connect-src https://*.googletagmanager.com",
+      "connect-src https://*.hsforms.com",
+      "connect-src https://*.tagmanager.google.com",
+      "connect-src https://*.terraseguridad.com.ar",
+      "default-src https:",
+      "frame-src https:",
+      "frame-src https://*.facebook.com",
+      "frame-src https://*.googletagmanager.com",
+      "frame-src https://*.tagmanager.google.com",
+      "frame-src https://*.terraseguridad.com.ar",
+      "img-src https:",
+      "img-src https://*.facebook.com",
+      "img-src https://*.google-analytics.com",
+      "img-src https://*.googletagmanager.com",
+      "img-src https://*.tagmanager.google.com",
+      "img-src https://*.terraseguridad.com.ar",
+      "script-src https://*.facebook.com",
+      "script-src https://*.facebook.net",
+      "script-src https://*.google-analytics.com",
+      "script-src https://*.googletagmanager.com",
+      "script-src https://*.hsforms.com",
+      "script-src https://*.hsforms.net",
+      "script-src https://*.stape.io",
+      "script-src https://*.stapecdn.com",
+      "script-src https://*.tagmanager.google.com",
+      "script-src-elem https:",
+      "script-src-elem https://*.facebook.com",
+      "script-src-elem https://*.facebook.net",
+      "script-src-elem https://*.google-analytics.com",
+      "script-src-elem https://*.googletagmanager.com",
+      "script-src-elem https://*.hsforms.com",
+      "script-src-elem https://*.hsforms.net",
+      "script-src-elem https://*.stapecdn.com",
+      "script-src-elem https://*.tagmanager.google.com",
+      "style-src https:",
+      "style-src https://*.tagmanager.google.com"
+    ]
+  }
+}
