@@ -1,1 +1,12 @@
 .vercel
+
+# Terra OS WP-SEC-07 (2026-09-15): bloque de secretos replicado desde terra-marketing-empresa
+.env
+.env.*
+!.env.example
+*credentials*.json
+*service-account*.json
+*.pem
+*.key
+node_modules/
+*.log
