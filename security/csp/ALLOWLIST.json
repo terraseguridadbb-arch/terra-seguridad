@@ -1,0 +1,303 @@
+{
+  "_about": "Allowlist CSP derivada de INVENTORY.json (WP-SEC-13, DR-W3-08). Regenerar: node security/csp/allowlist.mjs --write",
+  "schema_version": 1,
+  "modo": "Report-Only. Esta allowlist NO esta en enforcing y no bloquea nada.",
+  "reglas": [
+    "Sin comodines: ninguna fuente de esquema abierto ni de subdominio abierto entra en esta lista.",
+    "Sin 'unsafe-inline' en script-src: los scripts inline del repo entran por hash sha256 y los atributos on* por hash mas 'unsafe-hashes'.",
+    "Un origen solo pasa a PROBADO con evidencia de un reporte real o de una prueba registrada."
+  ],
+  "confianza_gtm": {
+    "decision": "El contenedor de GTM entra por el HASH del snippet inline y por el origen exacto www.googletagmanager.com. NO se usa 'strict-dynamic' ni se confia en todo lo que GTM cargue.",
+    "consecuencia": "Las etiquetas que GTM inyecte en runtime (Custom HTML, pixeles de terceros, server-side tagging) NO estan permitidas por esta lista: apareceran como violaciones en los reportes y se agregaran de a una, con su pieza y su evidencia.",
+    "referencia": "security/csp/README.md, apartado \"REQUIERE_DECISION: GTM inyecta scripts dinamicamente\" (opciones A/B; hoy rige B)."
+  },
+  "keywords_permitidas": [
+    "'self'",
+    "'none'",
+    "'unsafe-hashes'",
+    "'unsafe-inline'",
+    "data:"
+  ],
+  "resumen": {
+    "total": 17,
+    "por_estado": {
+      "INVENTARIADO": 9,
+      "PROBADO": 0,
+      "PENDIENTE": 8
+    }
+  },
+  "por_directiva": {
+    "script-src": [
+      {
+        "origin": "https://connect.facebook.net",
+        "componente": "meta-pixel",
+        "componente_label": "Meta Pixel / fbevents.js (snippet inline hasheado)",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "gracias.html:22"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "index.html:28"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.google-analytics.com",
+        "componente": "ga4",
+        "componente_label": "Google Analytics 4 (cargado por el contenedor de GTM)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GA4 puede cargar analytics.js / ga-audiences desde este host"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.googletagmanager.com",
+        "componente": "gtm-contenedor",
+        "componente_label": "GTM: contenedor y gtag/js (snippet inline hasheado en index.html y gracias.html)",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "gracias.html:8"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "index.html:8"
+          },
+          {
+            "tipo": "script[src]",
+            "evidencia": "index.html:12"
+          }
+        ]
+      }
+    ],
+    "style-src": [
+      {
+        "origin": "https://fonts.googleapis.com",
+        "componente": "fuentes-google",
+        "componente_label": "Google Fonts: hoja de estilos y archivos de fuente",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "link[rel=stylesheet]",
+            "evidencia": "gracias.html:61"
+          },
+          {
+            "tipo": "link[rel=stylesheet]",
+            "evidencia": "index.html:64"
+          },
+          {
+            "tipo": "link[rel=stylesheet]",
+            "evidencia": "politicas.html:10"
+          }
+        ]
+      }
+    ],
+    "img-src": [
+      {
+        "origin": "https://www.facebook.com",
+        "componente": "meta-pixel",
+        "componente_label": "Meta Pixel / fbevents.js (snippet inline hasheado)",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "img[src]",
+            "evidencia": "gracias.html:53"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "index.html:53"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.google-analytics.com",
+        "componente": "ga4",
+        "componente_label": "Google Analytics 4 (cargado por el contenedor de GTM)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GA4 usa pixeles de fallback"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.googletagmanager.com",
+        "componente": "gtm-contenedor",
+        "componente_label": "GTM: contenedor y gtag/js (snippet inline hasheado en index.html y gracias.html)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GTM usa pixeles de fallback"
+          }
+        ]
+      }
+    ],
+    "font-src": [
+      {
+        "origin": "https://fonts.gstatic.com",
+        "componente": "fuentes-google",
+        "componente_label": "Google Fonts: hoja de estilos y archivos de fuente",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "derivado-de-evidencia-estatica",
+            "evidencia": "la hoja de fonts.googleapis.com referencia archivos de fuente alojados en fonts.gstatic.com"
+          }
+        ]
+      }
+    ],
+    "connect-src": [
+      {
+        "origin": "https://analytics.google.com",
+        "componente": "ga4",
+        "componente_label": "Google Analytics 4 (cargado por el contenedor de GTM)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GA4 sincroniza audiencias y consent"
+          }
+        ]
+      },
+      {
+        "origin": "https://api.hsforms.com",
+        "componente": "hubspot-forms",
+        "componente_label": "HubSpot Forms API: envio del formulario por fetch desde main.js",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "js-literal-network-url",
+            "evidencia": "main.js:196"
+          }
+        ]
+      },
+      {
+        "origin": "https://api.ipify.org",
+        "componente": "ip-lookup",
+        "componente_label": "Lookup de IP del visitante desde main.js (enriquecimiento del lead)",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "js-literal-network-url",
+            "evidencia": "main.js:207"
+          }
+        ]
+      },
+      {
+        "origin": "https://n8n-production-ec32.up.railway.app",
+        "componente": "webhook-n8n",
+        "componente_label": "Webhook de n8n en Railway invocado desde main.js",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "js-literal-network-url",
+            "evidencia": "main.js:242"
+          }
+        ]
+      },
+      {
+        "origin": "https://region1.google-analytics.com",
+        "componente": "ga4",
+        "componente_label": "Google Analytics 4 (cargado por el contenedor de GTM)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GA4 rutea hits a endpoints regionales"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.facebook.com",
+        "componente": "meta-pixel",
+        "componente_label": "Meta Pixel / fbevents.js (snippet inline hasheado)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "fbevents.js envia eventos a /tr por fetch o imagen"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.google-analytics.com",
+        "componente": "ga4",
+        "componente_label": "Google Analytics 4 (cargado por el contenedor de GTM)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GA4 envia hits por beacon/fetch"
+          }
+        ]
+      },
+      {
+        "origin": "https://www.googletagmanager.com",
+        "componente": "gtm-contenedor",
+        "componente_label": "GTM: contenedor y gtag/js (snippet inline hasheado en index.html y gracias.html)",
+        "estado": "PENDIENTE",
+        "evidencia": [
+          {
+            "tipo": "esperado-en-runtime-no-probado",
+            "evidencia": "GTM descarga la configuracion del contenedor"
+          }
+        ]
+      }
+    ],
+    "frame-src": [
+      {
+        "origin": "https://www.googletagmanager.com",
+        "componente": "gtm-contenedor",
+        "componente_label": "GTM: contenedor y gtag/js (snippet inline hasheado en index.html y gracias.html)",
+        "estado": "INVENTARIADO",
+        "evidencia": [
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "gracias.html:65"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "index.html:70"
+          }
+        ]
+      }
+    ],
+    "form-action": []
+  },
+  "hashes": {
+    "_nota": "Los hashes viven en INVENTORY.json (inline_script_hashes, event_handler_hashes) y se regeneran con inventory.mjs. Aca solo se cuentan.",
+    "inline_script_hashes": 6,
+    "event_handler_hashes": 12
+  },
+  "no_incluidos": {
+    "_nota": "Fuentes del header enforcing HEREDADO que esta allowlist NO adopta. Estan aca para que la diferencia sea visible antes de cualquier endurecimiento, no para permitirlas.",
+    "motivo": "Son comodines o dominios sin ninguna evidencia en el repositorio. Si el sitio los usa de verdad, los reportes de la fase 1 lo van a mostrar y se evaluaran de a uno.",
+    "fuentes": [
+      "https:",
+      "https://*.a.run.app",
+      "https://*.analytics.google.com",
+      "https://*.conversionsapigateway.com",
+      "https://*.facebook.com",
+      "https://*.facebook.net",
+      "https://*.g.doubleclick.net",
+      "https://*.google-analytics.com",
+      "https://*.googletagmanager.com",
+      "https://*.hsforms.com",
+      "https://*.hsforms.net",
+      "https://*.stape.io",
+      "https://*.stapecdn.com",
+      "https://*.tagmanager.google.com",
+      "https://*.terraseguridad.com.ar"
+    ]
+  }
+}

@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { REPO_ROOT, HEADER_NAME_FIELD, readInventory } from './inventory.mjs';
+import { REPORT_ENDPOINT_URL, reportingDirectives } from './report-minimize.mjs';
 
 export const REPORT_ONLY_HEADER_NAME = 'Content-Security-Policy-Report-Only';
 export const LEGACY_HEADER_NAME = 'Content-Security-Policy';
@@ -24,13 +25,15 @@ export const VERCEL_CONFIG_PATH = path.join(REPO_ROOT, 'vercel.json');
 
 /**
  * PENDIENTE (frontera humana): no existe endpoint de reportes.
- * Cuando exista, agregar a la politica:
- *   report-uri <https://endpoint/csp>;  report-to csp-endpoint;
- * y el header Reporting-Endpoints: csp-endpoint="<https://endpoint/csp>".
- * Mientras REPORT_ENDPOINT sea null, las violaciones solo se ven en la consola
- * del navegador (DevTools), no se agregan en ningun lado.
+ * El destino vive PARAMETRIZADO en security/csp/report-minimize.mjs
+ * (`REPORT_ENDPOINT_URL`, hoy vacia). Mientras siga vacia, la politica no lleva
+ * `report-uri` ni `report-to` y las violaciones solo se ven en la consola del
+ * navegador (DevTools), sin agregarse en ningun lado.
+ * Cuando exista endpoint: completar REPORT_ENDPOINT_URL, emitir tambien el
+ * header `Reporting-Endpoints` (reportingEndpointsHeader) y pasar todo lo que
+ * se almacene por `normalizeReport` (WP-SEC-13).
  */
-export const REPORT_ENDPOINT = null;
+export const REPORT_ENDPOINT = REPORT_ENDPOINT_URL || null;
 
 /** Directivas sin fuentes de origen, fijas por politica. */
 export const FIXED_DIRECTIVES = [
@@ -74,7 +77,8 @@ export function buildPolicy(inventory) {
     })
     .filter(Boolean);
 
-  if (REPORT_ENDPOINT) rendered.push('report-uri ' + REPORT_ENDPOINT, 'report-to csp-endpoint');
+  // Endpoint de reportes parametrizado: vacio => no se agrega ninguna directiva.
+  rendered.push(...reportingDirectives());
 
   return rendered.join('; ') + ';';
 }
