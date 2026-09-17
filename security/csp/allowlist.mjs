@@ -149,7 +149,12 @@ export function buildAllowlist(inventory) {
   for (const e of todas) conteo[e.estado] += 1;
 
   return {
-    _about: 'Allowlist CSP derivada de INVENTORY.json (WP-SEC-13, DR-W3-08). Regenerar: node security/csp/allowlist.mjs --write',
+    _about: 'Allowlist CSP (WP-SEC-13, DR-W3-08). Regenerar: node security/csp/allowlist.mjs --write. De donde sale cada cosa: ver _procedencia.',
+    _procedencia: {
+      origenes: 'VERIFIED_REPO. Cada origen sale de INVENTORY.json (origin_details, derived_origins, runtime_expected_origins), que inventory.mjs genera leyendo el HTML y el JS del repo. Ninguno se escribio a mano: buildAllowlist falla si aparece un origen que el inventario no tiene.',
+      pieza_componente: 'DECLARED (criterio del worker, no del inventario). Las etiquetas componente y componente_label las asigna el mapa COMPONENTE_POR_ORIGEN de allowlist.mjs (aprox. lineas 50-62), escrito segun donde aparece cada origen en el codigo. Es una atribucion revisable: si una pieza esta mal asignada se corrige ahi y se regenera, y la lista de origenes permitidos no cambia.',
+      estados: 'INVENTARIADO y PENDIENTE salen del inventario (origen presente en el codigo vs origen esperado en runtime). PROBADO exige una entrada en VERIFICADOS_POR_REPORTE, hoy vacia porque la politica nunca se desplego.'
+    },
     schema_version: 1,
     modo: 'Report-Only. Esta allowlist NO esta en enforcing y no bloquea nada.',
     reglas: [
