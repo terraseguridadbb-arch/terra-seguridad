@@ -12,6 +12,11 @@ Estado: **PREPARATORIO. NO DESPLEGADO.** Los archivos viven en la rama de trabaj
 | `build-policy.mjs` | Construye el valor del header a partir del inventario y lo escribe en `vercel.json`. |
 | `check.mjs` | 12 verificaciones sobre el header y el inventario. CLI legible, exit 1 si algo falla. |
 | `check.test.mjs` | Los mismos controles como tests (`node --test security/csp/*.test.mjs`). |
+| `allowlist.mjs` | WP-SEC-13. Deriva `ALLOWLIST.json` de `INVENTORY.json`: a cada origen le asigna la pieza que lo requiere y su estado de verificacion. |
+| `ALLOWLIST.json` | WP-SEC-13. Origenes permitidos por directiva, con pieza responsable (GTM, GA4, Meta Pixel, HubSpot, fuentes, webhook) y estado `INVENTARIADO` / `PROBADO` / `PENDIENTE`. Sin comodines. |
+| `report-minimize.mjs` | WP-SEC-13. Destino de reportes parametrizado (hoy vacio) y minimizador: de cada reporte solo sobreviven `effective-directive`, `blocked-uri` (origen), `document-uri` (path sin query) y `disposition`. |
+| `allowlist.test.mjs`, `report-minimize.test.mjs` | Tests de las dos piezas anteriores. |
+| `HARDENING_PLAN.md` | WP-SEC-13. Fases 1 (report-only + inventario), 2 (allowlist cerrada) y 3 (enforcing), con criterio de salida y quien decide cada paso. |
 
 Regenerar despues de tocar el HTML/JS del sitio:
 
@@ -58,7 +63,8 @@ mismo documento y el JS intercepta); el envio real a HubSpot es `fetch` y por es
 El sitio carga GTM, GA4, Meta Pixel y un webhook de enriquecimiento. Un CSP estricto mal calibrado
 rompe tracking o formularios en produccion, en silencio y para todos los visitantes. Report-Only
 permite medir el costo real antes de pagarlo. Ademas, `report-uri` / `report-to` estan **pendientes**:
-no hay endpoint de reportes (`REPORT_ENDPOINT = null` en `build-policy.mjs`), asi que hoy las
+no hay endpoint de reportes (`REPORT_ENDPOINT_URL` vacia en `report-minimize.mjs`, de donde
+`build-policy.mjs` la toma), asi que hoy las
 violaciones solo se ven en la consola del navegador (DevTools > Console) y no se agregan en ningun lado.
 
 ## REQUIERE_DECISION: GTM inyecta scripts dinamicamente
@@ -110,9 +116,13 @@ Otros riesgos:
 
 ## Checklist para pasar a enforcing
 
+El plan por fases, con criterio de salida y responsable de cada decision, esta en
+`security/csp/HARDENING_PLAN.md` (WP-SEC-13). Lo que sigue es el checklist corto.
+
 1. Un humano despliega la rama con el header Report-Only (fuera del alcance de este paquete).
 2. Definir endpoint de reportes (`report-uri` + `report-to` + header `Reporting-Endpoints`) y
-   completar `REPORT_ENDPOINT` en `build-policy.mjs`. Sin endpoint, la observacion depende de mirar
+   completar `REPORT_ENDPOINT_URL` en `report-minimize.mjs`, y minimizar con `normalizeReport`
+   todo lo que se almacene. Sin endpoint, la observacion depende de mirar
    la consola a mano.
 3. Observar **al menos 14 dias** con trafico real, incluyendo un envio completo del formulario y una
    visita a `gracias.html`, y una sesion en modo vista previa de GTM.
