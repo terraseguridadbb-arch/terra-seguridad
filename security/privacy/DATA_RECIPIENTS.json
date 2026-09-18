@@ -26,7 +26,8 @@
         "identificador del envío (terra_event_id)",
         "cookies publicitarias de Meta (_fbc y _fbp) si existen en el navegador",
         "user agent del navegador",
-        "dirección y título de la página desde la que se envía"
+        "dirección y título de la página desde la que se envía",
+        "los datos inherentes a cualquier conexión: tu dirección IP y tu user agent, porque tu navegador se conecta directamente a su servidor"
       ],
       "finalidad": "Registrar la consulta y permitir el contacto comercial posterior.",
       "retencion": "DATOS_FALTANTES",
@@ -41,7 +42,8 @@
           "archivo": "main.js",
           "ancla": "{ name: \"client_user_agent\", value: navigator.userAgent"
         }
-      ]
+      ],
+      "estado": "INVENTARIADO"
     },
     {
       "id": "n8n-railway",
@@ -55,7 +57,8 @@
         "correo electrónico",
         "identificador del envío (terra_event_id)",
         "cookies publicitarias de Meta (_fbc y _fbp) si existen en el navegador",
-        "user agent del navegador"
+        "user agent del navegador",
+        "los datos inherentes a cualquier conexión: tu dirección IP y tu user agent, porque tu navegador se conecta directamente a su servidor"
       ],
       "finalidad": "Completar en HubSpot las señales que su formulario descarta y disparar la medición server-side del envío.",
       "retencion": "DATOS_FALTANTES",
@@ -66,7 +69,8 @@
           "archivo": "main.js",
           "ancla": "https://n8n-production-ec32.up.railway.app/webhook/terra-enrichment"
         }
-      ]
+      ],
+      "estado": "INVENTARIADO"
     },
     {
       "id": "meta-pixel",
@@ -80,7 +84,7 @@
       "campos": [
         "visita de la página (PageView) y envío del formulario (Lead), con el identificador del envío",
         "cookies publicitarias _fbp y _fbc",
-        "si el visitante ya envío el formulario antes en ese mismo navegador, los resúmenes irreversibles (SHA-256) de su correo, teléfono, nombre y apellido guardados en el navegador",
+        "si el visitante ya envió el formulario antes en ese mismo navegador, los resúmenes irreversibles (SHA-256) de su correo, teléfono, nombre y apellido guardados en el navegador",
         "los datos inherentes a cualquier conexión: dirección IP y user agent"
       ],
       "finalidad": "Medir resultados de las campañas publicitarias y optimizarlas.",
@@ -108,7 +112,8 @@
           "archivo": "gracias.html",
           "ancla": "https://www.facebook.com/tr?id="
         }
-      ]
+      ],
+      "estado": "INVENTARIADO"
     },
     {
       "id": "meta-capi",
@@ -131,7 +136,8 @@
           "archivo": "main.js",
           "ancla": "WF1 server-side envía el mismo Lead via CAPI"
         }
-      ]
+      ],
+      "estado": "INVENTARIADO"
     },
     {
       "id": "google-tags",
@@ -166,7 +172,8 @@
           "archivo": "main.js",
           "ancla": "event: 'terra_form_submit-02'"
         }
-      ]
+      ],
+      "estado": "INVENTARIADO"
     },
     {
       "id": "google-fonts",
@@ -189,6 +196,67 @@
         {
           "archivo": "index.html",
           "ancla": "https://fonts.googleapis.com/css2?family=Sora"
+        }
+      ],
+      "estado": "INVENTARIADO"
+    },
+    {
+      "id": "vercel-hosting",
+      "nombre": "Vercel (alojamiento del sitio)",
+      "rol": "Plataforma de alojamiento del sitio",
+      "transporte": "alojamiento",
+      "estado": "INVENTARIADO",
+      "hosts": [],
+      "campos": [
+        "no recibe nada del formulario como dato del formulario",
+        "los datos inherentes a cualquier conexión: dirección IP, user agent y páginas solicitadas, que quedan en los registros propios del servidor"
+      ],
+      "finalidad": "Entregar la página y operar el sitio.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "No aplica: sin conexión al servidor no hay página.",
+      "control_baja": "No aplica: no es un tratamiento comercial de tus datos.",
+      "nota": "VERIFIED_REPO que el repositorio se configura para esta plataforma (vercel.json). INFERENCE que el sitio vivo se sirva efectivamente desde ahí: no se verificó en runtime.",
+      "evidencia": [
+        {
+          "archivo": "vercel.json",
+          "ancla": "\"Content-Security-Policy\""
+        }
+      ]
+    },
+    {
+      "id": "gtm-tags-runtime",
+      "nombre": "Etiquetas que Google Tag Manager puede activar",
+      "rol": "Destinatarios configurados fuera del sitio, dentro del contenedor GTM-W65DNSWX",
+      "transporte": "navegador",
+      "estado": "NO_INVENTARIADO",
+      "hosts": [],
+      "hosts_posibles": [
+        "*.stape.io",
+        "*.stapecdn.com",
+        "*.a.run.app",
+        "*.conversionsapigateway.com",
+        "*.terraseguridad.com.ar",
+        "*.tagmanager.google.com",
+        "*.g.doubleclick.net",
+        "*.hsforms.net",
+        "*.hsforms.com"
+      ],
+      "campos": [
+        "DATOS_FALTANTES: depende de qué etiquetas tenga configuradas el contenedor, y eso no se puede leer desde el repositorio"
+      ],
+      "finalidad": "DATOS_FALTANTES",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "Las etiquetas del contenedor se activan al abrir la página, igual que el resto de la medición.",
+      "control_baja": "DATOS_FALTANTES",
+      "nota": "CONTRADICTION / NO_VERIFICADO: el contenido del contenedor GTM-W65DNSWX no está inventariado y no es accesible en este perfil. El header CSP enforce heredado permite esos orígenes comodín, así que el sitio no los impide. Por eso el texto público NO afirma que la lista de destinatarios sea completa.",
+      "evidencia": [
+        {
+          "archivo": "index.html",
+          "ancla": "'GTM-W65DNSWX'"
+        },
+        {
+          "archivo": "security/csp/README.md",
+          "ancla": "los usaria GTM en runtime, si estan activos"
         }
       ]
     }

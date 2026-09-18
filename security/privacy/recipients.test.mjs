@@ -20,6 +20,15 @@ const inventario = JSON.parse(readFileSync(path.join(REPO_ROOT, 'security', 'csp
 const politicas = readFileSync(POLITICAS_PATH, 'utf8');
 const indice = readFileSync(INDEX_PATH, 'utf8');
 
+/** Codigo ejecutable: descarta las lineas que son comentario, para no confundir prosa con codigo. */
+const sinComentarios = (texto) => texto
+  .split(String.fromCharCode(10))
+  .filter((l) => {
+    const t = l.trimStart();
+    return !t.startsWith("//") && !t.startsWith("*") && !t.startsWith("/*");
+  })
+  .join(" ");
+
 const CAMPOS_OBLIGATORIOS = ['id', 'nombre', 'rol', 'transporte', 'hosts', 'campos', 'finalidad',
   'retencion', 'control_consentimiento', 'control_baja', 'evidencia'];
 
@@ -29,7 +38,8 @@ test('cada destinatario declara todo lo que el aviso necesita', () => {
     for (const campo of CAMPOS_OBLIGATORIOS) {
       assert.ok(d[campo] !== undefined && d[campo] !== '', 'falta ' + campo + ' en ' + d.id);
     }
-    assert.ok(['navegador', 'servidor'].includes(d.transporte), 'transporte invalido en ' + d.id);
+    assert.ok(['navegador', 'servidor', 'alojamiento'].includes(d.transporte), 'transporte invalido en ' + d.id);
+    assert.ok(['INVENTARIADO', 'NO_INVENTARIADO'].includes(d.estado), 'estado invalido en ' + d.id);
     assert.ok(Array.isArray(d.campos) && d.campos.length > 0, 'sin campos: ' + d.id);
     assert.ok(Array.isArray(d.evidencia) && d.evidencia.length > 0, 'sin evidencia: ' + d.id);
   }
@@ -44,6 +54,25 @@ test('la evidencia de cada destinatario existe de verdad en el archivo citado', 
         'la evidencia de ' + d.id + ' ya no esta en ' + e.archivo + ': ' + e.ancla);
     }
   }
+});
+
+test('lo que no esta inventariado se publica como tal y no como lista cerrada', () => {
+  const noInventariados = datos.destinatarios.filter((d) => d.estado === 'NO_INVENTARIADO');
+  assert.ok(noInventariados.length > 0, 'el contenedor de GTM tiene que seguir declarado como no inventariado');
+  for (const d of noInventariados) {
+    assert.deepEqual(d.hosts, [], 'un destinatario no inventariado no puede declarar hosts verificados: ' + d.id);
+    assert.ok(politicas.includes(d.nombre), 'politicas.html no publica ' + d.nombre);
+  }
+  assert.ok(!/lista es completa|ning[uú]n otro destinatario/i.test(politicas),
+    'la politica volvio a afirmar que la lista de destinatarios es cerrada');
+  assert.ok(politicas.includes('GTM-W65DNSWX'),
+    'el texto publico tiene que nombrar el contenedor cuyas etiquetas no se pueden enumerar');
+});
+
+test('el alojamiento figura en el inventario', () => {
+  const alojamiento = datos.destinatarios.filter((d) => d.transporte === 'alojamiento');
+  assert.equal(alojamiento.length, 1, 'falta (o sobra) la entrada del alojamiento');
+  assert.ok(alojamiento[0].campos.join(' ').includes('IP'), 'el alojamiento tiene que declarar que ve la IP');
 });
 
 test('los destinatarios declarados son exactamente los hosts que el sitio contacta', () => {
@@ -113,6 +142,19 @@ test('donde el dato no consta hay marcador visible y ningun plazo inventado', ()
   const bloque = extraerBloque(politicas);
   assert.ok(!/\d+\s*(d[ií]as|meses|a[ñn]os)/i.test(bloque), 'aparecio un plazo de retencion inventado');
   assert.ok(!/(ley|GDPR|habeas data|ARCO)/i.test(bloque), 'el bloque generado invoca un marco legal no acreditado');
+});
+
+test('el sitio no manda datos por canales distintos de fetch', async () => {
+  const arnes = cargarSitio({ fetchImpl: async () => respuesta(true) });
+  const { evento } = crearEventoSubmit(CAMPOS_DEMO);
+  await arnes.handleSubmit(evento);
+  arnes.correrTemporizadores();
+  assert.deepEqual(arnes.otrosCanales, [],
+    'aparecio un envio por XMLHttpRequest, sendBeacon o imagen: ' + JSON.stringify(arnes.otrosCanales));
+  for (const rel of ['main.js', 'index.html', 'gracias.html']) {
+    const codigo = sinComentarios(readFileSync(path.join(REPO_ROOT, rel), "utf8"));
+    assert.ok(!/sendBeacon|XMLHttpRequest/.test(codigo), rel + ' usa un canal de salida que el aviso no contempla');
+  }
 });
 
 test('el bloque publicado no agrega estilos inline, scripts ni enlaces nuevos', () => {

@@ -155,13 +155,38 @@ export function cargarSitio({ fetchImpl, userAgent = 'arnes/1.0', href = 'https:
 
   const fbq = (...args) => { eventosFbq.push(args); };
 
+  /**
+   * Canales de salida que NO son fetch. El arnes los cubre para que un envio por
+   * XMLHttpRequest, sendBeacon o una imagen-pixel no pase inadvertido: se
+   * registran igual que fetch y el test los puede exigir vacios.
+   */
+  const otrosCanales = [];
+  const registrarCanal = (canal, url) => {
+    otrosCanales.push({ canal, url: String(url), host: hostDe(String(url)) });
+  };
+  class XMLHttpRequestFalso {
+    open(metodo, url) { this.metodo = metodo; this.url = url; }
+    setRequestHeader() {}
+    send() { registrarCanal('XMLHttpRequest', this.url); }
+  }
+  class ImagenFalsa {
+    constructor() {
+      let valor = '';
+      Object.defineProperty(this, 'src', {
+        get: () => valor,
+        set: (v) => { valor = v; registrarCanal('Image', v); }
+      });
+    }
+  }
+  const sendBeacon = (url) => { registrarCanal('sendBeacon', url); return true; };
+
   const nombres = ['document', 'window', 'navigator', 'localStorage', 'crypto', 'console', 'fetch',
     'setTimeout', 'setInterval', 'clearInterval', 'requestAnimationFrame', 'performance',
-    'IntersectionObserver', 'FormData', 'fbq'];
+    'IntersectionObserver', 'FormData', 'fbq', 'XMLHttpRequest', 'Image'];
   const valores = [
     document,
     window,
-    { userAgent },
+    { userAgent, sendBeacon },
     localStorage,
     globalThis.crypto,
     consola,
@@ -173,7 +198,9 @@ export function cargarSitio({ fetchImpl, userAgent = 'arnes/1.0', href = 'https:
     { now: () => 0 },
     ObservadorFalso,
     FormDataFalso,
-    fbq
+    fbq,
+    XMLHttpRequestFalso,
+    ImagenFalsa
   ];
 
   const fuente = readFileSync(MAIN_JS_PATH, 'utf8');
@@ -186,6 +213,7 @@ export function cargarSitio({ fetchImpl, userAgent = 'arnes/1.0', href = 'https:
     window,
     localStorage,
     peticiones,
+    otrosCanales,
     eventosFbq,
     logs,
     cookies: jar,

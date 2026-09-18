@@ -204,7 +204,10 @@ async function handleSubmit(e) {
   }
   // NEXT-SEC-15 (DIR18-03): el navegador ya NO consulta ningun servicio externo
   // de lookup de IP. El formulario no depende de la IP del visitante: el submit
-  // se completa sin ella y ningun destino la recibe desde el navegador.
+  // se completa sin ella y la IP deja de capturarse como dato y de adjuntarse a
+  // los envios. OJO: eso no la hace invisible. Todo servidor al que el navegador
+  // se conecta directo (HubSpot, el webhook, Meta, Google, el alojamiento) sigue
+  // viendo la IP de la conexion: lo que cambia es que ya no viaja como campo.
   // Contrato de payload: ese campo queda AUSENTE (no vacio, no nulo) tanto en
   // HubSpot Forms como en el webhook de enrichment; los consumidores aguas
   // abajo ya lo tratan como opcional.

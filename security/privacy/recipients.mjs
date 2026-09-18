@@ -45,10 +45,16 @@ export function escaparHtml(texto) {
     .split('>').join('&gt;');
 }
 
-/** Hosts que el navegador del visitante contacta, segun el inventario declarado. */
+/**
+ * Hosts que el navegador del visitante contacta, segun el inventario declarado.
+ * Solo cuentan los destinatarios INVENTARIADO: los NO_INVENTARIADO (etiquetas
+ * que el contenedor de GTM puede activar) no tienen hosts verificables desde el
+ * repositorio y por eso no se declaran como si los tuvieran.
+ */
 export function hostsDeclarados(datos, transporte = 'navegador') {
   const hosts = [];
   for (const d of datos.destinatarios) {
+    if (d.estado === 'NO_INVENTARIADO') continue;
     if (transporte && d.transporte !== transporte) continue;
     for (const h of d.hosts) if (!hosts.includes(h)) hosts.push(h);
   }
@@ -76,13 +82,18 @@ export function construirBloque(datos) {
   lineas.push('<!-- Generado por security/privacy/recipients.mjs desde DATA_RECIPIENTS.json. No editar a mano. -->');
   lineas.push('<ul class="politicas-destinatarios">');
   for (const d of datos.destinatarios) {
-    const via = d.transporte === 'servidor'
-      ? ' No lo envía tu navegador: lo envía nuestra automatización.'
-      : '';
+    const porTransporte = {
+      servidor: ' No lo envía tu navegador: lo envía nuestra automatización.',
+      alojamiento: ' Es el servidor que entrega esta página.'
+    };
+    const via = (porTransporte[d.transporte] || '')
+      + (d.estado === 'NO_INVENTARIADO'
+        ? ' No está inventariado: qué etiquetas tiene ese contenedor se configura fuera del sitio y no puede leerse desde acá.'
+        : '');
     lineas.push('  <li>');
     lineas.push('    <strong>' + escaparHtml(d.nombre) + '</strong> — ' + escaparHtml(d.rol) + '.' + escaparHtml(via));
-    lineas.push('    <br />Qué recibe: ' + escaparHtml(d.campos.join('; ')) + '.');
-    lineas.push('    <br />Para qué: ' + escaparHtml(d.finalidad));
+    lineas.push('    <br />Qué recibe: ' + escaparHtml(textoPublico(d.campos.join('; '))) + '.');
+    lineas.push('    <br />Para qué: ' + escaparHtml(textoPublico(d.finalidad)));
     lineas.push('    <br />Cuánto tiempo lo conserva: ' + escaparHtml(textoPublico(d.retencion)));
     lineas.push('    <br />Consentimiento: ' + escaparHtml(textoPublico(d.control_consentimiento)));
     lineas.push('    <br />Baja o corrección: ' + escaparHtml(textoPublico(d.control_baja)));

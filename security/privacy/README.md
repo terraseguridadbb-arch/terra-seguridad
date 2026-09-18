@@ -25,3 +25,12 @@ node --test security/csp/*.test.mjs security/privacy/*.test.mjs
 Regla del texto publico: donde el dato no consta va el marcador
 `[DATO_A_COMPLETAR_POR_DIRECCION]`. No se inventan plazos de retencion, razon
 social, derechos ni cumplimiento legal acreditado.
+
+Estados del inventario (r2): `INVENTARIADO` es lo que se puede verificar leyendo
+el repositorio; `NO_INVENTARIADO` es lo que existe pero no se puede enumerar
+desde aca (hoy: las etiquetas del contenedor de Google Tag Manager, que se
+configuran fuera del sitio). Un destinatario `NO_INVENTARIADO` no declara hosts
+verificados y en el texto publico sale con marcador: el aviso no afirma que la
+lista de destinatarios sea cerrada. El arnes tambien cubre los canales de salida
+que no son fetch (XMLHttpRequest, sendBeacon e imagen-pixel) para que un envio
+por esa via no pase inadvertido.

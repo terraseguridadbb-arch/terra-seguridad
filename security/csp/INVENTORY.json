@@ -16,14 +16,14 @@
     },
     {
       "path": "politicas.html",
-      "bytes": 14569,
-      "sha256": "5d8a20db76e3f1491359c25e23069dd82d6c6b22e9ee358cf35116c077647ec3",
+      "bytes": 16739,
+      "sha256": "539fb481e768739a3a76b6ae78068c7cc99dc954c545a4ea857aa0b9660ce369",
       "line_endings": "CRLF"
     },
     {
       "path": "main.js",
-      "bytes": 14681,
-      "sha256": "b3ccd12f0df1c960d97b217f4261fcee1872c9c9bca98a5f435b986baad749a8",
+      "bytes": 14935,
+      "sha256": "4c21eff62b801b4ec59bdfb02788d907135faa77ca4c7643c5417fa80a9391ac",
       "line_endings": "CRLF"
     },
     {
@@ -76,7 +76,7 @@
       "origin": "https://n8n-production-ec32.up.railway.app",
       "directive": "connect-src",
       "file": "main.js",
-      "line": 245,
+      "line": 248,
       "source": "js-literal-network-url"
     },
     {
@@ -296,7 +296,7 @@
     {
       "file": "politicas.html",
       "index": 0,
-      "line": 176,
+      "line": 193,
       "bytes": 171,
       "sha256_csp": "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
     }
