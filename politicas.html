@@ -39,8 +39,9 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
           <div>
-            <h2 class="politicas-block-title">Compromiso con tu privacidad</h2>
-            <p class="politicas-block-text">En Terra Seguridad, nos comprometemos a proteger la privacidad de sus datos. La información recopilada a través de nuestros formularios (nombre, teléfono, correo electrónico) se utiliza únicamente para contactarlo y brindarle el asesoramiento solicitado sobre nuestros servicios de seguridad y monitoreo.</p>
+            <h2 class="politicas-block-title">Qué datos recopilamos</h2>
+            <p class="politicas-block-text">Cuando completás el formulario nos dejás tu nombre, apellido, correo electrónico y teléfono, y los usamos para contactarte y asesorarte sobre nuestros servicios de seguridad y monitoreo.</p>
+            <p class="politicas-block-text">Además, mientras navegás este sitio funcionan herramientas de medición y publicidad de terceros que usan cookies y reciben datos de tu visita (entre ellos tu dirección IP y el tipo de navegador, que recibe cualquier servidor al que tu navegador le pide un recurso). El detalle de quién recibe qué está en la sección siguiente.</p>
           </div>
         </div>
 
@@ -49,8 +50,73 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <div>
-            <h2 class="politicas-block-title">Uso y confidencialidad de los datos</h2>
-            <p class="politicas-block-text">Sus datos no serán compartidos, vendidos ni cedidos a terceros ajenos a nuestra empresa. La información que nos proporcionás es tratada con total confidencialidad y únicamente por el equipo de Terra Seguridad con fines de asesoramiento comercial.</p>
+            <h2 class="politicas-block-title">Con quién se comparten tus datos</h2>
+            <p class="politicas-block-text">Para funcionar, este sitio transfiere datos a los proveedores que se enumeran abajo. Esta lista es completa: no enviamos tus datos a ningún otro destinatario, y cada vez que cambie el comportamiento del sitio la lista se actualiza junto con él.</p>
+            <!-- TERRA:DESTINATARIOS:INICIO -->
+            <!-- Generado por security/privacy/recipients.mjs desde DATA_RECIPIENTS.json. No editar a mano. -->
+            <ul class="politicas-destinatarios">
+              <li>
+                <strong>HubSpot</strong> — CRM y recepción del formulario (HubSpot Forms API).
+                <br />Qué recibe: nombre y apellido; correo electrónico; teléfono (código de área y número); identificador del envío (terra_event_id); cookies publicitarias de Meta (_fbc y _fbp) si existen en el navegador; user agent del navegador; dirección y título de la página desde la que se envía.
+                <br />Para qué: Registrar la consulta y permitir el contacto comercial posterior.
+                <br />Cuánto tiempo lo conserva: [DATO_A_COMPLETAR_POR_DIRECCION]
+                <br />Consentimiento: No hay casilla de consentimiento separada: el envío del formulario es la acción del visitante.
+                <br />Baja o corrección: Los canales de contacto publicados en esta página. Procedimiento y plazo formales: [DATO_A_COMPLETAR_POR_DIRECCION].
+              </li>
+              <li>
+                <strong>n8n alojado en Railway</strong> — Automatización propia que completa el contacto en HubSpot y alimenta la medición server-side.
+                <br />Qué recibe: correo electrónico; identificador del envío (terra_event_id); cookies publicitarias de Meta (_fbc y _fbp) si existen en el navegador; user agent del navegador.
+                <br />Para qué: Completar en HubSpot las señales que su formulario descarta y disparar la medición server-side del envío.
+                <br />Cuánto tiempo lo conserva: [DATO_A_COMPLETAR_POR_DIRECCION]
+                <br />Consentimiento: Se ejecuta junto con el envío del formulario; no hay control separado.
+                <br />Baja o corrección: Los canales de contacto publicados en esta página. Procedimiento y plazo formales: [DATO_A_COMPLETAR_POR_DIRECCION].
+              </li>
+              <li>
+                <strong>Meta (Pixel en el navegador)</strong> — Medición y optimización de publicidad.
+                <br />Qué recibe: visita de la página (PageView) y envío del formulario (Lead), con el identificador del envío; cookies publicitarias _fbp y _fbc; si el visitante ya envío el formulario antes en ese mismo navegador, los resúmenes irreversibles (SHA-256) de su correo, teléfono, nombre y apellido guardados en el navegador; los datos inherentes a cualquier conexión: dirección IP y user agent.
+                <br />Para qué: Medir resultados de las campañas publicitarias y optimizarlas.
+                <br />Cuánto tiempo lo conserva: [DATO_A_COMPLETAR_POR_DIRECCION]
+                <br />Consentimiento: No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.
+                <br />Baja o corrección: El sitio no ofrece hoy ningún control para desactivarlas. [DATO_A_COMPLETAR_POR_DIRECCION]: mecanismo previsto.
+              </li>
+              <li>
+                <strong>Meta (envío desde servidor, Conversions API)</strong> — Mismo evento de conversión enviado desde la automatización, no desde el navegador. No lo envía tu navegador: lo envía nuestra automatización.
+                <br />Qué recibe: resúmenes irreversibles (SHA-256) de correo, teléfono, nombre y apellido; identificador del envío, para que Meta no cuente dos veces el mismo hecho; cookies publicitarias y user agent reenviados por la automatización; desde NEXT-SEC-15 el navegador ya no aporta la dirección IP del visitante a este envío.
+                <br />Para qué: Atribuir la conversión a la campaña cuando el navegador bloquea el pixel.
+                <br />Cuánto tiempo lo conserva: [DATO_A_COMPLETAR_POR_DIRECCION]
+                <br />Consentimiento: Se dispara a partir del envío del formulario; no hay control separado.
+                <br />Baja o corrección: Los canales de contacto publicados en esta página. Procedimiento y plazo formales: [DATO_A_COMPLETAR_POR_DIRECCION].
+              </li>
+              <li>
+                <strong>Google (Tag Manager y Analytics)</strong> — Gestión de etiquetas y analítica del sitio.
+                <br />Qué recibe: páginas visitadas y el evento de envío del formulario con su identificador; identificadores propios de las cookies de Google Analytics; los datos inherentes a cualquier conexión: dirección IP y user agent.
+                <br />Para qué: Medir el uso del sitio y administrar las etiquetas de medición.
+                <br />Cuánto tiempo lo conserva: [DATO_A_COMPLETAR_POR_DIRECCION]
+                <br />Consentimiento: No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.
+                <br />Baja o corrección: El sitio no ofrece hoy ningún control para desactivarlas. [DATO_A_COMPLETAR_POR_DIRECCION]: mecanismo previsto.
+              </li>
+              <li>
+                <strong>Google Fonts</strong> — Tipografías que el navegador descarga para mostrar la página.
+                <br />Qué recibe: no recibe nada del formulario; los datos inherentes a cualquier conexión: dirección IP y user agent.
+                <br />Para qué: Mostrar la página con su tipografía.
+                <br />Cuánto tiempo lo conserva: [DATO_A_COMPLETAR_POR_DIRECCION]
+                <br />Consentimiento: La descarga ocurre al abrir la página; no hay control separado.
+                <br />Baja o corrección: No aplica: no se conserva ningún dato del visitante en el sitio por esta descarga.
+              </li>
+            </ul>
+            <p class="politicas-block-text">Servicio externo de consulta de IP: La conexión del visitante (dirección IP y user agent) cada vez que enviaba el formulario. RETIRADO en la rama de trabajo por NEXT-SEC-15 (2026-09-18). Sin desplegar: el sitio público sigue sirviendo la versión anterior hasta que la Dirección decida publicar.</p>
+            <!-- TERRA:DESTINATARIOS:FIN -->
+          </div>
+        </div>
+
+        <div class="politicas-block">
+          <div class="politicas-block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          </div>
+          <div>
+            <h2 class="politicas-block-title">Cookies, publicidad y consentimiento</h2>
+            <p class="politicas-block-text">Queremos ser exactos: hoy este sitio no muestra un aviso de cookies ni te pide consentimiento antes de activar las herramientas de medición y publicidad. Se activan al abrir la página, y el sitio no ofrece por ahora un control propio para desactivarlas.</p>
+            <p class="politicas-block-text">Mecanismo de consentimiento previo y de baja de esas herramientas: [DATO_A_COMPLETAR_POR_DIRECCION].</p>
           </div>
         </div>
 
@@ -60,7 +126,10 @@
           </div>
           <div>
             <h2 class="politicas-block-title">Tus derechos</h2>
-            <p class="politicas-block-text">Usted tiene derecho a solicitar la modificación o eliminación de sus datos de nuestra base de contacto en cualquier momento. Para ejercer este derecho podés contactarnos por cualquiera de estos medios:</p>
+            <p class="politicas-block-text">Podés pedirnos en cualquier momento que corrijamos o eliminemos tus datos de nuestra base de contacto. Para eso, escribinos por cualquiera de estos medios:</p>
+            <p class="politicas-block-text">Responsable del tratamiento de los datos (razón social, domicilio legal y datos de inscripción): [DATO_A_COMPLETAR_POR_DIRECCION].</p>
+            <p class="politicas-block-text">Marco legal aplicable, derechos que te reconoce y plazo de respuesta a tu pedido: [DATO_A_COMPLETAR_POR_DIRECCION].</p>
+            <p class="politicas-block-text">Tené en cuenta que los pedidos sobre los datos que ya recibieron los proveedores de la lista anterior también hay que ejercerlos ante ellos: [DATO_A_COMPLETAR_POR_DIRECCION] (canal y plazo con los que Terra Seguridad los acompaña).</p>
             <div class="politicas-contact-list">
               <a class="politicas-contact-item" href="https://wa.me/5491130089046" target="_blank">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.948-1.42A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.522 2 12 2zm0 18c-1.665 0-3.22-.457-4.548-1.251l-.328-.195-3.408.978.957-3.32-.214-.34A7.956 7.956 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>

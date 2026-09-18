@@ -260,7 +260,8 @@ async function handleSubmit(e) {
       // que causaba warning "Duplicate Pixel ID" en consola.
       // Ahora el init único ocurre en index.html con AM desde localStorage['terra_am'].
       // Para first-time submits, el browser Lead va sin AM en user_data — pero
-      // WF1 server-side envía el mismo Lead via CAPI con em/ph/fn/ln/fbc/fbp/ip/ua/country
+      // WF1 server-side envía el mismo Lead via CAPI con em/ph/fn/ln/fbc/fbp/ua/country
+      // (desde NEXT-SEC-15 ya no viaja la IP del visitante: el navegador no la obtiene)
       // y Meta deduplica via event_id, mergeando los user_data. Sin pérdida real de match quality.
       //
       // HOTFIX 2026-05-28: setTimeout en lugar de eventCallback.

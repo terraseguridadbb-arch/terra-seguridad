@@ -1,0 +1,219 @@
+{
+  "_about": "NEXT-SEC-15 (DIR18-03). Inventario de destinatarios reales de datos del sitio publico, derivado por LECTURA de main.js, index.html, gracias.html y security/csp/INVENTORY.json. Es la fuente del bloque de destinatarios de politicas.html: regenerar con node security/privacy/recipients.mjs --write.",
+  "schema_version": 1,
+  "as_of": "2026-09-18",
+  "estado": "PREPARATORIO. NO DESPLEGADO. Describe lo que hace la rama de trabajo, no lo que hoy sirve el sitio publico.",
+  "procedencia": {
+    "campos_y_destinos": "VERIFIED_REPO: cada destinatario tiene un ancla de texto que existe en el archivo citado (lo verifica recipients.test.mjs).",
+    "retencion_y_derechos": "DATOS_FALTANTES: no constan en el repositorio ni en ninguna decision registrada. En el texto publico salen como marcador para que los complete la Direccion, no como afirmacion.",
+    "meta_capi": "INFERENCE sobre el n8n productivo: el reenvio server-side a Meta esta verificado en el repositorio de automatizaciones (campo opcional), no en runtime."
+  },
+  "marcador_publico": "[DATO_A_COMPLETAR_POR_DIRECCION]",
+  "valor_faltante": "DATOS_FALTANTES",
+  "destinatarios": [
+    {
+      "id": "hubspot",
+      "nombre": "HubSpot",
+      "rol": "CRM y recepción del formulario (HubSpot Forms API)",
+      "transporte": "navegador",
+      "hosts": [
+        "api.hsforms.com"
+      ],
+      "campos": [
+        "nombre y apellido",
+        "correo electrónico",
+        "teléfono (código de área y número)",
+        "identificador del envío (terra_event_id)",
+        "cookies publicitarias de Meta (_fbc y _fbp) si existen en el navegador",
+        "user agent del navegador",
+        "dirección y título de la página desde la que se envía"
+      ],
+      "finalidad": "Registrar la consulta y permitir el contacto comercial posterior.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "No hay casilla de consentimiento separada: el envío del formulario es la acción del visitante.",
+      "control_baja": "Los canales de contacto publicados en esta página. Procedimiento y plazo formales: DATOS_FALTANTES.",
+      "evidencia": [
+        {
+          "archivo": "main.js",
+          "ancla": "https://api.hsforms.com/submissions/v3/integration/submit/"
+        },
+        {
+          "archivo": "main.js",
+          "ancla": "{ name: \"client_user_agent\", value: navigator.userAgent"
+        }
+      ]
+    },
+    {
+      "id": "n8n-railway",
+      "nombre": "n8n alojado en Railway",
+      "rol": "Automatización propia que completa el contacto en HubSpot y alimenta la medición server-side",
+      "transporte": "navegador",
+      "hosts": [
+        "n8n-production-ec32.up.railway.app"
+      ],
+      "campos": [
+        "correo electrónico",
+        "identificador del envío (terra_event_id)",
+        "cookies publicitarias de Meta (_fbc y _fbp) si existen en el navegador",
+        "user agent del navegador"
+      ],
+      "finalidad": "Completar en HubSpot las señales que su formulario descarta y disparar la medición server-side del envío.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "Se ejecuta junto con el envío del formulario; no hay control separado.",
+      "control_baja": "Los canales de contacto publicados en esta página. Procedimiento y plazo formales: DATOS_FALTANTES.",
+      "evidencia": [
+        {
+          "archivo": "main.js",
+          "ancla": "https://n8n-production-ec32.up.railway.app/webhook/terra-enrichment"
+        }
+      ]
+    },
+    {
+      "id": "meta-pixel",
+      "nombre": "Meta (Pixel en el navegador)",
+      "rol": "Medición y optimización de publicidad",
+      "transporte": "navegador",
+      "hosts": [
+        "connect.facebook.net",
+        "www.facebook.com"
+      ],
+      "campos": [
+        "visita de la página (PageView) y envío del formulario (Lead), con el identificador del envío",
+        "cookies publicitarias _fbp y _fbc",
+        "si el visitante ya envío el formulario antes en ese mismo navegador, los resúmenes irreversibles (SHA-256) de su correo, teléfono, nombre y apellido guardados en el navegador",
+        "los datos inherentes a cualquier conexión: dirección IP y user agent"
+      ],
+      "finalidad": "Medir resultados de las campañas publicitarias y optimizarlas.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.",
+      "control_baja": "El sitio no ofrece hoy ningún control para desactivarlas. DATOS_FALTANTES: mecanismo previsto.",
+      "evidencia": [
+        {
+          "archivo": "index.html",
+          "ancla": "https://connect.facebook.net/en_US/fbevents.js"
+        },
+        {
+          "archivo": "index.html",
+          "ancla": "fbq('track', 'PageView')"
+        },
+        {
+          "archivo": "main.js",
+          "ancla": "fbq('track', 'Lead'"
+        },
+        {
+          "archivo": "main.js",
+          "ancla": "localStorage.setItem('terra_am'"
+        },
+        {
+          "archivo": "gracias.html",
+          "ancla": "https://www.facebook.com/tr?id="
+        }
+      ]
+    },
+    {
+      "id": "meta-capi",
+      "nombre": "Meta (envío desde servidor, Conversions API)",
+      "rol": "Mismo evento de conversión enviado desde la automatización, no desde el navegador",
+      "transporte": "servidor",
+      "hosts": [],
+      "campos": [
+        "resúmenes irreversibles (SHA-256) de correo, teléfono, nombre y apellido",
+        "identificador del envío, para que Meta no cuente dos veces el mismo hecho",
+        "cookies publicitarias y user agent reenviados por la automatización",
+        "desde NEXT-SEC-15 el navegador ya no aporta la dirección IP del visitante a este envío"
+      ],
+      "finalidad": "Atribuir la conversión a la campaña cuando el navegador bloquea el pixel.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "Se dispara a partir del envío del formulario; no hay control separado.",
+      "control_baja": "Los canales de contacto publicados en esta página. Procedimiento y plazo formales: DATOS_FALTANTES.",
+      "evidencia": [
+        {
+          "archivo": "main.js",
+          "ancla": "WF1 server-side envía el mismo Lead via CAPI"
+        }
+      ]
+    },
+    {
+      "id": "google-tags",
+      "nombre": "Google (Tag Manager y Analytics)",
+      "rol": "Gestión de etiquetas y analítica del sitio",
+      "transporte": "navegador",
+      "hosts": [
+        "www.googletagmanager.com",
+        "www.google-analytics.com",
+        "region1.google-analytics.com",
+        "analytics.google.com"
+      ],
+      "campos": [
+        "páginas visitadas y el evento de envío del formulario con su identificador",
+        "identificadores propios de las cookies de Google Analytics",
+        "los datos inherentes a cualquier conexión: dirección IP y user agent"
+      ],
+      "finalidad": "Medir el uso del sitio y administrar las etiquetas de medición.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.",
+      "control_baja": "El sitio no ofrece hoy ningún control para desactivarlas. DATOS_FALTANTES: mecanismo previsto.",
+      "evidencia": [
+        {
+          "archivo": "index.html",
+          "ancla": "https://www.googletagmanager.com/gtm.js?id="
+        },
+        {
+          "archivo": "index.html",
+          "ancla": "gtag('config', 'G-QRZ0RHZ71N')"
+        },
+        {
+          "archivo": "main.js",
+          "ancla": "event: 'terra_form_submit-02'"
+        }
+      ]
+    },
+    {
+      "id": "google-fonts",
+      "nombre": "Google Fonts",
+      "rol": "Tipografías que el navegador descarga para mostrar la página",
+      "transporte": "navegador",
+      "hosts": [
+        "fonts.googleapis.com",
+        "fonts.gstatic.com"
+      ],
+      "campos": [
+        "no recibe nada del formulario",
+        "los datos inherentes a cualquier conexión: dirección IP y user agent"
+      ],
+      "finalidad": "Mostrar la página con su tipografía.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "La descarga ocurre al abrir la página; no hay control separado.",
+      "control_baja": "No aplica: no se conserva ningún dato del visitante en el sitio por esta descarga.",
+      "evidencia": [
+        {
+          "archivo": "index.html",
+          "ancla": "https://fonts.googleapis.com/css2?family=Sora"
+        }
+      ]
+    }
+  ],
+  "retirados": [
+    {
+      "id": "lookup-ip-externo",
+      "nombre": "Servicio externo de consulta de IP",
+      "estado": "RETIRADO en la rama de trabajo por NEXT-SEC-15 (2026-09-18). Sin desplegar: el sitio público sigue sirviendo la versión anterior hasta que la Dirección decida publicar.",
+      "que_recibia": "La conexión del visitante (dirección IP y user agent) cada vez que enviaba el formulario.",
+      "para_que": "Adjuntar la IP a los envíos a HubSpot, a la automatización y, aguas abajo, a Meta.",
+      "evidencia_de_retiro": [
+        {
+          "archivo": "security/privacy/submit.test.mjs",
+          "ancla": "el codigo del sitio no contiene ninguna llamada a un lookup externo de IP"
+        }
+      ]
+    }
+  ],
+  "sin_transferencia_de_datos": {
+    "_nota": "Enlaces de navegacion que el visitante decide seguir (WhatsApp, redes, sitio del autor). El sitio no les envía datos: aparecen en INVENTORY.json como orígenes no directivos.",
+    "hosts": [
+      "wa.me",
+      "www.instagram.com",
+      "www.leandroheffes.com"
+    ]
+  }
+}

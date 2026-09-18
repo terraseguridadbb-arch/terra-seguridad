@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 52004,
-      "sha256": "ff2c49e0f2ccf7ab57df07232883fffd5664956490ced9db5fc10f0363d5a1b1",
+      "bytes": 52208,
+      "sha256": "2dea05d248d4d0a7b2398ef8461631c45c59f060cf52f469aacf7e717c6486e8",
       "line_endings": "CRLF"
     },
     {
@@ -16,14 +16,14 @@
     },
     {
       "path": "politicas.html",
-      "bytes": 6736,
-      "sha256": "d56fc3a18ea3523e79c268ba0ca316f6e3d52968854e03e92cbca6cff15edb8e",
+      "bytes": 14569,
+      "sha256": "5d8a20db76e3f1491359c25e23069dd82d6c6b22e9ee358cf35116c077647ec3",
       "line_endings": "CRLF"
     },
     {
       "path": "main.js",
-      "bytes": 14594,
-      "sha256": "17e0b001f877a4b2b8268361b0495dee554ee042e2820be525f72ad4f7164b6b",
+      "bytes": 14681,
+      "sha256": "b3ccd12f0df1c960d97b217f4261fcee1872c9c9bca98a5f435b986baad749a8",
       "line_endings": "CRLF"
     },
     {
@@ -296,7 +296,7 @@
     {
       "file": "politicas.html",
       "index": 0,
-      "line": 107,
+      "line": 176,
       "bytes": 171,
       "sha256_csp": "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
     }
