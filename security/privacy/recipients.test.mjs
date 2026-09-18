@@ -63,8 +63,10 @@ test('lo que no esta inventariado se publica como tal y no como lista cerrada', 
     assert.deepEqual(d.hosts, [], 'un destinatario no inventariado no puede declarar hosts verificados: ' + d.id);
     assert.ok(politicas.includes(d.nombre), 'politicas.html no publica ' + d.nombre);
   }
-  assert.ok(!/lista es completa|ning[uú]n otro destinatario/i.test(politicas),
-    'la politica volvio a afirmar que la lista de destinatarios es cerrada');
+  for (const [nombre, html] of [['politicas.html', politicas], ['index.html', indice]]) {
+    assert.ok(!/lista (es )?completa|ning[uú]n otro destinatario/i.test(html),
+      nombre + ' volvio a afirmar que la lista de destinatarios es cerrada');
+  }
   assert.ok(politicas.includes('GTM-W65DNSWX'),
     'el texto publico tiene que nombrar el contenedor cuyas etiquetas no se pueden enumerar');
 });
