@@ -37,7 +37,6 @@ export const COMPONENTES = {
   'meta-pixel': 'Meta Pixel / fbevents.js (snippet inline hasheado)',
   'hubspot-forms': 'HubSpot Forms API: envio del formulario por fetch desde main.js',
   'fuentes-google': 'Google Fonts: hoja de estilos y archivos de fuente',
-  'ip-lookup': 'Lookup de IP del visitante desde main.js (enriquecimiento del lead)',
   'webhook-n8n': 'Webhook de n8n en Railway invocado desde main.js'
 };
 
@@ -57,7 +56,6 @@ export const COMPONENTE_POR_ORIGEN = {
   'https://api.hsforms.com': 'hubspot-forms',
   'https://fonts.googleapis.com': 'fuentes-google',
   'https://fonts.gstatic.com': 'fuentes-google',
-  'https://api.ipify.org': 'ip-lookup',
   'https://n8n-production-ec32.up.railway.app': 'webhook-n8n'
 };
 

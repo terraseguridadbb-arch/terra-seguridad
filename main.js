@@ -202,11 +202,14 @@ async function handleSubmit(e) {
     var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return m ? m[2] : null;
   }
-  let clientIp = '';
-  try {
-    const ipRes = await fetch('https://api.ipify.org?format=json', { signal: AbortSignal.timeout(2000) });
-    if (ipRes.ok) clientIp = (await ipRes.json()).ip || '';
-  } catch (_) { /* ipify timeout/fail — seguir sin client_ip */ }
+  // NEXT-SEC-15 (DIR18-03): el navegador ya NO consulta ningun servicio externo
+  // de lookup de IP. El formulario no depende de la IP del visitante: el submit
+  // se completa sin ella y ningun destino la recibe desde el navegador.
+  // Contrato de payload: ese campo queda AUSENTE (no vacio, no nulo) tanto en
+  // HubSpot Forms como en el webhook de enrichment; los consumidores aguas
+  // abajo ya lo tratan como opcional.
+  // Tomar la IP del lado servidor NO esta implementado: es una PROPUESTA
+  // pendiente de decision humana (security/privacy/PROPOSAL_IP_SERVIDOR.md).
 
   const requestBody = {
     fields: [
@@ -217,7 +220,6 @@ async function handleSubmit(e) {
       { name: "terra_event_id", value: eventId },
       { name: "fbc", value: getCookie('_fbc') || '' },
       { name: "fbp", value: getCookie('_fbp') || '' },
-      { name: "client_ip", value: clientIp },
       { name: "client_user_agent", value: navigator.userAgent || '' }
     ],
     context: {
@@ -234,7 +236,8 @@ async function handleSubmit(e) {
     });
 
     if (response.ok) {
-      // ENRICHMENT 2026-05-28: backfill fbc/fbp/client_ip/client_user_agent al contacto HubSpot.
+      // ENRICHMENT 2026-05-28: backfill de fbc/fbp/user agent al contacto HubSpot.
+      // NEXT-SEC-15: la IP del visitante salio de este payload.
       // El Forms API descarta esos hidden fields (catch-22 v3/v4 documentado), workaround: PATCH via Contacts API.
       // HOTFIX: fetch + keepalive (reemplaza sendBeacon que no llegaba al webhook en pruebas reales).
       // keepalive: true le dice al browser que comprometa el request aun si la pagina se descarga.
@@ -247,7 +250,6 @@ async function handleSubmit(e) {
             terra_event_id: eventId,
             fbc: getCookie('_fbc') || null,
             fbp: getCookie('_fbp') || null,
-            client_ip: clientIp || null,
             client_user_agent: navigator.userAgent || null
           }),
           keepalive: true

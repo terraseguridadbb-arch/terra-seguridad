@@ -25,9 +25,9 @@
     "data:"
   ],
   "resumen": {
-    "total": 17,
+    "total": 16,
     "por_estado": {
-      "INVENTARIADO": 9,
+      "INVENTARIADO": 8,
       "PROBADO": 0,
       "PENDIENTE": 8
     }
@@ -187,18 +187,6 @@
         ]
       },
       {
-        "origin": "https://api.ipify.org",
-        "componente": "ip-lookup",
-        "componente_label": "Lookup de IP del visitante desde main.js (enriquecimiento del lead)",
-        "estado": "INVENTARIADO",
-        "evidencia": [
-          {
-            "tipo": "js-literal-network-url",
-            "evidencia": "main.js:207"
-          }
-        ]
-      },
-      {
         "origin": "https://n8n-production-ec32.up.railway.app",
         "componente": "webhook-n8n",
         "componente_label": "Webhook de n8n en Railway invocado desde main.js",
@@ -206,7 +194,7 @@
         "evidencia": [
           {
             "tipo": "js-literal-network-url",
-            "evidencia": "main.js:242"
+            "evidencia": "main.js:245"
           }
         ]
       },

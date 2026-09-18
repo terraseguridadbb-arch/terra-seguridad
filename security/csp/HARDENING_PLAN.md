@@ -23,9 +23,13 @@ DATOS_FALTANTES en vez de un valor inventado.
 | `report-minimize.mjs` | Destino de reportes parametrizado (hoy vacio) y minimizador de los reportes recibidos. |
 | `check.mjs` + tests | Verifican que la politica sigue siendo Report-Only, sin comodines y reproducible. |
 
-Estado inicial de la allowlist (generado, no estimado): **17 origenes = 9
+Estado inicial de la allowlist (generado, no estimado): **16 origenes = 8
 INVENTARIADO + 8 PENDIENTE + 0 PROBADO**. Cero PROBADO es correcto: la politica
 nunca se publico, asi que ningun origen tiene todavia evidencia de runtime.
+Actualizacion NEXT-SEC-15 (2026-09-18): eran 17 hasta que el sitio dejo de
+consultar el servicio externo de lookup de IP desde el navegador; ese origen
+salio del codigo, del inventario y de la allowlist. El conteo se regenera, no se
+edita a mano.
 
 ## Fase 1 - Report-Only publicado + inventario con trafico real
 
