@@ -84,7 +84,7 @@ export function construirBloque(datos) {
   for (const d of datos.destinatarios) {
     const porTransporte = {
       servidor: ' No lo envía tu navegador: lo envía nuestra automatización.',
-      alojamiento: ' Es el servidor que entrega esta página.'
+      alojamiento: ' Es el servidor que entrega esta página según la configuración del repositorio: que la versión publicada se sirva efectivamente desde ahí es un dato a confirmar al publicar, no algo que hayamos comprobado.'
     };
     const via = (porTransporte[d.transporte] || '')
       + (d.estado === 'NO_INVENTARIADO'

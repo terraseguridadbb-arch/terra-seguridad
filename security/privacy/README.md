@@ -34,3 +34,13 @@ verificados y en el texto publico sale con marcador: el aviso no afirma que la
 lista de destinatarios sea cerrada. El arnes tambien cubre los canales de salida
 que no son fetch (XMLHttpRequest, sendBeacon e imagen-pixel) para que un envio
 por esa via no pase inadvertido.
+
+Limite conocido del arnes (r2, gap 5): lo que se instrumenta es `new Image()`,
+`XMLHttpRequest` y `navigator.sendBeacon`. Un elemento creado con
+`document.createElement('img')` o `document.createElement('script')` al que
+despues se le asigna `src` NO queda registrado: el elemento minimo del arnes no
+instrumenta esa propiedad y no hay insercion real en un documento. Es decir: los
+tests de canales de salida prueban que el `main.js` versionado no usa las vias
+instrumentadas, no que sea imposible filtrar datos por una via no instrumentada.
+Si alguna vez se agrega codigo que cargue recursos por createElement + src, hay
+que instrumentar `src` en `crearElemento` antes de confiar en este test.

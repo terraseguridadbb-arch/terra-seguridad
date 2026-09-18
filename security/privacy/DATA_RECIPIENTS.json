@@ -202,8 +202,8 @@
     },
     {
       "id": "vercel-hosting",
-      "nombre": "Vercel (alojamiento del sitio)",
-      "rol": "Plataforma de alojamiento del sitio",
+      "nombre": "Vercel (alojamiento del sitio, declarado en el repositorio)",
+      "rol": "Plataforma de alojamiento",
       "transporte": "alojamiento",
       "estado": "INVENTARIADO",
       "hosts": [],
@@ -215,7 +215,7 @@
       "retencion": "DATOS_FALTANTES",
       "control_consentimiento": "No aplica: sin conexión al servidor no hay página.",
       "control_baja": "No aplica: no es un tratamiento comercial de tus datos.",
-      "nota": "VERIFIED_REPO que el repositorio se configura para esta plataforma (vercel.json). INFERENCE que el sitio vivo se sirva efectivamente desde ahí: no se verificó en runtime.",
+      "nota": "VERIFIED_REPO que el repositorio se configura para esta plataforma (vercel.json). INFERENCE que el sitio vivo se sirva efectivamente desde ahí: no se verificó en runtime. Por eso el texto publicable no lo afirma como hecho: queda como dato a confirmar al publicar (SITE-01, HUMAN_REQUEST).",
       "evidencia": [
         {
           "archivo": "vercel.json",
