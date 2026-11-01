@@ -1,5 +1,22 @@
 document.body.classList.add('js-loaded');
 
+/* ── FORM BINDING (WP-WEB-FORM-RESILIENCE-01) ── */
+// El boton de envio viene deshabilitado en el HTML y el <form> no tiene handler
+// inline: si este archivo no carga o falla antes de llegar aca, no hay envio
+// nativo posible (y por lo tanto ninguna URL con datos personales). Se enlaza
+// primero para que un fallo en el resto del archivo no deje el form inutil.
+// `var` a proposito: se eleva, asi handleSubmit nunca cae en zona muerta temporal.
+var envioEnCurso = false;
+(function() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', handleSubmit);
+  const btn = form.querySelector('.form-submit');
+  if (btn) btn.disabled = false;
+  const fallback = document.getElementById('formFallback');
+  if (fallback) fallback.hidden = true;
+})();
+
 /* ── TRACKING: terra_eid + fbc cookies ── */
 (function() {
   function getCookie(name) {
@@ -172,6 +189,10 @@ document.getElementById('equipCarousel').addEventListener('mouseleave', () => {
 /* ── FORM SUBMIT ── */
 async function handleSubmit(e) {
   e.preventDefault();
+  // Un solo envio a HubSpot por click: un segundo submit (p. ej. Enter) mientras
+  // el primero esta en vuelo se descarta. Solo showFormError libera el guard.
+  if (envioEnCurso) return;
+  envioEnCurso = true;
 
   // Generar nuevo terra_eid para este submit (deduplicación CAPI)
   const eventId = typeof crypto !== 'undefined' && crypto.randomUUID
