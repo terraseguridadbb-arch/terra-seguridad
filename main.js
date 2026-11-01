@@ -260,6 +260,9 @@ async function handleSubmit(e) {
     });
 
     if (response.ok) {
+      // FIX 2026-11-01: evento de exito real (HubSpot acepto el envio) para GA4 generate_lead via GTM.
+      // Sin datos personales: solo el id de evento.
+      window.dataLayer.push({ event: 'terra_form_success', terra_event_id: eventId });
       // ENRICHMENT 2026-05-28: backfill de fbc/fbp/user agent al contacto HubSpot.
       // NEXT-SEC-15: la IP del visitante salio de este payload.
       // El Forms API descarta esos hidden fields (catch-22 v3/v4 documentado), workaround: PATCH via Contacts API.
@@ -291,11 +294,9 @@ async function handleSubmit(e) {
       // HOTFIX 2026-05-28: setTimeout en lugar de eventCallback.
       // eventCallback NO dispara con ad-blockers o si Pixel se carga lento -> user queda bloqueado en el form.
       // setTimeout 600ms da margen al Pixel beacon (~200-300ms tipico) y al sendBeacon de enrichment, sin depender del Pixel.
-      fbq('track', 'Lead', {
-        value: 394738,
-        currency: 'ARS',
-        event_id: eventId
-      });
+      // FIX 2026-11-01: eventID como 4.o argumento (unico campo que Meta usa para deduplicar
+      // contra CAPI). Sin value/currency: 394738 ARS era un precio estimado, no ingreso de Terra.
+      fbq('track', 'Lead', {}, { eventID: eventId });
 
       // Advanced Matching persist 2026-06-02:
       // guardar hashes SHA-256 (trim+lowercase) en localStorage para que el PageView

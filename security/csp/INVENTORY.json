@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 52255,
-      "sha256": "88499c6702546622fb75b87599c64b579c48558ae23d08364e2c067095584686",
+      "bytes": 52467,
+      "sha256": "c598cf7142e13cfb8965c9e8d573dfb046269bf74b71fb8c3947cbc0e14bc86d",
       "line_endings": "CRLF"
     },
     {
@@ -22,8 +22,8 @@
     },
     {
       "path": "main.js",
-      "bytes": 14935,
-      "sha256": "4c21eff62b801b4ec59bdfb02788d907135faa77ca4c7643c5417fa80a9391ac",
+      "bytes": 16362,
+      "sha256": "bd23d7880c0363430ead46fb0f499fad51e9ddf985043e2d746da5bfba00dfa9",
       "line_endings": "CRLF"
     },
     {
@@ -69,14 +69,14 @@
       "origin": "https://api.hsforms.com",
       "directive": "connect-src",
       "file": "main.js",
-      "line": 196,
+      "line": 217,
       "source": "js-literal-network-url"
     },
     {
       "origin": "https://n8n-production-ec32.up.railway.app",
       "directive": "connect-src",
       "file": "main.js",
-      "line": 248,
+      "line": 272,
       "source": "js-literal-network-url"
     },
     {
@@ -231,7 +231,7 @@
     },
     {
       "origin": "https://wa.me",
-      "occurrences": 7,
+      "occurrences": 8,
       "note": "a[href]: navegacion de usuario, CSP no la cubre"
     },
     {
@@ -275,7 +275,7 @@
     {
       "file": "index.html",
       "index": 3,
-      "line": 735,
+      "line": 736,
       "bytes": 798,
       "sha256_csp": "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks="
     },
@@ -329,7 +329,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        700
+        701
       ]
     },
     {
@@ -401,7 +401,7 @@
       "count": 2,
       "lines": [
         76,
-        655
+        656
       ]
     },
     {
@@ -411,7 +411,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        716
+        717
       ]
     },
     {
@@ -421,7 +421,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        722
+        723
       ]
     },
     {
@@ -431,18 +431,8 @@
       "has_html_entities": false,
       "count": 2,
       "lines": [
-        716,
-        722
-      ]
-    },
-    {
-      "file": "index.html",
-      "attribute": "onsubmit",
-      "sha256_csp": "sha256-hcvqj83YuWMcnGd6FEoRAS1kfQEEg76M3ihWwZmjviM=",
-      "has_html_entities": false,
-      "count": 1,
-      "lines": [
-        604
+        717,
+        723
       ]
     },
     {
@@ -462,7 +452,6 @@
     "sha256-HpLFhD9Y9tz/NU7y/pgAhL5GqA3tMX65nYa9cUSEAA0=",
     "sha256-UYiXg3DFvUtp9oU7OLpghTsAQOUWHLNW9qgjXW+sKRY=",
     "sha256-abQ3hHSZ+yCTsfFZBtfxvgk+pOaCCySGMIp1zrfE/KI=",
-    "sha256-hcvqj83YuWMcnGd6FEoRAS1kfQEEg76M3ihWwZmjviM=",
     "sha256-jEKFne+S0IvP5VYobbWolubzwLACD0QxWYinKH6/1pg=",
     "sha256-kKw4Y+xZBQ5s29HZjkR+brZ35Thvc21detELjqIFXt0=",
     "sha256-pwQduWxX3Cm7lLbQmAos7n73RLP4QrsCDFejmsBdZ78=",
@@ -496,7 +485,7 @@
     {
       "file": "index.html",
       "line": 604,
-      "has_action_attribute": false,
+      "has_action_attribute": true,
       "action_origin": null
     }
   ],

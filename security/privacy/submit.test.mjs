@@ -100,7 +100,9 @@ test('las demas senales del lead se conservan tal cual', async () => {
   assert.ok(String(webhook.terra_event_id).length > 0);
   assert.equal(arnes.eventosFbq.length, 1, 'deberia dispararse un unico Lead');
   assert.equal(arnes.eventosFbq[0][1], 'Lead');
-  assert.equal(arnes.eventosFbq[0][2].event_id, webhook.terra_event_id);
+  // 2026-11-01: Meta solo deduplica con eventID en el 4.o argumento; sin value ficticio.
+  assert.deepEqual(arnes.eventosFbq[0][2], {});
+  assert.equal(arnes.eventosFbq[0][3].eventID, webhook.terra_event_id);
 });
 
 test('sin cookies de Meta el submit igual funciona y no inventa valores', async () => {
@@ -141,4 +143,18 @@ test('el codigo del sitio no contiene ninguna llamada a un lookup externo de IP'
   assert.ok(!/ipify/i.test(fuente), 'main.js volvio a mencionar el servicio de lookup');
   const ejecutable = fuente.split(/\r?\n/).filter((l) => !/^\s*(\/\/|\*|\/\*)/.test(l)).join('\n');
   assert.ok(!/client_ip/.test(ejecutable), 'main.js volvio a enviar la IP en algun payload');
+});
+
+test('GA4: terra_form_success sale una sola vez y solo cuando HubSpot acepta', async () => {
+  const { arnes } = await enviar();
+  const ok = (arnes.window.dataLayer || []).filter((e) => e && e.event === 'terra_form_success');
+  assert.equal(ok.length, 1);
+  assert.deepEqual(Object.keys(ok[0]).sort(), ['event', 'terra_event_id'], 'sin datos personales');
+  assert.equal(ok[0].terra_event_id, arnes.eventosFbq[0][3].eventID);
+});
+
+test('GA4/Meta: un error de HubSpot no emite exito ni Lead', async () => {
+  const { arnes } = await enviar({ hubspotOk: false });
+  assert.equal((arnes.window.dataLayer || []).filter((e) => e && e.event === 'terra_form_success').length, 0);
+  assert.equal(arnes.eventosFbq.length, 0);
 });
