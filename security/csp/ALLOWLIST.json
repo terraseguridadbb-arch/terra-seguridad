@@ -182,7 +182,7 @@
         "evidencia": [
           {
             "tipo": "js-literal-network-url",
-            "evidencia": "main.js:196"
+            "evidencia": "main.js:217"
           }
         ]
       },
@@ -194,7 +194,7 @@
         "evidencia": [
           {
             "tipo": "js-literal-network-url",
-            "evidencia": "main.js:248"
+            "evidencia": "main.js:272"
           }
         ]
       },
@@ -270,7 +270,7 @@
   "hashes": {
     "_nota": "Los hashes viven en INVENTORY.json (inline_script_hashes, event_handler_hashes) y se regeneran con inventory.mjs. Aca solo se cuentan.",
     "inline_script_hashes": 6,
-    "event_handler_hashes": 12
+    "event_handler_hashes": 11
   },
   "no_incluidos": {
     "_nota": "Fuentes del header enforcing HEREDADO que esta allowlist NO adopta. Estan aca para que la diferencia sea visible antes de cualquier endurecimiento, no para permitirlas.",
