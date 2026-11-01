@@ -46,7 +46,7 @@
           },
           {
             "tipo": "js-literal-script-url",
-            "evidencia": "index.html:28"
+            "evidencia": "index.html:22"
           }
         ]
       },
@@ -75,10 +75,6 @@
           {
             "tipo": "js-literal-script-url",
             "evidencia": "index.html:8"
-          },
-          {
-            "tipo": "script[src]",
-            "evidencia": "index.html:12"
           }
         ]
       }
@@ -96,7 +92,7 @@
           },
           {
             "tipo": "link[rel=stylesheet]",
-            "evidencia": "index.html:64"
+            "evidencia": "index.html:58"
           },
           {
             "tipo": "link[rel=stylesheet]",
@@ -118,7 +114,7 @@
           },
           {
             "tipo": "img[src]",
-            "evidencia": "index.html:53"
+            "evidencia": "index.html:47"
           }
         ]
       },
@@ -260,7 +256,7 @@
           },
           {
             "tipo": "iframe[src]",
-            "evidencia": "index.html:70"
+            "evidencia": "index.html:64"
           }
         ]
       }
@@ -269,7 +265,7 @@
   },
   "hashes": {
     "_nota": "Los hashes viven en INVENTORY.json (inline_script_hashes, event_handler_hashes) y se regeneran con inventory.mjs. Aca solo se cuentan.",
-    "inline_script_hashes": 6,
+    "inline_script_hashes": 5,
     "event_handler_hashes": 11
   },
   "no_incluidos": {

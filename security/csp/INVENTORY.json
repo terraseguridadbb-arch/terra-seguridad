@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 52467,
-      "sha256": "c598cf7142e13cfb8965c9e8d573dfb046269bf74b71fb8c3947cbc0e14bc86d",
+      "bytes": 52344,
+      "sha256": "8d70a38bd2b929d394025045e9378a750f40b1b17894c604ff1aebcb9748578d",
       "line_endings": "CRLF"
     },
     {
@@ -90,7 +90,7 @@
       "origin": "https://www.googletagmanager.com",
       "directive": "frame-src",
       "file": "index.html",
-      "line": 70,
+      "line": 64,
       "source": "iframe[src]"
     },
     {
@@ -104,7 +104,7 @@
       "origin": "https://www.facebook.com",
       "directive": "img-src",
       "file": "index.html",
-      "line": 53,
+      "line": 47,
       "source": "img[src]"
     },
     {
@@ -118,7 +118,7 @@
       "origin": "https://connect.facebook.net",
       "directive": "script-src",
       "file": "index.html",
-      "line": 28,
+      "line": 22,
       "source": "js-literal-script-url"
     },
     {
@@ -134,13 +134,6 @@
       "file": "index.html",
       "line": 8,
       "source": "js-literal-script-url"
-    },
-    {
-      "origin": "https://www.googletagmanager.com",
-      "directive": "script-src",
-      "file": "index.html",
-      "line": 12,
-      "source": "script[src]"
     },
     {
       "origin": "https://fonts.googleapis.com",
@@ -153,7 +146,7 @@
       "origin": "https://fonts.googleapis.com",
       "directive": "style-src",
       "file": "index.html",
-      "line": 64,
+      "line": 58,
       "source": "link[rel=stylesheet]"
     },
     {
@@ -261,21 +254,14 @@
     {
       "file": "index.html",
       "index": 1,
-      "line": 13,
-      "bytes": 167,
-      "sha256_csp": "sha256-OL6ppbMdJ/FW2rwttPTi+XLk2o3eljlmsIUE3kECEKo="
-    },
-    {
-      "file": "index.html",
-      "index": 2,
-      "line": 20,
+      "line": 14,
       "bytes": 1402,
       "sha256_csp": "sha256-ryh7DtDUn/QPhzTHhx/FUfmf76nZ9sQnf/IRZcGZCrI="
     },
     {
       "file": "index.html",
-      "index": 3,
-      "line": 736,
+      "index": 2,
+      "line": 730,
       "bytes": 798,
       "sha256_csp": "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks="
     },
@@ -303,7 +289,6 @@
   ],
   "inline_script_hashes": [
     "sha256-HM6R+RBFVMRcVbDc8gFULvCeHW3A5WJbl4y/b+Ee2Ws=",
-    "sha256-OL6ppbMdJ/FW2rwttPTi+XLk2o3eljlmsIUE3kECEKo=",
     "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks=",
     "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc=",
     "sha256-ryh7DtDUn/QPhzTHhx/FUfmf76nZ9sQnf/IRZcGZCrI=",
@@ -319,7 +304,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        327
+        321
       ]
     },
     {
@@ -329,7 +314,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        701
+        695
       ]
     },
     {
@@ -339,7 +324,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        326
+        320
       ]
     },
     {
@@ -349,7 +334,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        329
+        323
       ]
     },
     {
@@ -359,12 +344,12 @@
       "has_html_entities": false,
       "count": 6,
       "lines": [
-        95,
-        96,
-        97,
-        98,
-        99,
-        100
+        89,
+        90,
+        91,
+        92,
+        93,
+        94
       ]
     },
     {
@@ -374,7 +359,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        328
+        322
       ]
     },
     {
@@ -384,13 +369,13 @@
       "has_html_entities": false,
       "count": 7,
       "lines": [
-        532,
-        539,
-        546,
-        553,
-        560,
-        567,
-        574
+        526,
+        533,
+        540,
+        547,
+        554,
+        561,
+        568
       ]
     },
     {
@@ -400,8 +385,8 @@
       "has_html_entities": false,
       "count": 2,
       "lines": [
-        76,
-        656
+        70,
+        650
       ]
     },
     {
@@ -411,7 +396,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        717
+        711
       ]
     },
     {
@@ -421,7 +406,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        723
+        717
       ]
     },
     {
@@ -431,8 +416,8 @@
       "has_html_entities": false,
       "count": 2,
       "lines": [
-        717,
-        723
+        711,
+        717
       ]
     },
     {
@@ -477,14 +462,14 @@
     },
     {
       "file": "index.html",
-      "line": 25,
+      "line": 19,
       "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
     }
   ],
   "forms": [
     {
       "file": "index.html",
-      "line": 604,
+      "line": 598,
       "has_action_attribute": true,
       "action_origin": null
     }
