@@ -1,4 +1,6 @@
-# Contrato de tracking del sitio ↔ GTM-W65DNSWX — 02/11/2026 (r2, para preview)
+# Contrato de tracking del sitio ↔ GTM-W65DNSWX — 02/11/2026 (r3, para preview)
+
+> **r3:** incorpora la corrección de ChatGPT `56f252d` (PR #1). Si `dataLayer.push` o `fbq` fallan después de que HubSpot acepta, el visitante igual recibe la confirmación y no puede reenviar. Suma los casos 5 y 6, separa los resultados simulados de los observados y concreta la publicación y la vuelta atrás. Lo que sigue a esta nota es r2, con los cambios marcados.
 
 Para quien opera Tag Manager. Sin credenciales ni datos del CRM. El repositorio del sitio es público.
 
@@ -8,13 +10,13 @@ Para quien opera Tag Manager. Sin credenciales ni datos del CRM. El repositorio 
   - Sigue disparando `fbq('track','Lead')` con value 394738 ARS.
   - No emite `hubspot-form-success`.
 - **Candidato:** rama `integracion/nov2026-tracking-privacidad`, ya en GitHub. El commit y la URL exactos del preview están en el mensaje de entrega; cada URL de deployment queda atada a su commit.
-  - Código de tracking: igual que `413b805`. El diff `0b93346..413b805` va al final.
+  - Código de tracking: `413b805` + **`56f252d`** (try/catch de dataLayer y Pixel tras el OK). El diff `0b93346..413b805` va al final y el de `56f252d` está en el PR #1.
   - Política de privacidad corregida en `7a38e0d`.
-  - Los commits posteriores son solo de documentación.
+  - Los commits posteriores son de documentación y de metadatos CSP regenerados, más `.vercelignore`: la carpeta `security/` deja de publicarse en el sitio.
 - **El preview tiene Protección de Deployments de Vercel**: responde con redirección al login.
   - Para abrirlo hace falta una sesión con acceso al equipo de Vercel o un enlace para compartir (Vercel → Deployment → Share).
   - Tag Assistant necesita esa misma sesión en el navegador.
-- **Tests:** 67/67 (`node --test security/privacy/*.test.mjs security/csp/*.test.mjs`). Corren sin navegador: no reemplazan la prueba en preview.
+- **Tests:** 69/69 (`node --test security/privacy/*.test.mjs security/csp/*.test.mjs`). Corren sin navegador: no reemplazan la prueba en preview.
 - **Campaña Meta** `120252233514280542`: PAUSADA en los 3 niveles, gasto 0. No se toca.
 
 ## Lo que emite el sitio candidato (sin cambios desde `413b805`)
@@ -29,6 +31,12 @@ Para quien opera Tag Manager. Sin credenciales ni datos del CRM. El repositorio 
   - Mientras el primer envío está en vuelo, un segundo se descarta.
   - Un reintento tras error con el mismo email mantiene el mismo `terra_event_id`.
   - Con otro email, o después de un éxito, se genera uno nuevo.
+- **Fallo de medición después del OK (r3):** `dataLayer.push` y `fbq` están aislados en try/catch, y `fbq` solo se llama si existe. Si alguno falla:
+  - queda un `console.warn`;
+  - **no se muestra error**;
+  - el botón sigue deshabilitado y el guard no se libera, así que un segundo envío se descarta;
+  - a los 600 ms se redirige a `gracias.html`.
+  - El fallo de uno no impide el otro.
 - **Webhook de enriquecimiento:** el sitio llama a `n8n…/webhook/terra-enrichment` después del OK. Ese workflow está apagado a propósito, así que **la consola mostrará un 404 o un error en esa llamada. Es esperado** y no bloquea al visitante.
 
 ## Cambios de GTM en el workspace 49 (informados por quien opera GTM; no verificados desde este frente)
@@ -77,14 +85,66 @@ Precondiciones:
   - 1 `hubspot-form-success`, 1 `generate_lead` y 1 `Lead`, los tres con ese id.
   - 1 contacto en HubSpot.
 
+**Caso 5. Fallo de dataLayer después de que HubSpot acepta (r3)**
+- **Cómo:** con GTM ya cargado, en la consola de DevTools ejecutar `window.dataLayer.push = () => { throw new Error('simulado'); }` y enviar con otro alias `+prueba`. Inmediatamente, tocar «Solicitar» de nuevo o apretar Enter.
+- **Esperado:**
+  - El visitante no ve un mensaje de error y llega a `gracias.html`.
+  - 1 solo POST a `api.hsforms.com` y 1 contacto en HubSpot.
+  - 0 `generate_lead`: es lo esperado, porque el push falló.
+  - 1 `Lead` en Meta con `eventID`.
+  - En la consola, «Medicion de Google no disponible».
+
+**Caso 6. Fallo del Pixel después de que HubSpot acepta (r3)**
+- **Cómo:** en la consola ejecutar `window.fbq = () => { throw new Error('simulado'); }` y enviar con otro alias `+prueba`. Inmediatamente, reintentar el envío.
+- **Esperado:**
+  - El visitante no ve un mensaje de error y llega a `gracias.html`.
+  - 1 solo POST y 1 contacto en HubSpot.
+  - 1 `hubspot-form-success` y 1 `generate_lead`.
+  - 0 `Lead` en Meta.
+  - En la consola, «Medicion de Meta no disponible».
+- **Variante sin script:** bloquear `connect.facebook.net`. Debe dar el mismo resultado, sin warning.
+
+Los casos 5 y 6 crean un contacto real cada uno: usar alias distintos y marcarlos PRUEBA.
+
+**Separación de resultados.** Al reportar, cada fila lleva su fuente.
+- **Simulado:** el arnés `node --test`, sin red ni navegador. Hoy está en verde para los 6 casos: 69/69 pruebas.
+- **Observado:** navegador, GA4 DebugView, Meta Probar eventos, HubSpot. **Hoy está todo pendiente.**
+
+Ningún caso se da por aprobado por el resultado simulado.
+
 En cualquier página, además:
 - El dataLayer **no** debe contener email, teléfono ni nombre en ningún push.
 - No debe haber requests a `ss.terraseguridad.com.ar`.
 
 Si algún caso falla, **no se publica nada**: se corrige y se repite.
 
+## Publicación y vuelta atrás concretas (r3)
+**El sitio no tiene paso de build.** No hay `package.json`: Vercel sirve los archivos del commit tal cual.
+- Igual, promover o mergear genera un **deployment nuevo**, así que no se asume que sea equivalente al preview probado: se verifica con `node security/deploy/verificar-artefacto.mjs <url> <commit>`.
+- El verificador compara byte a byte (SHA-256) cada archivo servido, los headers CSP contra `vercel.json` y que `security/` dé 404.
+- Ya se probó contra producción: `0b93346` da 13/13 archivos idénticos, y el control negativo contra el candidato detecta 4 diferencias.
+
+| Paso | Quién | Acción exacta | Comprobación |
+|---|---|---|---|
+| 0 | ChatGPT | Anotar el **número de la versión publicada actual** de GTM-W65DNSWX, que es el destino de la vuelta atrás | — |
+| 1 | Ambos | Casos 1 a 6 en el preview, todos observados en verde | Tabla de resultados con la fuente de cada uno |
+| 2 | ChatGPT | Publicar el workspace 49 y avisar el número de versión nueva | Versión publicada visible en GTM |
+| 3 | Claude, con OK de Dirección | **Inmediatamente:** `git push origin <commit-probado>:main` (fast-forward; `main` es ancestro). Vercel construye producción desde ese mismo commit | Deployment Production en estado READY |
+| 4 | Claude | `node security/deploy/verificar-artefacto.mjs https://www.terraseguridad.com.ar <commit-probado>` | «Equivalente a …» con código 0 |
+| 5 | Ambos | Caso 1 una vez en producción (GA4 DebugView, Meta, HubSpot), sin `gtag.js` inline y con `politicas.html` nueva | Observado |
+
+Vuelta atrás:
+- **Sitio:** Vercel → Deployments → el de producción de `0b93346` → **Instant Rollback**. No reconstruye.
+  - Después, hacer `git revert` en `main` para que el próximo push no vuelva a publicar el candidato.
+  - Verificar con `verificar-artefacto.mjs … 0b93346`.
+- **GTM:** publicar de nuevo la versión anotada en el paso 0.
+- **Combinaciones que no se pueden dejar:**
+  - Sitio nuevo con GTM viejo: la tag vieja dispara al click y GA4 queda detrás del sGTM roto.
+  - GTM nuevo con sitio viejo: sin `generate_lead`.
+  - Si una de las dos partes vuelve atrás, **la otra también vuelve**.
+
 ## Orden de publicación (no invertir)
-1. Prueba conjunta en el preview, con los 4 casos en verde.
+1. Prueba conjunta en el preview, con los 6 casos en verde.
 2. **Publicar GTM** (workspace 49). Lo hace quien opera GTM.
 3. **Inmediatamente después, desplegar el sitio:** promover a producción **el mismo deployment probado**, o hacer el merge a `main` de ese commit. Requiere el OK de Dirección.
 4. **Verificar producción:**
