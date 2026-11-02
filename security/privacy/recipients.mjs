@@ -7,8 +7,9 @@
  * De aca sale el bloque de destinatarios que se publica en politicas.html, para
  * que el aviso y el comportamiento no puedan separarse sin que un test lo vea.
  * Donde el dato no consta (retencion, plazos, procedimiento formal) el valor es
- * DATOS_FALTANTES y en el texto publico aparece un marcador visible: nunca se
- * inventa un plazo, un derecho ni una razon social.
+ * DATOS_FALTANTES y esa linea se OMITE del texto publico (2026-11-02: no se
+ * publican marcadores). Nunca se inventa un plazo, un derecho ni una razon social:
+ * los pendientes legales se listan fuera del sitio.
  *
  * Determinista, sin red y sin dependencias.
  * Uso:  node security/privacy/recipients.mjs --write
@@ -23,6 +24,7 @@ export const POLITICAS_PATH = path.join(REPO_ROOT, 'politicas.html');
 export const INDEX_PATH = path.join(REPO_ROOT, 'index.html');
 
 export const VALOR_FALTANTE = 'DATOS_FALTANTES';
+/** Marcador historico: ya no se publica; los tests verifican que no aparezca. */
 export const MARCADOR = '[DATO_A_COMPLETAR_POR_DIRECCION]';
 export const INICIO = '<!-- TERRA:DESTINATARIOS:INICIO -->';
 export const FIN = '<!-- TERRA:DESTINATARIOS:FIN -->';
@@ -33,10 +35,8 @@ export function leerDestinatarios(file = RECIPIENTS_PATH) {
   return JSON.parse(readFileSync(file, 'utf8'));
 }
 
-/** Un dato que no consta nunca se publica como afirmacion: se publica el marcador. */
-export function textoPublico(valor) {
-  return String(valor).split(VALOR_FALTANTE).join(MARCADOR);
-}
+/** Un dato que no consta nunca se publica: ni como afirmacion ni como marcador. */
+export const consta = (valor) => !String(valor).includes(VALOR_FALTANTE);
 
 export function escaparHtml(texto) {
   return String(texto)
@@ -84,25 +84,28 @@ export function construirBloque(datos) {
   for (const d of datos.destinatarios) {
     const porTransporte = {
       servidor: ' No lo envía tu navegador: lo envía nuestra automatización.',
-      alojamiento: ' Es el servidor que entrega esta página según la configuración del repositorio: que la versión publicada se sirva efectivamente desde ahí es un dato a confirmar al publicar, no algo que hayamos comprobado.'
+      alojamiento: ' Es el servidor que entrega esta página.'
     };
-    const via = (porTransporte[d.transporte] || '')
+    // nota_transporte (opcional) reemplaza el texto generico del transporte cuando no aplica.
+    const via = (d.nota_transporte !== undefined ? d.nota_transporte : (porTransporte[d.transporte] || ''))
       + (d.estado === 'NO_INVENTARIADO'
         ? ' No está inventariado: qué etiquetas tiene ese contenedor se configura fuera del sitio y no puede leerse desde acá.'
         : '');
     lineas.push('  <li>');
     lineas.push('    <strong>' + escaparHtml(d.nombre) + '</strong> — ' + escaparHtml(d.rol) + '.' + escaparHtml(via));
-    lineas.push('    <br />Qué recibe: ' + escaparHtml(textoPublico(d.campos.join('; '))) + '.');
-    lineas.push('    <br />Para qué: ' + escaparHtml(textoPublico(d.finalidad)));
-    lineas.push('    <br />Cuánto tiempo lo conserva: ' + escaparHtml(textoPublico(d.retencion)));
-    lineas.push('    <br />Consentimiento: ' + escaparHtml(textoPublico(d.control_consentimiento)));
-    lineas.push('    <br />Baja o corrección: ' + escaparHtml(textoPublico(d.control_baja)));
+    const linea = (rotulo, valor, fin = '') => {
+      if (consta(valor)) lineas.push('    <br />' + rotulo + ': ' + escaparHtml(valor) + fin);
+    };
+    linea('Qué recibe', d.campos.join('; '), '.');
+    linea('Para qué', d.finalidad);
+    linea('Cuánto tiempo lo conserva', d.retencion);
+    linea('Consentimiento', d.control_consentimiento);
+    linea('Baja o corrección', d.control_baja);
     lineas.push('  </li>');
   }
   lineas.push('</ul>');
   for (const r of datos.retirados) {
-    lineas.push('<p class="politicas-block-text">' + escaparHtml(r.nombre) + ': ' + escaparHtml(r.que_recibia)
-      + ' ' + escaparHtml(r.estado) + '</p>');
+    lineas.push('<p class="politicas-block-text">' + escaparHtml(r.nombre) + ': ' + escaparHtml(r.estado) + '</p>');
   }
   lineas.push(FIN);
   return lineas.map((l) => (l.length > 0 ? SANGRIA + l : l)).join('\n');

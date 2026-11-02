@@ -134,15 +134,19 @@ test('el texto previo al envio nombra a los proveedores y enlaza la politica', (
   }
 });
 
-test('donde el dato no consta hay marcador visible y ningun plazo inventado', () => {
+test('donde el dato no consta no se publica nada: ni marcador ni plazo inventado', () => {
   const faltantes = datos.destinatarios.filter((d) => d.retencion === VALOR_FALTANTE);
   assert.ok(faltantes.length > 0, 'si alguna retencion se completa, actualizar este test');
-  const apariciones = politicas.split(MARCADOR).length - 1;
-  assert.ok(apariciones >= faltantes.length,
-    'faltan marcadores visibles: ' + apariciones + ' para ' + faltantes.length + ' retenciones sin dato');
-  assert.ok(!politicas.includes(VALOR_FALTANTE), 'el valor interno se filtro al texto publico');
+  for (const [nombre, html] of [['politicas.html', politicas], ['index.html', indice]]) {
+    assert.ok(!html.includes(MARCADOR), nombre + ' publica el marcador de dato faltante');
+    assert.ok(!html.includes(VALOR_FALTANTE), nombre + ': el valor interno se filtro al texto publico');
+    assert.ok(!/[[A-ZÁÉÍÓÚÑ _/—-]{4,}]/.test(html), nombre + ' publica un marcador entre corchetes');
+  }
   const bloque = extraerBloque(politicas);
-  assert.ok(!/\d+\s*(d[ií]as|meses|a[ñn]os)/i.test(bloque), 'aparecio un plazo de retencion inventado');
+  const conservacion = bloque.split('Cuánto tiempo lo conserva').length - 1;
+  assert.equal(conservacion, datos.destinatarios.length - faltantes.length,
+    'solo puede haber linea de conservacion donde el plazo consta');
+  assert.ok(!/d+s*(d[ií]as|meses|a[ñn]os)/i.test(bloque), 'aparecio un plazo de retencion inventado');
   assert.ok(!/(ley|GDPR|habeas data|ARCO)/i.test(bloque), 'el bloque generado invoca un marco legal no acreditado');
 });
 

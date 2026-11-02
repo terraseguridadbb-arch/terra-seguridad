@@ -16,8 +16,8 @@
     },
     {
       "path": "politicas.html",
-      "bytes": 16927,
-      "sha256": "b30748f2fad3fb6716a28770aeddbfaace45bebb91d7e2ac1fde3dc237791400",
+      "bytes": 15795,
+      "sha256": "4f4f5c74120e015308130ec6ec6f1579a095eb65ab88a8caa03bb806d66fed5a",
       "line_endings": "CRLF"
     },
     {
@@ -282,7 +282,7 @@
     {
       "file": "politicas.html",
       "index": 0,
-      "line": 193,
+      "line": 188,
       "bytes": 171,
       "sha256_csp": "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
     }

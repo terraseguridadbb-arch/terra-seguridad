@@ -1,14 +1,13 @@
 {
   "_about": "NEXT-SEC-15 (DIR18-03). Inventario de destinatarios reales de datos del sitio publico, derivado por LECTURA de main.js, index.html, gracias.html y security/csp/INVENTORY.json. Es la fuente del bloque de destinatarios de politicas.html: regenerar con node security/privacy/recipients.mjs --write.",
   "schema_version": 1,
-  "as_of": "2026-09-18",
-  "estado": "PREPARATORIO. NO DESPLEGADO. Describe lo que hace la rama de trabajo, no lo que hoy sirve el sitio publico.",
+  "as_of": "2026-11-02",
+  "estado": "Describe la rama integracion/nov2026-tracking-privacidad. Lo que todavía no consta (plazos de conservación, datos del responsable) queda como DATOS_FALTANTES: no se publica ni como afirmación ni como marcador.",
   "procedencia": {
     "campos_y_destinos": "VERIFIED_REPO: cada destinatario tiene un ancla de texto que existe en el archivo citado (lo verifica recipients.test.mjs).",
-    "retencion_y_derechos": "DATOS_FALTANTES: no constan en el repositorio ni en ninguna decision registrada. En el texto publico salen como marcador para que los complete la Direccion, no como afirmacion.",
-    "meta_capi": "INFERENCE sobre el n8n productivo: el reenvio server-side a Meta esta verificado en el repositorio de automatizaciones (campo opcional), no en runtime."
+    "retencion_y_derechos": "DATOS_FALTANTES: no constan en ninguna fuente. El generador OMITE la línea en el texto público (no publica marcadores) y la lista de pendientes legales vive fuera del sitio.",
+    "meta_capi": "VERIFIED 02/11/2026: el envío server-side a Meta (WF1/WF14) está apagado por decisión de dueño único de eventos. La entrada describe lo que recibiría si se reactiva."
   },
-  "marcador_publico": "[DATO_A_COMPLETAR_POR_DIRECCION]",
   "valor_faltante": "DATOS_FALTANTES",
   "destinatarios": [
     {
@@ -32,7 +31,7 @@
       "finalidad": "Registrar la consulta y permitir el contacto comercial posterior.",
       "retencion": "DATOS_FALTANTES",
       "control_consentimiento": "No hay casilla de consentimiento separada: el envío del formulario es la acción del visitante.",
-      "control_baja": "Los canales de contacto publicados en esta página. Procedimiento y plazo formales: DATOS_FALTANTES.",
+      "control_baja": "Escribinos por los canales de contacto publicados en esta página.",
       "evidencia": [
         {
           "archivo": "main.js",
@@ -48,7 +47,7 @@
     {
       "id": "n8n-railway",
       "nombre": "n8n alojado en Railway",
-      "rol": "Automatización propia que completa el contacto en HubSpot y alimenta la medición server-side",
+      "rol": "Automatización propia que completa el contacto en HubSpot",
       "transporte": "navegador",
       "hosts": [
         "n8n-production-ec32.up.railway.app"
@@ -60,10 +59,10 @@
         "user agent del navegador",
         "los datos inherentes a cualquier conexión: tu dirección IP y tu user agent, porque tu navegador se conecta directamente a su servidor"
       ],
-      "finalidad": "Completar en HubSpot las señales que su formulario descarta y disparar la medición server-side del envío.",
+      "finalidad": "Completar en HubSpot los datos técnicos del envío que su formulario descarta (identificador del envío, cookies de Meta y user agent).",
       "retencion": "DATOS_FALTANTES",
       "control_consentimiento": "Se ejecuta junto con el envío del formulario; no hay control separado.",
-      "control_baja": "Los canales de contacto publicados en esta página. Procedimiento y plazo formales: DATOS_FALTANTES.",
+      "control_baja": "Escribinos por los canales de contacto publicados en esta página.",
       "evidencia": [
         {
           "archivo": "main.js",
@@ -90,7 +89,7 @@
       "finalidad": "Medir resultados de las campañas publicitarias y optimizarlas.",
       "retencion": "DATOS_FALTANTES",
       "control_consentimiento": "No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.",
-      "control_baja": "El sitio no ofrece hoy ningún control para desactivarlas. DATOS_FALTANTES: mecanismo previsto.",
+      "control_baja": "El sitio no ofrece hoy un control propio para desactivarlas.",
       "evidencia": [
         {
           "archivo": "index.html",
@@ -116,28 +115,54 @@
       "estado": "INVENTARIADO"
     },
     {
+      "id": "meta-lead-forms",
+      "nombre": "Meta (formularios de Facebook e Instagram)",
+      "rol": "Formulario de contacto dentro de un anuncio de Facebook o Instagram, que enlaza a esta política",
+      "transporte": "servidor",
+      "estado": "INVENTARIADO",
+      "hosts": [],
+      "campos": [
+        "nombre y apellido",
+        "correo electrónico",
+        "teléfono",
+        "identificadores del anuncio, del formulario y del envío"
+      ],
+      "finalidad": "Recibir tu consulta cuando la dejás en un anuncio. Meta la entrega a nuestro CRM (HubSpot) mediante su integración, y nuestra automatización (n8n) le agrega los identificadores del anuncio y del formulario.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "Lo enviás vos desde el formulario de Meta, que muestra el enlace a esta política.",
+      "control_baja": "Escribinos por los canales de contacto publicados en esta página.",
+      "evidencia": [
+        {
+          "archivo": "security/privacy/FORMULARIOS_META.md",
+          "ancla": "2509933002863804"
+        }
+      ],
+      "nota_transporte": " No pasa por este sitio: Meta lo entrega a nuestro CRM y a nuestra automatización."
+    },
+    {
       "id": "meta-capi",
       "nombre": "Meta (envío desde servidor, Conversions API)",
-      "rol": "Mismo evento de conversión enviado desde la automatización, no desde el navegador",
+      "rol": "Envío del evento de conversión desde nuestra automatización, no desde el navegador. Hoy está desactivado: esto es lo que recibiría Meta si se reactiva",
       "transporte": "servidor",
       "hosts": [],
       "campos": [
         "resúmenes irreversibles (SHA-256) de correo, teléfono, nombre y apellido",
         "identificador del envío, para que Meta no cuente dos veces el mismo hecho",
         "cookies publicitarias y user agent reenviados por la automatización",
-        "desde NEXT-SEC-15 el navegador ya no aporta la dirección IP del visitante a este envío"
+        "sin la dirección IP del visitante, que el navegador ya no aporta"
       ],
       "finalidad": "Atribuir la conversión a la campaña cuando el navegador bloquea el pixel.",
       "retencion": "DATOS_FALTANTES",
-      "control_consentimiento": "Se dispara a partir del envío del formulario; no hay control separado.",
-      "control_baja": "Los canales de contacto publicados en esta página. Procedimiento y plazo formales: DATOS_FALTANTES.",
+      "control_consentimiento": "Se dispararía a partir del envío del formulario; no hay control separado.",
+      "control_baja": "Escribinos por los canales de contacto publicados en esta página.",
       "evidencia": [
         {
           "archivo": "main.js",
           "ancla": "WF1 server-side envía el mismo Lead via CAPI"
         }
       ],
-      "estado": "INVENTARIADO"
+      "estado": "INVENTARIADO",
+      "nota_transporte": ""
     },
     {
       "id": "google-tags",
@@ -158,7 +183,7 @@
       "finalidad": "Medir el uso del sitio y administrar las etiquetas de medición.",
       "retencion": "DATOS_FALTANTES",
       "control_consentimiento": "No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.",
-      "control_baja": "El sitio no ofrece hoy ningún control para desactivarlas. DATOS_FALTANTES: mecanismo previsto.",
+      "control_baja": "El sitio no ofrece hoy un control propio para desactivarlas.",
       "evidencia": [
         {
           "archivo": "index.html",
@@ -202,7 +227,7 @@
     },
     {
       "id": "vercel-hosting",
-      "nombre": "Vercel (alojamiento del sitio, declarado en el repositorio)",
+      "nombre": "Vercel (alojamiento del sitio)",
       "rol": "Plataforma de alojamiento",
       "transporte": "alojamiento",
       "estado": "INVENTARIADO",
@@ -242,12 +267,12 @@
         "*.hsforms.com"
       ],
       "campos": [
-        "DATOS_FALTANTES: depende de qué etiquetas tenga configuradas el contenedor, y eso no se puede leer desde el repositorio"
+        "lo que envíe cada etiqueta configurada en el contenedor; las de Google Analytics y del Pixel de Meta son las descritas arriba"
       ],
-      "finalidad": "DATOS_FALTANTES",
+      "finalidad": "Medición y publicidad, según la etiqueta.",
       "retencion": "DATOS_FALTANTES",
       "control_consentimiento": "Las etiquetas del contenedor se activan al abrir la página, igual que el resto de la medición.",
-      "control_baja": "DATOS_FALTANTES",
+      "control_baja": "Escribinos por los canales de contacto publicados en esta página.",
       "nota": "CONTRADICTION / NO_VERIFICADO: el contenido del contenedor GTM-W65DNSWX no está inventariado y no es accesible en este perfil. El header CSP enforce heredado permite esos orígenes comodín, así que el sitio no los impide. Por eso el texto público NO afirma que la lista de destinatarios sea completa.",
       "evidencia": [
         {
@@ -265,7 +290,7 @@
     {
       "id": "lookup-ip-externo",
       "nombre": "Servicio externo de consulta de IP",
-      "estado": "RETIRADO en la rama de trabajo por NEXT-SEC-15 (2026-09-18). Sin desplegar: el sitio público sigue sirviendo la versión anterior hasta que la Dirección decida publicar.",
+      "estado": "ya no lo usamos. Antes recibía tu dirección IP y tu user agent cada vez que enviabas el formulario.",
       "que_recibia": "La conexión del visitante (dirección IP y user agent) cada vez que enviaba el formulario.",
       "para_que": "Adjuntar la IP a los envíos a HubSpot, a la automatización y, aguas abajo, a Meta.",
       "evidencia_de_retiro": [
