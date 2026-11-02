@@ -22,8 +22,8 @@
     },
     {
       "path": "main.js",
-      "bytes": 17127,
-      "sha256": "fab512914d3edcd233e9440c5a75c42ba64c0271acee86637cd9a699d7a346e9",
+      "bytes": 17609,
+      "sha256": "bb0febe32aa6c8d1dc7c2aee161d22c2b512da2f94665eb5269042dfa2786f34",
       "line_endings": "CRLF"
     },
     {
@@ -76,7 +76,7 @@
       "origin": "https://n8n-production-ec32.up.railway.app",
       "directive": "connect-src",
       "file": "main.js",
-      "line": 279,
+      "line": 285,
       "source": "js-literal-network-url"
     },
     {
