@@ -1,12 +1,12 @@
 {
-  "_about": "NEXT-SEC-15 (DIR18-03). Inventario de destinatarios reales de datos del sitio publico, derivado por LECTURA de main.js, index.html, gracias.html y security/csp/INVENTORY.json. Es la fuente del bloque de destinatarios de politicas.html: regenerar con node security/privacy/recipients.mjs --write.",
+  "_about": "NEXT-SEC-15 (DIR18-03). Inventario de destinatarios de datos del sitio publico, derivado del codigo versionado y de la configuracion de Meta observada. Fuente del bloque de politicas.html: regenerar con node security/privacy/recipients.mjs --write.",
   "schema_version": 1,
   "as_of": "2026-11-02",
   "estado": "Describe la rama integracion/nov2026-tracking-privacidad. Lo que todavía no consta (plazos de conservación, datos del responsable) queda como DATOS_FALTANTES: no se publica ni como afirmación ni como marcador.",
   "procedencia": {
     "campos_y_destinos": "VERIFIED_REPO: cada destinatario tiene un ancla de texto que existe en el archivo citado (lo verifica recipients.test.mjs).",
     "retencion_y_derechos": "DATOS_FALTANTES: no constan en ninguna fuente. El generador OMITE la línea en el texto público (no publica marcadores) y la lista de pendientes legales vive fuera del sitio.",
-    "meta_capi": "VERIFIED 02/11/2026: el envío server-side a Meta (WF1/WF14) está apagado por decisión de dueño único de eventos. La entrada describe lo que recibiría si se reactiva."
+    "meta_capi": "VERIFIED_RUNTIME 02/11/2026: la API de conversiones con Meta para eventos web esta activa para el dataset 689271596885956. Los envios CAPI propios de n8n (WF1/WF14) siguen apagados. Son integraciones distintas; ver META_WEB_CAPI_2026-11-02.md."
   },
   "valor_faltante": "DATOS_FALTANTES",
   "destinatarios": [
@@ -83,7 +83,7 @@
       "campos": [
         "visita de la página (PageView) y envío del formulario (Lead), con el identificador del envío",
         "cookies publicitarias _fbp y _fbc",
-        "si el visitante ya envió el formulario antes en ese mismo navegador, los resúmenes irreversibles (SHA-256) de su correo, teléfono, nombre y apellido guardados en el navegador",
+        "si el visitante ya envió el formulario antes en ese mismo navegador, los valores seudonimizados mediante hash SHA-256 de su correo, teléfono, nombre y apellido guardados en el navegador",
         "los datos inherentes a cualquier conexión: dirección IP y user agent"
       ],
       "finalidad": "Medir resultados de las campañas publicitarias y optimizarlas.",
@@ -140,13 +140,37 @@
       "nota_transporte": " No pasa por este sitio: Meta lo entrega a nuestro CRM y a nuestra automatización."
     },
     {
-      "id": "meta-capi",
-      "nombre": "Meta (envío desde servidor, Conversions API)",
-      "rol": "Envío del evento de conversión desde nuestra automatización, no desde el navegador. Hoy está desactivado: esto es lo que recibiría Meta si se reactiva",
+      "id": "meta-capi-web",
+      "nombre": "Meta (API de conversiones con Meta para eventos web)",
+      "rol": "Integración activa conectada al píxel de este sitio",
       "transporte": "servidor",
       "hosts": [],
       "campos": [
-        "resúmenes irreversibles (SHA-256) de correo, teléfono, nombre y apellido",
+        "copias de los eventos web enviados por el píxel",
+        "nombre e identificador del evento, para relacionar las entregas del navegador y del servidor",
+        "datos de coincidencia que acompañan esos eventos, que pueden incluir valores en formato hash SHA-256 de correo electrónico, teléfono, nombre y apellido"
+      ],
+      "finalidad": "Medir y atribuir las conversiones publicitarias. Las entregas del navegador y del servidor usan un identificador compartido para evitar contar dos veces el mismo hecho.",
+      "retencion": "DATOS_FALTANTES",
+      "control_consentimiento": "Funciona junto con la medición del píxel. Hoy el sitio no ofrece un control de consentimiento separado.",
+      "control_baja": "El sitio no ofrece hoy un control propio para desactivarla.",
+      "evidencia": [
+        {
+          "archivo": "security/privacy/META_WEB_CAPI_2026-11-02.md",
+          "ancla": "Dataset 689271596885956: conectado"
+        }
+      ],
+      "estado": "INVENTARIADO",
+      "nota_transporte": ""
+    },
+    {
+      "id": "meta-capi",
+      "nombre": "Meta (Conversions API propia desde n8n, desactivada)",
+      "rol": "Envío del evento de conversión desde nuestra automatización n8n. Hoy está desactivado: esto es lo que recibiría Meta si se reactiva",
+      "transporte": "servidor",
+      "hosts": [],
+      "campos": [
+        "valores seudonimizados mediante hash SHA-256 de correo, teléfono, nombre y apellido",
         "identificador del envío, para que Meta no cuente dos veces el mismo hecho",
         "cookies publicitarias y user agent reenviados por la automatización",
         "sin la dirección IP del visitante, que el navegador ya no aporta"
