@@ -145,9 +145,9 @@ test('el codigo del sitio no contiene ninguna llamada a un lookup externo de IP'
   assert.ok(!/client_ip/.test(ejecutable), 'main.js volvio a enviar la IP en algun payload');
 });
 
-test('GA4: terra_form_success sale una sola vez y solo cuando HubSpot acepta', async () => {
+test('GTM: hubspot-form-success sale una sola vez y solo cuando HubSpot acepta', async () => {
   const { arnes } = await enviar();
-  const ok = (arnes.window.dataLayer || []).filter((e) => e && e.event === 'terra_form_success');
+  const ok = (arnes.window.dataLayer || []).filter((e) => e && e.event === 'hubspot-form-success');
   assert.equal(ok.length, 1);
   assert.deepEqual(Object.keys(ok[0]).sort(), ['event', 'terra_event_id'], 'sin datos personales');
   assert.equal(ok[0].terra_event_id, arnes.eventosFbq[0][3].eventID);
@@ -155,6 +155,54 @@ test('GA4: terra_form_success sale una sola vez y solo cuando HubSpot acepta', a
 
 test('GA4/Meta: un error de HubSpot no emite exito ni Lead', async () => {
   const { arnes } = await enviar({ hubspotOk: false });
-  assert.equal((arnes.window.dataLayer || []).filter((e) => e && e.event === 'terra_form_success').length, 0);
+  assert.equal((arnes.window.dataLayer || []).filter((e) => e && e.event === 'hubspot-form-success').length, 0);
   assert.equal(arnes.eventosFbq.length, 0);
+});
+
+// 2026-11-01: contrato con el activador GTM "Web -Trigger - Exito Formulario HubSpot" (hubspot-form-success).
+function fetchSecuencia(resultados) {
+  let i = 0;
+  return async (url) => {
+    const host = new URL(url).host;
+    if (host === HUBSPOT) { const r = resultados[Math.min(i++, resultados.length - 1)]; if (r === 'lanza') throw new TypeError('Failed to fetch'); return respuesta(r === 'ok'); }
+    return respuesta(true);
+  };
+}
+const eventosForm = (arnes) => (arnes.window.dataLayer || []).filter((e) => e && typeof e.event === 'string' && !e.event.startsWith('gtm.'));
+
+test('ningun evento de formulario sale en el submit inicial ni ante error', async () => {
+  const { arnes } = await enviar({ hubspotOk: false });
+  assert.deepEqual(eventosForm(arnes), []);
+});
+
+test('reintento tras error: mismo terra_event_id, un solo exito y un solo Lead', async () => {
+  const arnes = cargarSitio({ fetchImpl: fetchSecuencia(['error', 'ok']), cookies: {} });
+  const a = crearEventoSubmit(CAMPOS_DEMO); await arnes.handleSubmit(a.evento);
+  const b = crearEventoSubmit(CAMPOS_DEMO); await arnes.handleSubmit(b.evento);
+  arnes.correrTemporizadores();
+  const ids = arnes.peticiones.filter((p) => p.host === HUBSPOT).map((p) => p.cuerpo.fields.find((f) => f.name === 'terra_event_id').value);
+  assert.equal(ids.length, 2, 'el reintento tiene que llegar a HubSpot');
+  assert.equal(ids[0], ids[1]);
+  const ok = eventosForm(arnes);
+  assert.equal(ok.length, 1); assert.equal(ok[0].event, 'hubspot-form-success'); assert.equal(ok[0].terra_event_id, ids[0]);
+  assert.equal(arnes.eventosFbq.length, 1); assert.equal(arnes.eventosFbq[0][3].eventID, ids[0]);
+});
+
+test('otro email despues de un error genera otro terra_event_id', async () => {
+  const arnes = cargarSitio({ fetchImpl: fetchSecuencia(['lanza', 'ok']), cookies: {} });
+  await arnes.handleSubmit(crearEventoSubmit(CAMPOS_DEMO).evento);
+  await arnes.handleSubmit(crearEventoSubmit({ ...CAMPOS_DEMO, email: 'otra@ejemplo.invalid' }).evento);
+  const ids = arnes.peticiones.filter((p) => p.host === HUBSPOT).map((p) => p.cuerpo.fields.find((f) => f.name === 'terra_event_id').value);
+  assert.equal(ids.length, 2);
+  assert.notEqual(ids[0], ids[1], 'otro envio, otra identidad');
+  const ev = eventosForm(arnes); assert.equal(ev.length, 1); assert.equal(ev[0].terra_event_id, ids[1]);
+});
+
+test('doble submit mientras el primero esta en vuelo: un solo envio a HubSpot', async () => {
+  const arnes = cargarSitio({ fetchImpl: fetchSecuencia(['ok']), cookies: {} });
+  await Promise.all([arnes.handleSubmit(crearEventoSubmit(CAMPOS_DEMO).evento), arnes.handleSubmit(crearEventoSubmit(CAMPOS_DEMO).evento)]);
+  arnes.correrTemporizadores();
+  assert.equal(arnes.peticiones.filter((p) => p.host === HUBSPOT).length, 1);
+  assert.equal(eventosForm(arnes).length, 1);
+  assert.equal(arnes.eventosFbq.length, 1);
 });

@@ -6,8 +6,8 @@ No se publicó nada. No certifica cumplimiento legal: ordena los datos verificad
 ## Nota para el frente `work/terra-os-autonomous-v1`
 
 - Su worktree `C:\Users\Usuario\terra-w3-seguridad` **no se tocó**. Sus cambios sin commitear (form-resilience) se integraron aquí como commit `29edfb4`, copiados literalmente. Hacía falta regenerar el inventario CSP y se regeneró con `security/csp/README`.
-- Mis commits encima: `4f2cc67` (Lead con `eventID`, sin value ficticio, `terra_form_success` al éxito), `6b3428c` (CSP regenerada), `3059f95` (GA4 solo vía GTM).
-- Tests: 63/63 (`node --test security/privacy/*.test.mjs security/csp/*.test.mjs`).
+- Mis commits encima: `4f2cc67` (Lead con `eventID`, sin value ficticio, evento de éxito), `6b3428c` (CSP regenerada), `3059f95` (GA4 solo vía GTM). El 02/11 el evento de éxito se renombró a `hubspot-form-success` (activador GTM existente), se quitó `terra_form_submit-02` del submit, el reintento conserva el `terra_event_id` y `showFormError` libera el guard (su parche lo dejaba bloqueado).
+- Tests: 67/67 (`node --test security/privacy/*.test.mjs security/csp/*.test.mjs`).
 - Si retoman su rama: rebase sobre esta o cherry-pick de los 3 commits; descartar su diff local (ya está en `29edfb4`).
 
 ## 1. Política de privacidad (`politicas.html`) — qué está verificado y qué falta
@@ -43,14 +43,15 @@ Hoy no hay banner: Pixel (con advanced matching), GTM y GA4 cargan al abrir la p
 
 Decisión de Berenise (comercial/legal). Cualquiera de las dos respeta la elección del visitante en todas las etiquetas, incluidas las de GTM.
 
-## 3. GA4 / GTM / certificado — pasos exactos en GTM-W65DNSWX (requiere acceso a GTM)
+## 3. GA4 / GTM — coordinación (actualizado 2026-11-02)
 
-1. Etiqueta Google G-QRZ0RHZ71N (tag 3): **quitar `server_container_url = https://ss.terraseguridad.com.ar`**. Ese host (34.72.150.108) sirve un certificado autofirmado (`TRAEFIK DEFAULT CERT`). Stape figura desactivado desde el 02/06 (`docs/GTM_LIMPIEZA_STAPE_SS_2026-06-02.md`).
-2. Etiqueta GA4 `generate_lead` (tag 5): cambiar el activador de «Envío de formulario» (al click) a **Evento personalizado `terra_form_success`** (lo emite el commit `4f2cc67` solo con OK de HubSpot). Parámetro `transaction_id`/`event_id` = DLV `terra_event_id`. Quitar las variables `user_data.email/phone` (vacías).
-3. **Eliminar tag 14** (empuja email/teléfono/nombre en claro al dataLayer) y **tag 13** (markdown pegado). Después retirar `removeBadNode` de `index.html`.
-4. Publicar GTM. **Recién después** desplegar el commit `3059f95` (quita el gtag inline duplicado).
-5. Opcional, en DNS (Cloudflare): borrar el registro `ss` cuando el paso 1 esté publicado.
-6. Verificar en GA4 DebugView: un `page_view` por página y un `generate_lead` por envío exitoso, ninguno ante un error.
+Tag Manager lo opera ChatGPT; desde este frente no se edita ni se publica el contenedor. Borrador de ChatGPT en GTM-W65DNSWX, workspace 49, sin publicar:
+- tag 110 sin `server_container_url`;
+- tag 118 (GA4 `generate_lead`) con el activador existente «Web -Trigger - Exito Formulario HubSpot» (`hubspot-form-success`).
+
+El sitio emite exactamente `{event: 'hubspot-form-success', terra_event_id}`, una vez por envío aceptado por HubSpot (commit de alineación del 02/11). Contrato completo y orden de publicación: `security/privacy/CONTRATO_TRACKING_GTM_2026-11-02.md`.
+
+Quitar el tráfico de GA4 de `ss.terraseguridad.com.ar` **no arregla su certificado**: ese subdominio sigue sirviendo un certificado autofirmado hasta que se retire o renueve el registro.
 
 ## 4. Formulario Meta 1585698662738057 — comparación para autorización (no creado)
 

@@ -22,8 +22,8 @@
     },
     {
       "path": "main.js",
-      "bytes": 16362,
-      "sha256": "bd23d7880c0363430ead46fb0f499fad51e9ddf985043e2d746da5bfba00dfa9",
+      "bytes": 17127,
+      "sha256": "fab512914d3edcd233e9440c5a75c42ba64c0271acee86637cd9a699d7a346e9",
       "line_endings": "CRLF"
     },
     {
@@ -69,14 +69,14 @@
       "origin": "https://api.hsforms.com",
       "directive": "connect-src",
       "file": "main.js",
-      "line": 217,
+      "line": 222,
       "source": "js-literal-network-url"
     },
     {
       "origin": "https://n8n-production-ec32.up.railway.app",
       "directive": "connect-src",
       "file": "main.js",
-      "line": 272,
+      "line": 279,
       "source": "js-literal-network-url"
     },
     {

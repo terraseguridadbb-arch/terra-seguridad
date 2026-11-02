@@ -7,6 +7,10 @@ document.body.classList.add('js-loaded');
 // primero para que un fallo en el resto del archivo no deje el form inutil.
 // `var` a proposito: se eleva, asi handleSubmit nunca cae en zona muerta temporal.
 var envioEnCurso = false;
+// 2026-11-01: identidad estable del envio. Si un intento falla, el reintento con el mismo
+// email reutiliza el mismo terra_event_id (no se crea una conversion nueva); se renueva al
+// confirmarse el envio. El email solo se compara en memoria, no se guarda.
+var envioPendiente = null;
 (function() {
   const form = document.getElementById('contactForm');
   if (!form) return;
@@ -194,18 +198,19 @@ async function handleSubmit(e) {
   if (envioEnCurso) return;
   envioEnCurso = true;
 
-  // Generar nuevo terra_eid para este submit (deduplicación CAPI)
-  const eventId = typeof crypto !== 'undefined' && crypto.randomUUID
-    ? crypto.randomUUID()
-    : 'terra_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  // terra_eid del envio (deduplicacion CAPI). Se reutiliza en reintentos del mismo email.
+  const emailClave = String(new FormData(e.target).get('email') || '').trim().toLowerCase();
+  const eventId = (envioPendiente && envioPendiente.email === emailClave)
+    ? envioPendiente.id
+    : (typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : 'terra_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9));
+  envioPendiente = { id: eventId, email: emailClave };
   document.cookie = 'terra_eid=' + eventId + ';path=/;max-age=1800;SameSite=Lax';
   window.terra_eid = eventId;
+  // 2026-11-01: sin evento al dataLayer en el submit: el unico evento de formulario
+  // es hubspot-form-success, despues de que HubSpot acepta el envio.
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'terra_form_submit-02',
-    terra_event_id: eventId
-  });
 
   const btn = e.target.querySelector('.form-submit');
   const originalText = btn.innerHTML;
@@ -260,9 +265,11 @@ async function handleSubmit(e) {
     });
 
     if (response.ok) {
-      // FIX 2026-11-01: evento de exito real (HubSpot acepto el envio) para GA4 generate_lead via GTM.
-      // Sin datos personales: solo el id de evento.
-      window.dataLayer.push({ event: 'terra_form_success', terra_event_id: eventId });
+      // FIX 2026-11-01: evento de exito real (HubSpot acepto el envio). Lo escucha el activador
+      // existente de GTM "Web -Trigger - Exito Formulario HubSpot". Sin datos personales.
+      envioPendiente = null;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'hubspot-form-success', terra_event_id: eventId });
       // ENRICHMENT 2026-05-28: backfill de fbc/fbp/user agent al contacto HubSpot.
       // NEXT-SEC-15: la IP del visitante salio de este payload.
       // El Forms API descarta esos hidden fields (catch-22 v3/v4 documentado), workaround: PATCH via Contacts API.
@@ -363,6 +370,7 @@ async function handleSubmit(e) {
 }
 
 function showFormError(btn, originalText, msg) {
+  envioEnCurso = false; // 2026-11-01: libera el guard para permitir el reintento
   btn.disabled = false;
   btn.innerHTML = originalText;
   const existing = document.getElementById('formError');

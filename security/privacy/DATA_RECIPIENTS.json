@@ -170,7 +170,7 @@
         },
         {
           "archivo": "main.js",
-          "ancla": "event: 'terra_form_submit-02'"
+          "ancla": "event: 'hubspot-form-success'"
         }
       ],
       "estado": "INVENTARIADO"
