@@ -72,7 +72,7 @@
               </li>
               <li>
                 <strong>Meta (Pixel en el navegador)</strong> — Medición y optimización de publicidad.
-                <br />Qué recibe: visita de la página (PageView) y envío del formulario (Lead), con el identificador del envío; cookies publicitarias _fbp y _fbc; si el visitante ya envió el formulario antes en ese mismo navegador, los resúmenes irreversibles (SHA-256) de su correo, teléfono, nombre y apellido guardados en el navegador; los datos inherentes a cualquier conexión: dirección IP y user agent.
+                <br />Qué recibe: visita de la página (PageView) y envío del formulario (Lead), con el identificador del envío; cookies publicitarias _fbp y _fbc; si el visitante ya envió el formulario antes en ese mismo navegador, los valores seudonimizados mediante hash SHA-256 de su correo, teléfono, nombre y apellido guardados en el navegador; los datos inherentes a cualquier conexión: dirección IP y user agent.
                 <br />Para qué: Medir resultados de las campañas publicitarias y optimizarlas.
                 <br />Consentimiento: No hay banner ni consentimiento previo: estas etiquetas se cargan al abrir la página.
                 <br />Baja o corrección: El sitio no ofrece hoy un control propio para desactivarlas.
@@ -85,8 +85,15 @@
                 <br />Baja o corrección: Escribinos por los canales de contacto publicados en esta página.
               </li>
               <li>
-                <strong>Meta (envío desde servidor, Conversions API)</strong> — Envío del evento de conversión desde nuestra automatización, no desde el navegador. Hoy está desactivado: esto es lo que recibiría Meta si se reactiva.
-                <br />Qué recibe: resúmenes irreversibles (SHA-256) de correo, teléfono, nombre y apellido; identificador del envío, para que Meta no cuente dos veces el mismo hecho; cookies publicitarias y user agent reenviados por la automatización; sin la dirección IP del visitante, que el navegador ya no aporta.
+                <strong>Meta (API de conversiones con Meta para eventos web)</strong> — Integración activa conectada al píxel de este sitio.
+                <br />Qué recibe: copias de los eventos web enviados por el píxel; nombre e identificador del evento, para relacionar las entregas del navegador y del servidor; datos de coincidencia que acompañan esos eventos, que pueden incluir valores en formato hash SHA-256 de correo electrónico, teléfono, nombre y apellido.
+                <br />Para qué: Medir y atribuir las conversiones publicitarias. Las entregas del navegador y del servidor usan un identificador compartido para evitar contar dos veces el mismo hecho.
+                <br />Consentimiento: Funciona junto con la medición del píxel. Hoy el sitio no ofrece un control de consentimiento separado.
+                <br />Baja o corrección: El sitio no ofrece hoy un control propio para desactivarla.
+              </li>
+              <li>
+                <strong>Meta (Conversions API propia desde n8n, desactivada)</strong> — Envío del evento de conversión desde nuestra automatización n8n. Hoy está desactivado: esto es lo que recibiría Meta si se reactiva.
+                <br />Qué recibe: valores seudonimizados mediante hash SHA-256 de correo, teléfono, nombre y apellido; identificador del envío, para que Meta no cuente dos veces el mismo hecho; cookies publicitarias y user agent reenviados por la automatización; sin la dirección IP del visitante, que el navegador ya no aporta.
                 <br />Para qué: Atribuir la conversión a la campaña cuando el navegador bloquea el pixel.
                 <br />Consentimiento: Se dispararía a partir del envío del formulario; no hay control separado.
                 <br />Baja o corrección: Escribinos por los canales de contacto publicados en esta página.

@@ -4,33 +4,33 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 52344,
-      "sha256": "8d70a38bd2b929d394025045e9378a750f40b1b17894c604ff1aebcb9748578d",
-      "line_endings": "CRLF"
+      "bytes": 51587,
+      "sha256": "0fd6fc3aba2afe0723b66f1d7e624b2dc6a68e451ce151e40364fb563a97320f",
+      "line_endings": "LF"
     },
     {
       "path": "gracias.html",
-      "bytes": 5141,
-      "sha256": "d891c781fba9d1608729815292e09e5e925e02e5fd9db5c59592c3e31e72cb02",
-      "line_endings": "CRLF"
+      "bytes": 5061,
+      "sha256": "b57cba9634f56830c9171b294e4100844f061792ccbd9f151539adefc978d27b",
+      "line_endings": "LF"
     },
     {
       "path": "politicas.html",
-      "bytes": 15795,
-      "sha256": "4f4f5c74120e015308130ec6ec6f1579a095eb65ab88a8caa03bb806d66fed5a",
-      "line_endings": "CRLF"
+      "bytes": 16576,
+      "sha256": "2b74ea40390bccb5050df7e00ef74ad5126de1454e9eeca00cb160e0f3a06335",
+      "line_endings": "LF"
     },
     {
       "path": "main.js",
-      "bytes": 17609,
-      "sha256": "bb0febe32aa6c8d1dc7c2aee161d22c2b512da2f94665eb5269042dfa2786f34",
-      "line_endings": "CRLF"
+      "bytes": 17198,
+      "sha256": "e8fc9f3129deec0b39f4888d22a2a8d7ade33a842d9bfb63393a47604be31179",
+      "line_endings": "LF"
     },
     {
       "path": "styles.css",
-      "bytes": 37647,
-      "sha256": "b7f6049f71a85d19ec84a40680d64174108248dfe20e7cba6f438f8a746d1d9d",
-      "line_endings": "CRLF"
+      "bytes": 36605,
+      "sha256": "83841f8428aaff2c4ae60ab85f5c003e8eec544d0833384e59402e630919a474",
+      "line_endings": "LF"
     }
   ],
   "origins_by_directive": {
@@ -248,51 +248,51 @@
       "file": "index.html",
       "index": 0,
       "line": 4,
-      "bytes": 372,
-      "sha256_csp": "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc="
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
     },
     {
       "file": "index.html",
       "index": 1,
       "line": 14,
-      "bytes": 1402,
-      "sha256_csp": "sha256-ryh7DtDUn/QPhzTHhx/FUfmf76nZ9sQnf/IRZcGZCrI="
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
     },
     {
       "file": "index.html",
       "index": 2,
       "line": 730,
-      "bytes": 798,
-      "sha256_csp": "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks="
+      "bytes": 773,
+      "sha256_csp": "sha256-CDmobsP+++sm2blJdWrtLOlumkGYx0pfSdFAZpuo9Pg="
     },
     {
       "file": "gracias.html",
       "index": 0,
       "line": 4,
-      "bytes": 372,
-      "sha256_csp": "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc="
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
     },
     {
       "file": "gracias.html",
       "index": 1,
       "line": 13,
-      "bytes": 2009,
-      "sha256_csp": "sha256-HM6R+RBFVMRcVbDc8gFULvCeHW3A5WJbl4y/b+Ee2Ws="
+      "bytes": 1970,
+      "sha256_csp": "sha256-i6vm+F+iaPWIDMzBgqDZgDntDoudc9T6BCtRBAjrwzs="
     },
     {
       "file": "politicas.html",
       "index": 0,
-      "line": 188,
-      "bytes": 171,
-      "sha256_csp": "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
+      "line": 195,
+      "bytes": 166,
+      "sha256_csp": "sha256-cv59Uf3L9kZRgTWnO1RSqa2mhcdNN6acWTaiHdK3Mp4="
     }
   ],
   "inline_script_hashes": [
-    "sha256-HM6R+RBFVMRcVbDc8gFULvCeHW3A5WJbl4y/b+Ee2Ws=",
-    "sha256-c4+X7701UNzVn4CMCkW+TBNvuQphHS7/llcu+ffNaks=",
-    "sha256-jliXz3WGFnQ+c7qKnn8un1aTP/impJnXSrjYu3Z70fc=",
-    "sha256-ryh7DtDUn/QPhzTHhx/FUfmf76nZ9sQnf/IRZcGZCrI=",
-    "sha256-y/buBZMj5szN6XAQBkUJW8dF6KoHKIbCNtWSpWHQ7Gg="
+    "sha256-CDmobsP+++sm2blJdWrtLOlumkGYx0pfSdFAZpuo9Pg=",
+    "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo=",
+    "sha256-cv59Uf3L9kZRgTWnO1RSqa2mhcdNN6acWTaiHdK3Mp4=",
+    "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo=",
+    "sha256-i6vm+F+iaPWIDMzBgqDZgDntDoudc9T6BCtRBAjrwzs="
   ],
   "inline_style_elements": [],
   "inline_style_attribute_count": 14,
