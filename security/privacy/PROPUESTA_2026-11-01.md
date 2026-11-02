@@ -5,7 +5,7 @@ No se publicó nada. No certifica cumplimiento legal: ordena los datos verificad
 
 ## Nota para el frente `work/terra-os-autonomous-v1`
 
-- Su worktree `C:\Users\Usuario\terra-w3-seguridad` **no se tocó**. Sus cambios sin commitear (form-resilience) se integraron aquí como commit `29edfb4`, copiados literalmente. Hacía falta regenerar el inventario CSP y se regeneró con `security/csp/README`.
+- Su copia de trabajo local **no se tocó**. Sus cambios sin commitear (form-resilience) se integraron aquí como commit `29edfb4`, copiados literalmente. Hacía falta regenerar el inventario CSP y se regeneró con `security/csp/README`.
 - Mis commits encima: `4f2cc67` (Lead con `eventID`, sin value ficticio, evento de éxito), `6b3428c` (CSP regenerada), `3059f95` (GA4 solo vía GTM). El 02/11 el evento de éxito se renombró a `hubspot-form-success` (activador GTM existente), se quitó `terra_form_submit-02` del submit, el reintento conserva el `terra_event_id` y `showFormError` libera el guard (su parche lo dejaba bloqueado).
 - Tests: 67/67 (`node --test security/privacy/*.test.mjs security/csp/*.test.mjs`).
 - Si retoman su rama: rebase sobre esta o cherry-pick de los 3 commits; descartar su diff local (ya está en `29edfb4`).
