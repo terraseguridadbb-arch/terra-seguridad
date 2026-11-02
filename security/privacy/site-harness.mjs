@@ -72,7 +72,7 @@ const IDS_CONOCIDOS = ['nav', 'mobileMenuBtn', 'mobileMenu', 'equipCarousel', 'e
  * @param {(url: string, init?: object) => Promise<object>} opciones.fetchImpl
  *        fetch del test: recibe cada peticion que el sitio intente hacer.
  */
-export function cargarSitio({ fetchImpl, userAgent = 'arnes/1.0', href = 'https://ejemplo.invalid/', title = 'Terra', cookies = {} } = {}) {
+export function cargarSitio({ fetchImpl, userAgent = 'arnes/1.0', href = 'https://ejemplo.invalid/', title = 'Terra', cookies = {}, fbqImpl } = {}) {
   const registro = new Map();
   const creados = [];
   const jar = new Map(Object.entries(cookies));
@@ -153,7 +153,7 @@ export function cargarSitio({ fetchImpl, userAgent = 'arnes/1.0', href = 'https:
     warn: (...a) => logs.push(['warn', a.map(String).join(' ')])
   };
 
-  const fbq = (...args) => { eventosFbq.push(args); };
+  const fbq = (...args) => { eventosFbq.push(args); if (fbqImpl) fbqImpl(...args); };
 
   /**
    * Canales de salida que NO son fetch. El arnes los cubre para que un envio por
@@ -258,3 +258,4 @@ export const CAMPOS_DEMO = {
 export function respuesta(ok, cuerpo = {}) {
   return { ok, status: ok ? 200 : 500, json: async () => cuerpo, text: async () => JSON.stringify(cuerpo) };
 }
+

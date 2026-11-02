@@ -206,3 +206,35 @@ test('doble submit mientras el primero esta en vuelo: un solo envio a HubSpot', 
   assert.equal(eventosForm(arnes).length, 1);
   assert.equal(arnes.eventosFbq.length, 1);
 });
+
+test('fallo de dataLayer despues de aceptar: conserva el exito, redirige y bloquea reenvio', async () => {
+  const arnes = cargarSitio({ fetchImpl: fetchSecuencia(['ok']), cookies: {} });
+  arnes.window.dataLayer = [];
+  arnes.window.dataLayer.push = () => { throw new Error('fallo de medicion simulado'); };
+  const primer = crearEventoSubmit(CAMPOS_DEMO);
+  await arnes.handleSubmit(primer.evento);
+  arnes.correrTemporizadores();
+  assert.equal(arnes.errorVisible(), null, 'un fallo de analitica no es un fallo de recepcion');
+  assert.equal(primer.boton.disabled, true, 'un envio aceptado no debe habilitarse de nuevo');
+  assert.equal(arnes.window.location.href, 'gracias.html');
+  await arnes.handleSubmit(crearEventoSubmit(CAMPOS_DEMO).evento);
+  assert.equal(arnes.peticiones.filter((p) => p.host === HUBSPOT).length, 1);
+  assert.equal(arnes.eventosFbq.length, 1, 'el fallo de Google no debe bloquear el pixel');
+});
+
+test('fallo del pixel despues de aceptar: conserva el exito y bloquea reenvio', async () => {
+  const arnes = cargarSitio({
+    fetchImpl: fetchSecuencia(['ok']), cookies: {},
+    fbqImpl: () => { throw new Error('fallo de pixel simulado'); }
+  });
+  const primer = crearEventoSubmit(CAMPOS_DEMO);
+  await arnes.handleSubmit(primer.evento);
+  arnes.correrTemporizadores();
+  assert.equal(arnes.errorVisible(), null);
+  assert.equal(primer.boton.disabled, true);
+  assert.equal(arnes.window.location.href, 'gracias.html');
+  assert.equal(eventosForm(arnes).length, 1);
+  await arnes.handleSubmit(crearEventoSubmit(CAMPOS_DEMO).evento);
+  assert.equal(arnes.peticiones.filter((p) => p.host === HUBSPOT).length, 1);
+});
+

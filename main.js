@@ -268,8 +268,14 @@ async function handleSubmit(e) {
       // FIX 2026-11-01: evento de exito real (HubSpot acepto el envio). Lo escucha el activador
       // existente de GTM "Web -Trigger - Exito Formulario HubSpot". Sin datos personales.
       envioPendiente = null;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'hubspot-form-success', terra_event_id: eventId });
+      // La recepcion ya fue confirmada: un fallo de analitica no debe permitir
+      // reenviar el formulario ni impedir la confirmacion al visitante.
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'hubspot-form-success', terra_event_id: eventId });
+      } catch (_) {
+        console.warn('Medicion de Google no disponible; consulta recibida en HubSpot.');
+      }
       // ENRICHMENT 2026-05-28: backfill de fbc/fbp/user agent al contacto HubSpot.
       // NEXT-SEC-15: la IP del visitante salio de este payload.
       // El Forms API descarta esos hidden fields (catch-22 v3/v4 documentado), workaround: PATCH via Contacts API.
@@ -303,7 +309,13 @@ async function handleSubmit(e) {
       // setTimeout 600ms da margen al Pixel beacon (~200-300ms tipico) y al sendBeacon de enrichment, sin depender del Pixel.
       // FIX 2026-11-01: eventID como 4.o argumento (unico campo que Meta usa para deduplicar
       // contra CAPI). Sin value/currency: 394738 ARS era un precio estimado, no ingreso de Terra.
-      fbq('track', 'Lead', {}, { eventID: eventId });
+      try {
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead', {}, { eventID: eventId });
+        }
+      } catch (_) {
+        console.warn('Medicion de Meta no disponible; consulta recibida en HubSpot.');
+      }
 
       // Advanced Matching persist 2026-06-02:
       // guardar hashes SHA-256 (trim+lowercase) en localStorage para que el PageView
