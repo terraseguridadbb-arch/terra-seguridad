@@ -4,20 +4,20 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 51587,
-      "sha256": "0fd6fc3aba2afe0723b66f1d7e624b2dc6a68e451ce151e40364fb563a97320f",
+      "bytes": 51701,
+      "sha256": "594b835fc61e8f9919cde61a1a7257006ed4aed93e41d39e9e36013899bd540b",
       "line_endings": "LF"
     },
     {
       "path": "gracias.html",
       "bytes": 5061,
-      "sha256": "b57cba9634f56830c9171b294e4100844f061792ccbd9f151539adefc978d27b",
+      "sha256": "e5495409424c1f5dd17ad9fa08b151e1d5415b16ee5d6c7a24be30f8600f080c",
       "line_endings": "LF"
     },
     {
       "path": "politicas.html",
-      "bytes": 16576,
-      "sha256": "2b74ea40390bccb5050df7e00ef74ad5126de1454e9eeca00cb160e0f3a06335",
+      "bytes": 16570,
+      "sha256": "b2d78f5510e9c5bd0225d804076ee86f69e9ec3f8ae3dade0dc66c1176b86eba",
       "line_endings": "LF"
     },
     {
@@ -261,7 +261,7 @@
     {
       "file": "index.html",
       "index": 2,
-      "line": 730,
+      "line": 733,
       "bytes": 773,
       "sha256_csp": "sha256-CDmobsP+++sm2blJdWrtLOlumkGYx0pfSdFAZpuo9Pg="
     },
@@ -314,7 +314,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        695
+        698
       ]
     },
     {
@@ -396,7 +396,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        711
+        714
       ]
     },
     {
@@ -406,7 +406,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        717
+        720
       ]
     },
     {
@@ -416,8 +416,8 @@
       "has_html_entities": false,
       "count": 2,
       "lines": [
-        711,
-        717
+        714,
+        720
       ]
     },
     {
