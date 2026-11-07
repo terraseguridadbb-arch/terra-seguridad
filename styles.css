@@ -801,7 +801,7 @@ footer {
 .footer-logo {
   display: flex; align-items: center; gap: 10px; margin-bottom: 14px; text-decoration: none;
 }
-.footer-logo img { height: 38px; }
+.footer-logo img { height: 38px; width: auto; }
 .footer-logo-text {
   font-family: var(--font-head); font-weight: 800; font-size: 1.15rem;
   color: var(--white);
