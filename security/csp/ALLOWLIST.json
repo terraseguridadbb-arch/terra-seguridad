@@ -42,7 +42,35 @@
         "evidencia": [
           {
             "tipo": "js-literal-script-url",
+            "evidencia": "alarma-cortes-luz-internet.html:80"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarma-o-camaras.html:80"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarmas-monitoreadas.html:80"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarmas-para-comercios.html:80"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarmas-para-hogares.html:80"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "cobertura.html:80"
+          },
+          {
+            "tipo": "js-literal-script-url",
             "evidencia": "gracias.html:23"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "guias.html:80"
           },
           {
             "tipo": "js-literal-script-url",
@@ -70,7 +98,35 @@
         "evidencia": [
           {
             "tipo": "js-literal-script-url",
+            "evidencia": "alarma-cortes-luz-internet.html:69"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarma-o-camaras.html:69"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarmas-monitoreadas.html:69"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarmas-para-comercios.html:69"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "alarmas-para-hogares.html:69"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "cobertura.html:69"
+          },
+          {
+            "tipo": "js-literal-script-url",
             "evidencia": "gracias.html:9"
+          },
+          {
+            "tipo": "js-literal-script-url",
+            "evidencia": "guias.html:69"
           },
           {
             "tipo": "js-literal-script-url",
@@ -110,7 +166,35 @@
         "evidencia": [
           {
             "tipo": "img[src]",
+            "evidencia": "alarma-cortes-luz-internet.html:108"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "alarma-o-camaras.html:108"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "alarmas-monitoreadas.html:108"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "alarmas-para-comercios.html:108"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "alarmas-para-hogares.html:108"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "cobertura.html:108"
+          },
+          {
+            "tipo": "img[src]",
             "evidencia": "gracias.html:64"
+          },
+          {
+            "tipo": "img[src]",
+            "evidencia": "guias.html:108"
           },
           {
             "tipo": "img[src]",
@@ -252,7 +336,35 @@
         "evidencia": [
           {
             "tipo": "iframe[src]",
+            "evidencia": "alarma-cortes-luz-internet.html:110"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "alarma-o-camaras.html:110"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "alarmas-monitoreadas.html:110"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "alarmas-para-comercios.html:110"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "alarmas-para-hogares.html:110"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "cobertura.html:110"
+          },
+          {
+            "tipo": "iframe[src]",
             "evidencia": "gracias.html:66"
+          },
+          {
+            "tipo": "iframe[src]",
+            "evidencia": "guias.html:110"
           },
           {
             "tipo": "iframe[src]",
@@ -265,7 +377,7 @@
   },
   "hashes": {
     "_nota": "Los hashes viven en INVENTORY.json (inline_script_hashes, event_handler_hashes) y se regeneran con inventory.mjs. Aca solo se cuentan.",
-    "inline_script_hashes": 6,
+    "inline_script_hashes": 13,
     "event_handler_hashes": 11
   },
   "no_incluidos": {

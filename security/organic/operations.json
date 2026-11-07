@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "owner": "Dirección Terra / Berenise",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "repository": "terraseguridadbb-arch/terra-seguridad",
+  "production_approval": "required_for_each_editorial_batch",
+  "allowed_automatic_actions": [
+    "public_read_only_audit",
+    "aggregate_data_validation",
+    "research",
+    "draft",
+    "tests",
+    "draft_pr",
+    "internal_evidence_update"
+  ],
+  "excluded_actions": [
+    "publish_without_approval",
+    "change_prices_or_commercial_promises",
+    "send_messages_to_third_parties",
+    "activate_campaigns",
+    "change_whatsapp_or_agustina",
+    "reactivate_n8n",
+    "buy_services",
+    "export_personal_data"
+  ],
+  "cadence": {
+    "technical": "daily",
+    "content_and_competitors": "weekly",
+    "business_review": "monthly"
+  },
+  "sources": [
+    {
+      "name": "public_site",
+      "state": "public_http_verified",
+      "url": "https://www.terraseguridad.com.ar/",
+      "purpose": "HTTP, robots, sitemap, metadata",
+      "last_read": "2026-11-07T23:21:53.968171+00:00"
+    },
+    {
+      "name": "search_console",
+      "state": "automated_read_not_connected",
+      "property": "terraseguridad.com.ar",
+      "purpose": "Search queries/pages, impressions/clicks/CTR/indexing; property previously verified"
+    },
+    {
+      "name": "ga4",
+      "state": "automated_read_not_connected",
+      "measurement_id": "G-QRZ0RHZ71N",
+      "purpose": "Organic and identified AI referral sessions, landing pages, confirmed lead sessions"
+    },
+    {
+      "name": "gtm",
+      "state": "existing_version_51",
+      "container": "GTM-W65DNSWX",
+      "purpose": "Existing event delivery; not a reporting database"
+    },
+    {
+      "name": "hubspot",
+      "state": "organic_attribution_contract_pending",
+      "portal": "50951167",
+      "purpose": "Aggregate valid/qualified leads and activations by attributable acquisition cohort; another chat owns operational CRM"
+    },
+    {
+      "name": "finance",
+      "state": "missing_verified_attributable_costs_and_margin",
+      "purpose": "Costs, commission paid, margin; no estimate promoted to real ROI"
+    },
+    {
+      "name": "geo_panel",
+      "state": "baseline_incomplete",
+      "purpose": "12 fixed prompts × ChatGPT/Gemini/Perplexity; exact response/evidence/time/locale/version; no API purchases"
+    }
+  ],
+  "seo_query_clusters": [
+    "alarma para casa",
+    "alarma para departamento",
+    "alarma para comercio",
+    "alarma monitoreada",
+    "alarma o camaras",
+    "alarma sin luz",
+    "alarma sin internet",
+    "cobertura de alarmas",
+    "costo y condiciones de alarma",
+    "Terra Seguridad"
+  ],
+  "geo_panel": [
+    "¿Qué debería comparar antes de contratar una alarma para mi casa en Argentina?",
+    "¿Cómo elegir una alarma para un comercio pequeño en Argentina?",
+    "¿Alarma monitoreada o cámaras para un departamento?",
+    "¿Qué empresas consultar para una alarma con asesoramiento por teléfono en Argentina?",
+    "¿Una alarma sigue funcionando cuando se corta la luz?",
+    "¿Qué pasa con una alarma si primero se corta internet y después la luz?",
+    "¿Qué diferencia hay entre una cámara y una alarma monitoreada?",
+    "¿El historial de armado de alarma permite saber quién estuvo en un local?",
+    "¿Qué consultar para instalar una alarma en CABA?",
+    "¿Cómo confirmar cobertura de alarmas para un comercio en Córdoba capital?",
+    "¿Qué revisar antes de contratar alarma para un hogar en Rosario?",
+    "¿Cómo se verifica la disponibilidad de alarmas en Bahía Blanca?"
+  ],
+  "geo_sampling_rules": [
+    "Queries are research questions, not promises of coverage",
+    "New neutral session, same language and locale where supported; record unsupported geography",
+    "Record mentions and cited URLs separately; no mention is zero only after an observed response",
+    "Do not compare samples with changed prompts/model/locale as a trend",
+    "Organic AI referrals exclude unknown referrers; no-referrer traffic is not automatically AI",
+    "No rank or market-share claim from the panel"
+  ],
+  "alerts": {
+    "critical": [
+      "HTTP outage confirmed twice",
+      "unexpected noindex",
+      "off-domain canonical",
+      "thank-you becomes indexable",
+      "wrong contact destination"
+    ],
+    "review": [
+      "sitemap or metadata regression",
+      "source access lost",
+      "commercial data stale",
+      "competitor change with evidence"
+    ],
+    "suppression": "Repeat the same unchanged access limitation only in consolidated report"
+  },
+  "budget": {
+    "new_paid_services": 0,
+    "paid_model_calls": 0,
+    "public_audit_max_urls": 40
+  }
+}

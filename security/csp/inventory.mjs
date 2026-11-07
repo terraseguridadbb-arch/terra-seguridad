@@ -26,7 +26,8 @@ export const INVENTORY_PATH = path.join(REPO_ROOT, 'security', 'csp', 'INVENTORY
 export const HEADER_NAME_FIELD = 'key';
 
 /** Archivos publicados que forman la superficie del sitio. */
-export const SITE_FILES = ['index.html', 'gracias.html', 'politicas.html', 'main.js', 'ui.js', 'styles.css'];
+const organicPages = JSON.parse(readFileSync(path.join(REPO_ROOT, 'security/organic/content.json'), 'utf8')).pages.map(p => p.slug + '.html');
+export const SITE_FILES = ['index.html', 'gracias.html', 'politicas.html', 'main.js', 'ui.js', 'styles.css', 'guias.css', ...organicPages];
 
 /**
  * Origenes que el navegador contacta en runtime y que NO aparecen como literal

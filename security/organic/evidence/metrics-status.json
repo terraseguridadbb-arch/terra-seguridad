@@ -1,0 +1,28 @@
+{
+  "search_ctr_pct": {
+    "value": null,
+    "reason": "missing_verified_source"
+  },
+  "organic_session_lead_rate_pct": {
+    "value": null,
+    "reason": "missing_verified_source"
+  },
+  "organic_qualification_pct": {
+    "value": null,
+    "reason": "missing_verified_source"
+  },
+  "geo_observed_mention_pct": {
+    "value": null,
+    "reason": "missing_verified_source"
+  },
+  "organic_roi_pct": {
+    "value": null,
+    "reason": "missing_verified_source"
+  },
+  "limits": [
+    "GA4 session lead rate uses sessions with a confirmed lead, not raw event counts.",
+    "GEO panel is a reproducible sample, not market share or a ranking.",
+    "Organic ROI requires attributable margin and complete acquisition costs in the same cohort and currency.",
+    "No join of persons or addition of platform conversions is performed."
+  ]
+}

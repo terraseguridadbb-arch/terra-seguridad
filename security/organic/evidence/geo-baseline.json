@@ -1,0 +1,16 @@
+{
+  "panel": "fixed_prompt_panel_v1",
+  "state": "unobserved_this_implementation",
+  "engines": {
+    "ChatGPT": {
+      "observed_responses": null
+    },
+    "Gemini": {
+      "observed_responses": null
+    },
+    "Perplexity": {
+      "observed_responses": null
+    }
+  },
+  "reason": "Prior qualitative examples are not a complete comparable panel; no invented zero or paid API use."
+}

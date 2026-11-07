@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 54526,
-      "sha256": "8bb354a257447ef67094b94fb64f8c6364b262e63730ee64f11733680b9a16df",
+      "bytes": 54669,
+      "sha256": "d6b3e547ea3f77ba296992f46741a9f5c0131e9cac8dc6a96943f18e3ace5f7f",
       "line_endings": "LF"
     },
     {
@@ -36,6 +36,54 @@
       "path": "styles.css",
       "bytes": 40366,
       "sha256": "001e619f22c8dcf08c5cc38d044ee04e0d344c36a3b21da928524123c15537c2",
+      "line_endings": "LF"
+    },
+    {
+      "path": "guias.css",
+      "bytes": 5436,
+      "sha256": "d631ba519322d10c2fa6968af99d1642e91a92bcbd39e62b1dddddb6f872feaa",
+      "line_endings": "LF"
+    },
+    {
+      "path": "alarmas-para-hogares.html",
+      "bytes": 11188,
+      "sha256": "29df6e860af54ff0eb1f4a80ee5f86393505f33cad05da0c3edf5c434dcf4577",
+      "line_endings": "LF"
+    },
+    {
+      "path": "alarmas-para-comercios.html",
+      "bytes": 11184,
+      "sha256": "66f945ba8c136af257e48bfd6fe10b8aa28f68dccbaa00dee37838101ce447d0",
+      "line_endings": "LF"
+    },
+    {
+      "path": "alarmas-monitoreadas.html",
+      "bytes": 11126,
+      "sha256": "7bef1f9fcc4d538459382f7c8addfaa3b3ea06b9a6e57f87647144afd778da72",
+      "line_endings": "LF"
+    },
+    {
+      "path": "alarma-o-camaras.html",
+      "bytes": 10965,
+      "sha256": "29f15c422ace7012bfe890ffaebc011ab7f74846c0f65cb337deab75fab6ee45",
+      "line_endings": "LF"
+    },
+    {
+      "path": "alarma-cortes-luz-internet.html",
+      "bytes": 11401,
+      "sha256": "2f98470353d15c743ec0059be75cb5aa927a7daa74129c02b785fccf21cd8f17",
+      "line_endings": "LF"
+    },
+    {
+      "path": "cobertura.html",
+      "bytes": 10632,
+      "sha256": "c6f76728c7ca035ab1af68092c7a89b72c62b15ed4556e382e7bd8edebfc056f",
+      "line_endings": "LF"
+    },
+    {
+      "path": "guias.html",
+      "bytes": 9880,
+      "sha256": "b503a67937dace7f26faa67cc6378f8ae938c1388e7a0e6d9cc4079397f024ae",
       "line_endings": "LF"
     }
   ],
@@ -88,8 +136,57 @@
     {
       "origin": "https://www.googletagmanager.com",
       "directive": "frame-src",
+      "file": "alarma-cortes-luz-internet.html",
+      "line": 110,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "alarma-o-camaras.html",
+      "line": 110,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "alarmas-monitoreadas.html",
+      "line": 110,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "alarmas-para-comercios.html",
+      "line": 110,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "alarmas-para-hogares.html",
+      "line": 110,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "cobertura.html",
+      "line": 110,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
       "file": "gracias.html",
       "line": 66,
+      "source": "iframe[src]"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "frame-src",
+      "file": "guias.html",
+      "line": 110,
       "source": "iframe[src]"
     },
     {
@@ -102,8 +199,57 @@
     {
       "origin": "https://www.facebook.com",
       "directive": "img-src",
+      "file": "alarma-cortes-luz-internet.html",
+      "line": 108,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "alarma-o-camaras.html",
+      "line": 108,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "alarmas-monitoreadas.html",
+      "line": 108,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "alarmas-para-comercios.html",
+      "line": 108,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "alarmas-para-hogares.html",
+      "line": 108,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "cobertura.html",
+      "line": 108,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
       "file": "gracias.html",
       "line": 64,
+      "source": "img[src]"
+    },
+    {
+      "origin": "https://www.facebook.com",
+      "directive": "img-src",
+      "file": "guias.html",
+      "line": 108,
       "source": "img[src]"
     },
     {
@@ -116,8 +262,57 @@
     {
       "origin": "https://connect.facebook.net",
       "directive": "script-src",
+      "file": "alarma-cortes-luz-internet.html",
+      "line": 80,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "alarma-o-camaras.html",
+      "line": 80,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "alarmas-monitoreadas.html",
+      "line": 80,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "alarmas-para-comercios.html",
+      "line": 80,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "alarmas-para-hogares.html",
+      "line": 80,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "cobertura.html",
+      "line": 80,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
       "file": "gracias.html",
       "line": 23,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://connect.facebook.net",
+      "directive": "script-src",
+      "file": "guias.html",
+      "line": 80,
       "source": "js-literal-script-url"
     },
     {
@@ -130,8 +325,57 @@
     {
       "origin": "https://www.googletagmanager.com",
       "directive": "script-src",
+      "file": "alarma-cortes-luz-internet.html",
+      "line": 69,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "alarma-o-camaras.html",
+      "line": 69,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "alarmas-monitoreadas.html",
+      "line": 69,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "alarmas-para-comercios.html",
+      "line": 69,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "alarmas-para-hogares.html",
+      "line": 69,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "cobertura.html",
+      "line": 69,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
       "file": "gracias.html",
       "line": 9,
+      "source": "js-literal-script-url"
+    },
+    {
+      "origin": "https://www.googletagmanager.com",
+      "directive": "script-src",
+      "file": "guias.html",
+      "line": 69,
       "source": "js-literal-script-url"
     },
     {
@@ -230,7 +474,7 @@
     },
     {
       "origin": "https://wa.me",
-      "occurrences": 8,
+      "occurrences": 15,
       "note": "a[href]: navegacion de usuario, CSP no la cubre"
     },
     {
@@ -250,7 +494,7 @@
     },
     {
       "origin": "https://www.terraseguridad.com.ar",
-      "occurrences": 2,
+      "occurrences": 9,
       "note": "link[rel=canonical]: preconnect/dns-prefetch no requiere directiva"
     }
   ],
@@ -279,7 +523,7 @@
     {
       "file": "index.html",
       "index": 3,
-      "line": 762,
+      "line": 764,
       "bytes": 773,
       "sha256_csp": "sha256-CDmobsP+++sm2blJdWrtLOlumkGYx0pfSdFAZpuo9Pg="
     },
@@ -303,18 +547,172 @@
       "line": 209,
       "bytes": 166,
       "sha256_csp": "sha256-cv59Uf3L9kZRgTWnO1RSqa2mhcdNN6acWTaiHdK3Mp4="
+    },
+    {
+      "file": "alarmas-para-hogares.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1558,
+      "sha256_csp": "sha256-bkI6f+7ssaGnOnMBG8EVeTx8pm1hP8UhNxf/Ced7EKg="
+    },
+    {
+      "file": "alarmas-para-hogares.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "alarmas-para-hogares.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
+    },
+    {
+      "file": "alarmas-para-comercios.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1560,
+      "sha256_csp": "sha256-X1MD0awzWISf92Px3XuX2SOjGorqSmhwBzGMnh/bO8o="
+    },
+    {
+      "file": "alarmas-para-comercios.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "alarmas-para-comercios.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
+    },
+    {
+      "file": "alarmas-monitoreadas.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1572,
+      "sha256_csp": "sha256-Vt4Ul9ISvyZrSKWBZ2ZAfTF3lqF/HBynXU1Pq+HjU4M="
+    },
+    {
+      "file": "alarmas-monitoreadas.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "alarmas-monitoreadas.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
+    },
+    {
+      "file": "alarma-o-camaras.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1553,
+      "sha256_csp": "sha256-2EQXW0VDtv2IQdW17LdGRzQ9WNT8kxHolY0ix0yXL8g="
+    },
+    {
+      "file": "alarma-o-camaras.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "alarma-o-camaras.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
+    },
+    {
+      "file": "alarma-cortes-luz-internet.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1601,
+      "sha256_csp": "sha256-+ya9oWsh7c1+WSW/aAO2s8PZv4+kRIxWKYINhZfjUTc="
+    },
+    {
+      "file": "alarma-cortes-luz-internet.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "alarma-cortes-luz-internet.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
+    },
+    {
+      "file": "cobertura.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1505,
+      "sha256_csp": "sha256-N7eIUl3gBCiCXkynuGO87swC7AMI11h6UG9joNesVlU="
+    },
+    {
+      "file": "cobertura.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "cobertura.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
+    },
+    {
+      "file": "guias.html",
+      "index": 0,
+      "line": 20,
+      "bytes": 1488,
+      "sha256_csp": "sha256-4YfcNYUR2uxBerHKV1sDSoU2h00fBiLwv6ff+iZzj+k="
+    },
+    {
+      "file": "guias.html",
+      "index": 1,
+      "line": 65,
+      "bytes": 366,
+      "sha256_csp": "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo="
+    },
+    {
+      "file": "guias.html",
+      "index": 2,
+      "line": 72,
+      "bytes": 1370,
+      "sha256_csp": "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo="
     }
   ],
   "inline_script_hashes": [
+    "sha256-+ya9oWsh7c1+WSW/aAO2s8PZv4+kRIxWKYINhZfjUTc=",
+    "sha256-2EQXW0VDtv2IQdW17LdGRzQ9WNT8kxHolY0ix0yXL8g=",
+    "sha256-4YfcNYUR2uxBerHKV1sDSoU2h00fBiLwv6ff+iZzj+k=",
     "sha256-APsUwB2EDO/qhrcfjyvyMBiCiCmGBL994iiv4jgYtFw=",
     "sha256-CDmobsP+++sm2blJdWrtLOlumkGYx0pfSdFAZpuo9Pg=",
     "sha256-HBWSSj3U15wECxqvOOiVNeF+AuHIIV4COdJfHN/ZZWo=",
+    "sha256-N7eIUl3gBCiCXkynuGO87swC7AMI11h6UG9joNesVlU=",
+    "sha256-Vt4Ul9ISvyZrSKWBZ2ZAfTF3lqF/HBynXU1Pq+HjU4M=",
+    "sha256-X1MD0awzWISf92Px3XuX2SOjGorqSmhwBzGMnh/bO8o=",
+    "sha256-bkI6f+7ssaGnOnMBG8EVeTx8pm1hP8UhNxf/Ced7EKg=",
     "sha256-cv59Uf3L9kZRgTWnO1RSqa2mhcdNN6acWTaiHdK3Mp4=",
     "sha256-ebaMiX7xU4iZrQPoF1o7O2ZaR6tb/ElBNrWnDBVhYdo=",
     "sha256-i6vm+F+iaPWIDMzBgqDZgDntDoudc9T6BCtRBAjrwzs="
   ],
   "inline_style_elements": [],
-  "inline_style_attribute_count": 14,
+  "inline_style_attribute_count": 28,
   "event_handler_attributes": [
     {
       "file": "index.html",
@@ -333,7 +731,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        726
+        728
       ]
     },
     {
@@ -415,7 +813,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        742
+        744
       ]
     },
     {
@@ -425,7 +823,7 @@
       "has_html_entities": false,
       "count": 1,
       "lines": [
-        748
+        750
       ]
     },
     {
@@ -435,8 +833,8 @@
       "has_html_entities": false,
       "count": 2,
       "lines": [
-        742,
-        748
+        744,
+        750
       ]
     },
     {
@@ -465,6 +863,66 @@
   ],
   "dynamic_script_injection": [
     {
+      "file": "alarma-cortes-luz-internet.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarma-cortes-luz-internet.html",
+      "line": 77,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarma-o-camaras.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarma-o-camaras.html",
+      "line": 77,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarmas-monitoreadas.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarmas-monitoreadas.html",
+      "line": 77,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarmas-para-comercios.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarmas-para-comercios.html",
+      "line": 77,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarmas-para-hogares.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "alarmas-para-hogares.html",
+      "line": 77,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "cobertura.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "cobertura.html",
+      "line": 77,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
       "file": "gracias.html",
       "line": 8,
       "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
@@ -472,6 +930,16 @@
     {
       "file": "gracias.html",
       "line": 20,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "guias.html",
+      "line": 68,
+      "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
+    },
+    {
+      "file": "guias.html",
+      "line": 77,
       "pattern": "createElement(...) con asignacion de src: carga dinamica de script"
     },
     {
