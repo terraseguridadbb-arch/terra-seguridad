@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 54519,
-      "sha256": "212382521517e4bbb6134028ddaeb4083fb44f8141d20e39df4e93e4a69428c3",
+      "bytes": 54526,
+      "sha256": "fe271aa9b853eff8446feceee25775f83175aaf1943bf0b92b5216efa9313f47",
       "line_endings": "LF"
     },
     {
@@ -34,8 +34,8 @@
     },
     {
       "path": "styles.css",
-      "bytes": 37648,
-      "sha256": "ebedc2fabb870212a4f9c3c47397d18e5f17b6e3829092f712ffa7b98c1f9d98",
+      "bytes": 40049,
+      "sha256": "7914b6748e9f91269be1d7320b8c1078b9941bbab8711b37bfc297ec7a10cbee",
       "line_endings": "LF"
     }
   ],
