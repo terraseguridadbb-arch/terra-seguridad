@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "index.html",
-      "bytes": 53459,
-      "sha256": "a8bdfe205be7534cd8d695a0e8166fe26ee79c9f90a3492322e206c7f726a157",
+      "bytes": 54519,
+      "sha256": "212382521517e4bbb6134028ddaeb4083fb44f8141d20e39df4e93e4a69428c3",
       "line_endings": "LF"
     },
     {
@@ -27,9 +27,15 @@
       "line_endings": "LF"
     },
     {
+      "path": "ui.js",
+      "bytes": 2006,
+      "sha256": "f8ac79303bfd764257a89a3642e94f7894d6718cede0b4c4ab42f077667a1dff",
+      "line_endings": "LF"
+    },
+    {
       "path": "styles.css",
-      "bytes": 36652,
-      "sha256": "277280131f4b598a98eb35a78fde47682b5a0385745ded91d69ddde54fb3df3d",
+      "bytes": 37635,
+      "sha256": "a4cff3e5c008882e90d8708e9072ef734f4713c9ea6486e7811020790cac9d8e",
       "line_endings": "LF"
     }
   ],
@@ -273,7 +279,7 @@
     {
       "file": "index.html",
       "index": 3,
-      "line": 761,
+      "line": 762,
       "bytes": 773,
       "sha256_csp": "sha256-CDmobsP+++sm2blJdWrtLOlumkGYx0pfSdFAZpuo9Pg="
     },

@@ -88,7 +88,8 @@ body {
 }
 .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
 .nav-mobile-btn {
-  display: none; background: none; border: none; cursor: pointer; padding: 4px;
+  display: none; background: none; border: none; cursor: pointer; padding: 10px;
+  min-width: 44px; min-height: 44px;
 }
 .nav-mobile-btn span {
   display: block; width: 24px; height: 2px; background: var(--gray-800);
@@ -831,6 +832,11 @@ footer {
 .footer-contact-item svg { width: 16px; height: 16px; color: #7ec8ff; flex-shrink: 0; margin-top: 2px; }
 .footer-contact-item a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
 .footer-contact-item a:hover { color: var(--white); }
+.footer-contact-actions { display: flex; flex-direction: column; gap: 8px; }
+.footer-contact-actions br { display: none; }
+.footer-contact-actions a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-bottom span, .footer-bottom a { color: #cbd5e1 !important; }
+.footer-bottom a:hover, .footer-bottom a:focus-visible { color: #fff !important; }
 .footer-bottom {
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
   gap: 12px; font-size: .82rem;
@@ -893,18 +899,30 @@ footer {
 
 /* ── MOBILE MENU ── */
 .mobile-menu {
-  display: none; position: fixed; inset: 0; z-index: 99;
-  background: var(--white); padding: 100px 24px 40px;
+  display: none; position: fixed; inset: 72px 0 0; z-index: 99;
+  background: var(--white); padding: 24px 24px 112px;
+  overflow-y: auto; overscroll-behavior: contain;
   flex-direction: column; gap: 24px;
   align-items: flex-start;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
+  flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center;
   font-family: var(--font-head); font-weight: 700; font-size: 1.4rem;
   color: var(--gray-800); text-decoration: none; transition: color .2s;
 }
 .mobile-menu a:hover { color: var(--blue); }
 .mobile-menu .nav-cta { font-size: 1rem; }
+
+:where(a, button):focus-visible { outline: 3px solid #0a7af5; outline-offset: 4px; }
+@media (max-width: 768px) {
+  body.mobile-menu-open { overflow: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .js-loaded .fade-up { opacity: 1; transform: none; }
+}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
