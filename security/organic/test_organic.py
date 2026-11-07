@@ -135,6 +135,8 @@ class MetricsTests(unittest.TestCase):
         self.assertIsNone(report(rows)['organic_roi_pct']['value'])
         rows=[self.row('clicks',4),self.row('impressions',100)]; rows[1]['cohort']='lead_created_period'
         self.assertIsNone(report(rows)['search_ctr_pct']['value'])
+        rows=[self.row('clicks',4),self.row('impressions',100)];rows[1]['timezone']='America/Los_Angeles'
+        self.assertIsNone(report(rows)['search_ctr_pct']['value'])
 
     def test_reject_duplicate_pii_nonfinite_and_unknown_numbers(self):
         row=self.row('clicks',2)

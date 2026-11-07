@@ -34,7 +34,7 @@
       "state": "public_http_verified",
       "url": "https://www.terraseguridad.com.ar/",
       "purpose": "HTTP, robots, sitemap, metadata",
-      "last_read": "2026-11-07T23:21:53.968171+00:00"
+      "last_read": "2026-11-07T23:24:06.146095+00:00"
     },
     {
       "name": "search_console",
@@ -125,5 +125,6 @@
     "new_paid_services": 0,
     "paid_model_calls": 0,
     "public_audit_max_urls": 40
-  }
+  },
+  "scheduled_tasks": "Created and enabled; evidence/scheduled-jobs.json; first execution not observed"
 }

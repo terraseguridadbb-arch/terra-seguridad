@@ -4,6 +4,7 @@ import json
 import math
 from datetime import date
 from pathlib import Path
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 KEYS={'source','period_start','period_end','timezone','cohort','currency','metric','value','status'}
 SOURCES={'gsc','ga4','hubspot','finance','geo_panel'}
@@ -21,7 +22,8 @@ def validate(rows):
     for r in rows:
         if set(r)!=KEYS: raise ValueError('Only the documented aggregate fields are allowed; no PII or free-text payloads')
         if r['source'] not in SOURCES or r['metric'] not in ALLOWED[r['source']]: raise ValueError('source_metric_mismatch')
-        if r['timezone']!='America/Argentina/Buenos_Aires': raise ValueError('timezone_not_normalized')
+        try: ZoneInfo(r['timezone'])
+        except (ZoneInfoNotFoundError,ValueError,TypeError): raise ValueError('unknown_source_timezone')
         if date.fromisoformat(r['period_start'])>date.fromisoformat(r['period_end']): raise ValueError('invalid_period')
         if r['cohort'] not in {'period','lead_created_period','fixed_prompt_panel_v1'}: raise ValueError('invalid_cohort')
         if r['currency'] not in ({'ARS','USD'} if r['metric'] in FINANCIAL else {None}): raise ValueError('currency_mismatch')

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-07T23:21:53.968171+00:00",
+  "checked_at": "2026-11-07T23:24:06.146095+00:00",
   "scope": "HTTP/directives; not proof of indexing, ranking, rendering or delivery of a lead",
   "host": "https://www.terraseguridad.com.ar",
   "pages": [
@@ -7,7 +7,7 @@
       "url": "https://www.terraseguridad.com.ar/",
       "status": 200,
       "final_url": "https://www.terraseguridad.com.ar/",
-      "elapsed_ms": 6562,
+      "elapsed_ms": 5763,
       "sha256": "8bb354a257447ef67094b94fb64f8c6364b262e63730ee64f11733680b9a16df",
       "checks": {
         "canonical": true,
@@ -17,6 +17,8 @@
         "description": true,
         "schema_json": true,
         "contact_path": true,
+        "contact_destinations": true,
+        "crawl_allowed": true,
         "no_redirect": true
       }
     },
@@ -24,7 +26,7 @@
       "url": "https://www.terraseguridad.com.ar/politicas.html",
       "status": 200,
       "final_url": "https://www.terraseguridad.com.ar/politicas.html",
-      "elapsed_ms": 6286,
+      "elapsed_ms": 6748,
       "sha256": "8426d99b2c82bc3a871a7a91396d4a982bc3b7813fc860709ce58103cbed715c",
       "checks": {
         "canonical": true,
@@ -33,6 +35,8 @@
         "title": true,
         "description": true,
         "schema_json": true,
+        "contact_destinations": true,
+        "crawl_allowed": true,
         "no_redirect": true
       }
     }

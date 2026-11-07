@@ -1,0 +1,9 @@
+{
+  "status": "LISTO_PARA_REVISION_DE_BERENISE",
+  "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+  "defects": [],
+  "pending": [],
+  "publication_authorized": false,
+  "scope": "Record consistency only. Observations, aesthetic judgment, actual listening and factual claims still require truthful inspection.",
+  "review_mode": "separate_context"
+}
