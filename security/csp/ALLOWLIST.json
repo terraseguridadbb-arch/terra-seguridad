@@ -42,11 +42,11 @@
         "evidencia": [
           {
             "tipo": "js-literal-script-url",
-            "evidencia": "gracias.html:22"
+            "evidencia": "gracias.html:23"
           },
           {
             "tipo": "js-literal-script-url",
-            "evidencia": "index.html:22"
+            "evidencia": "index.html:23"
           }
         ]
       },
@@ -70,11 +70,11 @@
         "evidencia": [
           {
             "tipo": "js-literal-script-url",
-            "evidencia": "gracias.html:8"
+            "evidencia": "gracias.html:9"
           },
           {
             "tipo": "js-literal-script-url",
-            "evidencia": "index.html:8"
+            "evidencia": "index.html:9"
           }
         ]
       }
@@ -88,15 +88,15 @@
         "evidencia": [
           {
             "tipo": "link[rel=stylesheet]",
-            "evidencia": "gracias.html:61"
+            "evidencia": "gracias.html:60"
           },
           {
             "tipo": "link[rel=stylesheet]",
-            "evidencia": "index.html:58"
+            "evidencia": "index.html:70"
           },
           {
             "tipo": "link[rel=stylesheet]",
-            "evidencia": "politicas.html:10"
+            "evidencia": "politicas.html:24"
           }
         ]
       }
@@ -110,11 +110,11 @@
         "evidencia": [
           {
             "tipo": "img[src]",
-            "evidencia": "gracias.html:53"
+            "evidencia": "gracias.html:64"
           },
           {
             "tipo": "img[src]",
-            "evidencia": "index.html:47"
+            "evidencia": "index.html:87"
           }
         ]
       },
@@ -252,11 +252,11 @@
         "evidencia": [
           {
             "tipo": "iframe[src]",
-            "evidencia": "gracias.html:65"
+            "evidencia": "gracias.html:66"
           },
           {
             "tipo": "iframe[src]",
-            "evidencia": "index.html:64"
+            "evidencia": "index.html:89"
           }
         ]
       }
@@ -265,7 +265,7 @@
   },
   "hashes": {
     "_nota": "Los hashes viven en INVENTORY.json (inline_script_hashes, event_handler_hashes) y se regeneran con inventory.mjs. Aca solo se cuentan.",
-    "inline_script_hashes": 5,
+    "inline_script_hashes": 6,
     "event_handler_hashes": 11
   },
   "no_incluidos": {

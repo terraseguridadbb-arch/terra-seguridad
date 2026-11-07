@@ -297,6 +297,7 @@ section { padding: 90px 24px; }
   transition: transform .3s;
 }
 .product-card:hover::before { transform: scaleX(1); }
+.product-card[id] { scroll-margin-top: 90px; }
 .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--blue-light); }
 .product-icon {
   width: 60px; height: 60px; background: var(--blue-light);

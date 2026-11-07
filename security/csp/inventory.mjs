@@ -138,9 +138,12 @@ function scanHtml(file, html, acc) {
         bytes: Buffer.byteLength(body, 'utf8'),
         sha256_csp: sha256Csp(body)
       });
-      jsUrlLiterals(body, file, line, acc.origins);
-      acc.dynamicInjection.push(...detectInjection(body, file, line));
-      acc.evalUsage += countEval(body);
+      // JSON-LD is inert structured data. Its identifiers are not network calls.
+      if ((getAttr(m[1], 'type') || '').toLowerCase() !== 'application/ld+json') {
+        jsUrlLiterals(body, file, line, acc.origins);
+        acc.dynamicInjection.push(...detectInjection(body, file, line));
+        acc.evalUsage += countEval(body);
+      }
     }
   }
 
