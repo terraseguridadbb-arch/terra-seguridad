@@ -223,6 +223,12 @@ body {
   line-height: 1.7; margin-bottom: 36px; max-width: 480px;
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+/* En dos columnas las fuentes finales apilan los CTA. Reservar esa misma
+   disposición desde el primer render evita que el intercambio de fuente
+   aumente la altura del hero y desplace todo el bloque centrado. */
+@media (min-width: 1001px) {
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+}
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--white); color: var(--blue);
