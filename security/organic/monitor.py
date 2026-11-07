@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import re
 import ssl
 import time
 import urllib.error
@@ -42,25 +43,30 @@ class Page(HTMLParser):
         if tag=='title': self.title=value
         elif tag=='h1': self.headings.append(value)
         else:
-            try: self.schema.append(json.loads(value))
+            try:
+                parsed=json.loads(value)
+                self.schema.append(parsed if isinstance(parsed,(dict,list)) else {'invalid_json':True})
             except json.JSONDecodeError: self.schema.append({'invalid_json': True})
         self._capture=None
 
 def checks(text, expected_url, headers=None):
     p=Page(text); headers=headers or {}
+    contact_links=[urllib.parse.urlsplit(x) for x in p.links if x.startswith(('tel:','https://wa.me/','http://wa.me/'))]
     return {
         'canonical':p.canonical==[expected_url],
-        'indexable_directive':'noindex' not in ','.join(p.robots) + headers.get('x-robots-tag','').lower(),
+        'indexable_directive':not re.search(r'\b(?:noindex|none)\b', ','.join(p.robots) + ',' + headers.get('x-robots-tag','').lower()),
         'one_h1':len(p.headings)==1,
         'title':bool(p.title), 'description':bool(p.description),
         'schema_json': all('invalid_json' not in x for x in p.schema),
         'contact_path':any(x in p.links for x in ['/#contacto','#contacto','https://wa.me/5491130089046']),
+        'contact_destinations':all((u.scheme=='tel' and u.path=='+5491124808478') or (u.scheme=='https' and u.netloc=='wa.me' and u.path=='/5491130089046') for u in contact_links),
     }
 
 class SameOriginRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
-        if urllib.parse.urlsplit(newurl).netloc != urllib.parse.urlsplit(HOST).netloc:
-            raise ValueError('cross_origin_redirect')
+        destination=urllib.parse.urlsplit(newurl)
+        if destination.scheme!='https' or destination.netloc!=urllib.parse.urlsplit(HOST).netloc or destination.query or destination.username:
+            raise ValueError('unsafe_redirect')
         return super().redirect_request(req,fp,code,msg,headers,newurl)
 
 def fetch(url):
@@ -97,6 +103,7 @@ def audit():
             f=fetch(url); row={'url':url,**{k:v for k,v in f.items() if k not in ['text','headers']}}
             if f.get('status')==200:
                 row['checks']=checks(f['text'],url,f['headers'])
+                row['checks']['crawl_allowed']=robots.get('status')==200 and all(parser.can_fetch(bot,url) for bot in ['Googlebot','Bingbot','OAI-SearchBot','PerplexityBot'])
                 # Privacy page has no contact CTA requirement.
                 if url.endswith('/politicas.html'): row['checks'].pop('contact_path')
                 if url.endswith('/gracias.html'): row['checks']['not_thank_you']=False
@@ -105,7 +112,7 @@ def audit():
     except (ET.ParseError,ValueError,TypeError) as exc: result['errors'].append(str(exc))
     thanks=fetch(HOST+'/gracias.html')
     result['thank_you_noindex']=thanks.get('status')==200 and 'noindex' in (thanks.get('headers',{}).get('x-robots-tag','').lower()+','.join(Page(thanks.get('text','')).robots))
-    result['ok']=not result['errors'] and result['thank_you_noindex'] and bool(result['pages']) and all(p.get('status')==200 and all(p.get('checks',{}).values()) for p in result['pages'])
+    result['ok']=not result['errors'] and result['thank_you_noindex'] and bool(result.get('crawler_directives')) and all(result.get('crawler_directives',{}).values()) and bool(result['pages']) and all(p.get('status')==200 and all(p.get('checks',{}).values()) for p in result['pages'])
     return result
 
 if __name__=='__main__':

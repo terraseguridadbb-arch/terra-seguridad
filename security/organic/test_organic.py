@@ -10,6 +10,16 @@ from monitor import Page, checks, audit
 from metrics import validate, report
 
 class PublishingTests(unittest.TestCase):
+    def test_visible_date_follows_registry(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'security/organic').mkdir(parents=True)
+            d=json.loads((ROOT/'security/organic/content.json').read_text());d['reviewed']='2026-12-03'
+            (root/'security/organic/content.json').write_text(json.dumps(d))
+            (root/'index.html').write_text((ROOT/'index.html').read_text())
+            html=render_all(root)['guias.html']
+            self.assertIn('datetime="2026-12-03">3 de diciembre de 2026</time>',html)
+
     def test_generated_output_is_current(self):
         for path,text in render_all().items(): self.assertEqual((ROOT/path).read_text(),text,path)
 
@@ -47,6 +57,39 @@ class PublishingTests(unittest.TestCase):
         self.assertIn('security/',(ROOT/'.vercelignore').read_text())
 
 class MonitorTests(unittest.TestCase):
+    def test_single_blocked_path_fails(self):
+        html=(ROOT/'guias.html').read_text()
+        def fake(url):
+            if url.endswith('/robots.txt'): return {'status':200,'text':'User-agent: *\nDisallow: /guias.html'}
+            if url.endswith('/sitemap.xml'): return {'status':200,'text':f'<urlset><url><loc>{HOST}/guias.html</loc></url></urlset>'}
+            if url.endswith('/gracias.html'): return {'status':200,'text':'<meta name="robots" content="noindex">'}
+            return {'status':200,'text':html,'final_url':HOST+'/guias.html','headers':{}}
+        with patch('monitor.fetch',side_effect=fake): result=audit()
+        self.assertFalse(result['ok']);self.assertFalse(result['pages'][0]['checks']['crawl_allowed'])
+    def test_none_is_noindex(self):
+        self.assertFalse(checks('<meta name="robots" content="none">', HOST+'/')['indexable_directive'])
+        self.assertFalse(checks('',HOST+'/',{'x-robots-tag':'googlebot: none'})['indexable_directive'])
+
+    def test_disallowed_crawlers_fail_audit(self):
+        html=(ROOT/'index.html').read_text()
+        def fake(url):
+            if url.endswith('/robots.txt'): return {'status':200,'text':'User-agent: *\nDisallow: /'}
+            if url.endswith('/sitemap.xml'): return {'status':200,'text':f'<urlset><url><loc>{HOST}/</loc></url></urlset>'}
+            if url.endswith('/gracias.html'): return {'status':200,'text':'<meta name="robots" content="noindex">'}
+            return {'status':200,'text':html,'final_url':HOST+'/','headers':{}}
+        with patch('monitor.fetch',side_effect=fake): result=audit()
+        self.assertFalse(result['ok']);self.assertFalse(result['crawler_directives']['Googlebot'])
+
+    def test_wrong_contact_is_not_masked_by_correct_form(self):
+        html='<a href="/#contacto">Consulta</a><a href="https://wa.me/5491100000000">WA</a>'
+        self.assertFalse(checks(html,HOST+'/')['contact_destinations'])
+        self.assertFalse(checks('<a href="tel:+541111111111">Llamar</a>',HOST+'/')['contact_destinations'])
+
+    def test_redirect_cannot_downgrade_or_add_query(self):
+        from monitor import SameOriginRedirect
+        for url in ['http://www.terraseguridad.com.ar/','https://www.terraseguridad.com.ar/?token=x','https://example.com/']:
+            with self.assertRaises(ValueError): SameOriginRedirect().redirect_request(None,None,302,'',{},url)
+
     def test_fail_closed_for_noindex_bad_canonical_and_invalid_schema(self):
         html='<title>T</title><meta name="description" content="D"><h1>H</h1><link rel="canonical" href="https://wrong.example"><script type="application/ld+json">{bad}</script>'
         result=checks(html,HOST+'/',{'x-robots-tag':'noindex'})
@@ -66,6 +109,10 @@ class MonitorTests(unittest.TestCase):
         self.assertFalse(result['ok']);self.assertIsNone(result['sitemap_http']);self.assertEqual(result['pages'],[])
 
 class MetricsTests(unittest.TestCase):
+    def test_sessions_with_lead_cannot_exceed_sessions(self):
+        rows=[self.row('organic_sessions',10,'ga4'),self.row('organic_lead_sessions',11,'ga4')]
+        self.assertEqual(report(rows)['organic_session_lead_rate_pct']['reason'],'numerator_exceeds_eligible_population')
+
     def row(self,metric,value,source='gsc',**kw):
         return dict(source=source,metric=metric,value=value,status='verified',period_start='2026-11-01',period_end='2026-11-07',timezone='America/Argentina/Buenos_Aires',cohort='period',currency=None,**kw)
 

@@ -1,6 +1,7 @@
 """Static, deterministic pages from reviewed content. No API, keys or runtime backend."""
 import json
 import re
+from datetime import date
 from html import escape
 from pathlib import Path
 
@@ -9,6 +10,9 @@ HOST = 'https://www.terraseguridad.com.ar'
 
 def render_all(root=ROOT):
     data = json.loads((root / 'security/organic/content.json').read_text())
+    reviewed=date.fromisoformat(data['reviewed'])
+    months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+    visible_date=f'{reviewed.day} de {months[reviewed.month-1]} de {reviewed.year}'
     pages = {p['slug']: p for p in data['pages']}
     home = (root / 'index.html').read_text()
     # Reuse the current approved tracker bytes. Never add a second GA4 or Lead producer.
@@ -77,7 +81,7 @@ def render_all(root=ROOT):
   <div class="wrap reading-layout">
     <aside class="contents"><p>En esta guía</p><nav aria-label="Contenido de esta guía">{toc}</nav></aside>
     <article class="article" aria-label="{e(p['label'])}">{''.join(sections)}{faq}
-      <p class="editor">Preparado por {e(data['editor'])}. Actualización editorial: <time datetime="{data['reviewed']}">7 de noviembre de 2026</time>. Las prestaciones se confirman en la propuesta según equipo, plan y disponibilidad.</p>
+      <p class="editor">Preparado por {e(data['editor'])}. Actualización editorial: <time datetime="{data['reviewed']}">{visible_date}</time>. Las prestaciones se confirman en la propuesta según equipo, plan y disponibilidad.</p>
     </article>
   </div>
   <section class="related wrap" aria-labelledby="seguir"><p class="eyebrow">Seguí explorando</p><h2 id="seguir">Información que te puede ayudar</h2><div class="cards">{cards}</div></section>

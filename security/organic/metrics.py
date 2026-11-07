@@ -37,10 +37,11 @@ def validate(rows):
         seen.add(key)
     return rows
 
-def ratio(a,b,multiplier=100):
+def ratio(a,b,multiplier=100,bounded=True):
     if not a or not b or a['status']!='verified' or b['status']!='verified': return {'value':None,'reason':'missing_verified_source'}
     if any(a[k]!=b[k] for k in ['period_start','period_end','timezone','cohort','currency']): return {'value':None,'reason':'incompatible_period_cohort_or_currency'}
     if b['value']==0: return {'value':None,'reason':'zero_denominator'}
+    if bounded and a['value']>b['value']: return {'value':None,'reason':'numerator_exceeds_eligible_population'}
     return {'value':round(a['value']/b['value']*multiplier,4),'reason':None}
 
 def report(rows):
@@ -54,7 +55,7 @@ def report(rows):
          'organic_qualification_pct':ratio(one('organic_qualified_leads'),one('organic_valid_leads')),
          'geo_observed_mention_pct':ratio(one('brand_mentions'),one('observed_responses'))}
     cost=one('organic_acquisition_cost'); margin=one('organic_margin_before_acquisition')
-    roi=ratio(margin,cost)
+    roi=ratio(margin,cost,bounded=False)
     if roi['value'] is not None: roi['value']=round(roi['value']-100,4)
     out['organic_roi_pct']=roi
     out['limits']=['GA4 session lead rate uses sessions with a confirmed lead, not raw event counts.', 'GEO panel is a reproducible sample, not market share or a ranking.', 'Organic ROI requires attributable margin and complete acquisition costs in the same cohort and currency.', 'No join of persons or addition of platform conversions is performed.']
