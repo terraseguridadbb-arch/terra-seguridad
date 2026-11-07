@@ -23,7 +23,8 @@ let fallas = 0;
 const pedir = async (ruta) => fetch(new URL(ruta.split('/').map(encodeURIComponent).join('/'), base.replace(/\/?$/, '/')), { headers, redirect: 'manual' });
 
 for (const f of archivos) {
-  const r = await pedir(f);
+  // index.html is consolidated at /; compare its bytes at the canonical route.
+  const r = await pedir(f === 'index.html' ? '' : f);
   const servido = Buffer.from(await r.arrayBuffer());
   const esperado = git('show', commit + ':' + f);
   const ok = r.status === 200 && sha(servido) === sha(esperado);
@@ -38,6 +39,24 @@ for (const regla of config.headers || []) for (const h of regla.headers) {
   const ok = raiz.headers.get(h.key) === h.value;
   if (!ok) fallas++;
   console.log((ok ? 'OK   ' : 'FALLA') + ' header ' + h.key + ' (' + regla.source + ')');
+}
+
+// Check the permanent redirect and attribution parameters separately.
+if (config.redirects?.some((r) => r.source === '/index.html' && r.destination === '/' && r.permanent)) {
+  const probe = new URL('index.html?utm_source=seo_qa&utm_campaign=preview&fbclid=TEST_SEO', base.replace(/\/?$/, '/'));
+  const response = await fetch(probe, { headers, redirect: 'manual' });
+  const location = response.headers.get('location');
+  const destination = location ? new URL(location, probe) : null;
+  const ok = response.status === 308 && destination?.origin === probe.origin &&
+    destination?.pathname === '/' && [...probe.searchParams].every(([key, value]) => destination.searchParams.get(key) === value);
+  if (!ok) fallas++;
+  console.log((ok ? 'OK   ' : 'FALLA') + ' redireccion 308 de index.html conserva parametros');
+}
+const thanks = await pedir('gracias.html');
+if (config.headers?.some((r) => r.source === '/gracias.html')) {
+  const ok = thanks.headers.get('x-robots-tag') === 'noindex, follow';
+  if (!ok) fallas++;
+  console.log((ok ? 'OK   ' : 'FALLA') + ' gracias.html X-Robots-Tag');
 }
 
 const interno = await pedir('security/privacy/README.md');

@@ -26,7 +26,7 @@ export const INVENTORY_PATH = path.join(REPO_ROOT, 'security', 'csp', 'INVENTORY
 export const HEADER_NAME_FIELD = 'key';
 
 /** Archivos publicados que forman la superficie del sitio. */
-export const SITE_FILES = ['index.html', 'gracias.html', 'politicas.html', 'main.js', 'styles.css'];
+export const SITE_FILES = ['index.html', 'gracias.html', 'politicas.html', 'main.js', 'ui.js', 'styles.css'];
 
 /**
  * Origenes que el navegador contacta en runtime y que NO aparecen como literal
@@ -138,9 +138,12 @@ function scanHtml(file, html, acc) {
         bytes: Buffer.byteLength(body, 'utf8'),
         sha256_csp: sha256Csp(body)
       });
-      jsUrlLiterals(body, file, line, acc.origins);
-      acc.dynamicInjection.push(...detectInjection(body, file, line));
-      acc.evalUsage += countEval(body);
+      // JSON-LD is inert structured data. Its identifiers are not network calls.
+      if ((getAttr(m[1], 'type') || '').toLowerCase() !== 'application/ld+json') {
+        jsUrlLiterals(body, file, line, acc.origins);
+        acc.dynamicInjection.push(...detectInjection(body, file, line));
+        acc.evalUsage += countEval(body);
+      }
     }
   }
 

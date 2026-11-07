@@ -1,0 +1,82 @@
+{
+  "method": "WebP lossless exact RGBA; originals retained; JPEG retained because lossless WebP larger",
+  "images": [
+    {
+      "file": "kit cam.png",
+      "original": 49823,
+      "candidate": 33602,
+      "dimensions": [
+        320,
+        320
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "4b99809aebf047672221768cb7f6d8985b9bfcc58f66fd3ad5101027d037a0bc"
+    },
+    {
+      "file": "equipo.jpeg",
+      "original": 87487,
+      "candidate": 325956,
+      "dimensions": [
+        719,
+        719
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "c14d9b2664c459655d244b848f4ae9a3005dfa3c505ec404fd54b955978cdd19"
+    },
+    {
+      "file": "pircam.png",
+      "original": 58004,
+      "candidate": 41226,
+      "dimensions": [
+        320,
+        320
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "d1174dadf6d2d1a88bbfa06012abfff11c3a7e79084d7a7fd496eba191de1931"
+    },
+    {
+      "file": "climax.png",
+      "original": 54970,
+      "candidate": 39400,
+      "dimensions": [
+        320,
+        320
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "17fab4ed7bf101fdcbd583c0d85847129fcf9c737d2359801c9eb693ef874d0f"
+    },
+    {
+      "file": "qolsys view.png",
+      "original": 56810,
+      "candidate": 41128,
+      "dimensions": [
+        320,
+        320
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "100ae4054ab4e3ebbac567c733d0c9f3f9b6edcad20858bf951efda0dfbfbc8a"
+    },
+    {
+      "file": "blueTerraLogo.png",
+      "original": 57411,
+      "candidate": 18996,
+      "dimensions": [
+        859,
+        853
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "1e2276660d9473ce526459b0bb802f488948b478e38e0b79553efecc1a163b79"
+    },
+    {
+      "file": "agente-oficial-adt.png",
+      "original": 53586,
+      "candidate": 13670,
+      "dimensions": [
+        2252,
+        855
+      ],
+      "rgba_exact": true,
+      "pixel_sha256": "93c9dfcb4155a979811b1424c3918b4ddab2037f0fff6d1904f6f321db8a8add"
+    }
+  ]
+}
