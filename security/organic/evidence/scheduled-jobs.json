@@ -1,0 +1,26 @@
+[
+  {
+    "id": "Automation_72a24a4f04d081919841d04f69e02b8d",
+    "title": "Revisar salud orgánica Terra",
+    "schedule": "BEGIN:VEVENT\nDTSTART;TZID=America/Argentina/Buenos_Aires:20261108T080000\nRRULE:FREQ=DAILY\nEND:VEVENT",
+    "is_enabled": true,
+    "last_run_time": null,
+    "next_run_time": null
+  },
+  {
+    "id": "Automation_570d7aa772808191887b76ceac4f8fc6",
+    "title": "Preparar crecimiento orgánico Terra",
+    "schedule": "BEGIN:VEVENT\nDTSTART;TZID=America/Argentina/Buenos_Aires:20261109T090000\nRRULE:FREQ=WEEKLY;BYDAY=MO\nEND:VEVENT",
+    "is_enabled": true,
+    "last_run_time": null,
+    "next_run_time": null
+  },
+  {
+    "id": "Automation_5b3a322ef5c08191bc659726c7ed85a1",
+    "title": "Evaluar avance orgánico Terra",
+    "schedule": "BEGIN:VEVENT\nDTSTART;TZID=America/Argentina/Buenos_Aires:20261201T090000\nRRULE:FREQ=MONTHLY;BYMONTHDAY=1\nEND:VEVENT",
+    "is_enabled": true,
+    "last_run_time": null,
+    "next_run_time": null
+  }
+]

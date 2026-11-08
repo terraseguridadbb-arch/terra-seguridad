@@ -1,0 +1,416 @@
+{
+  "version": 1,
+  "reviewed": "2026-11-07",
+  "editor": "Equipo Terra Seguridad",
+  "publication_status": "awaiting_owner_review",
+  "sources": {
+    "catalog": {
+      "url": "https://docs.google.com/document/d/129vHrvdn88dSOIADEd94JuG16waIwXWayDCWNMkFaG8/edit",
+      "scope": "Familias alarma, alarma con cámara y solo cámaras; prestaciones sujetas al plan y equipo"
+    },
+    "coverage": {
+      "url": "https://drive.google.com/file/d/1q2TAbhc8yY3QJABSJuNv92FQ2c-8KpWf/view",
+      "scope": "La provincia no confirma cobertura en toda localidad; no publicar direcciones de clientes"
+    },
+    "owner": {
+      "reference": "Confirmaciones de Berenise, conversación del 7/11/2026",
+      "scope": "Identidad de agente oficial, canales actuales y textos comerciales existentes aprobados; esta nueva tanda requiere revisión"
+    }
+  },
+  "pages": [
+    {
+      "slug": "alarmas-para-hogares",
+      "brief_ids": [
+        "03",
+        "08",
+        "12"
+      ],
+      "kind": "service",
+      "label": "Hogares",
+      "topic": "Tu casa, tu rutina",
+      "title": "Alarmas para hogares: elegí según tu vivienda | Terra Seguridad",
+      "description": "Qué mirar al elegir una alarma para casa o departamento: accesos, rutina, mascotas, monitoreo y cámaras. Asesoramiento de Terra Seguridad.",
+      "h1": "Alarmas para hogares, pensadas para tu rutina",
+      "answer": "Para elegir una alarma para tu casa o departamento, conviene revisar los accesos, los ambientes que usás y tu rutina. La cantidad de metros ayuda, pero no alcanza para definir el equipo. En Terra Seguridad te asesoramos por teléfono para encontrar una opción adecuada a tu vivienda.",
+      "sections": [
+        {
+          "title": "Empezá por cómo es tu casa",
+          "text": "Una casa con patio, un departamento en planta baja y uno en un piso alto pueden necesitar soluciones diferentes. Antes de elegir un kit, contanos qué puertas y ventanas tiene la vivienda, cómo se conectan los ambientes y si hay sectores exteriores que querés considerar.",
+          "items": [
+            "Tipo de vivienda y localidad para consultar disponibilidad.",
+            "Accesos y ambientes principales, sin compartir planos ni datos sensibles en espacios públicos.",
+            "Personas y mascotas que estarán en casa cuando uses la alarma.",
+            "Disponibilidad de internet y necesidad de revisar el respaldo ante cortes."
+          ]
+        },
+        {
+          "title": "Alarma, cámaras o una combinación",
+          "text": "La alarma utiliza sensores para detectar eventos y, si el servicio contratado incluye monitoreo y la comunicación está disponible, enviar señales a una central. Las cámaras permiten ver los sectores cubiertos según el equipo y la conexión. Si querés ambas funciones, revisamos una solución que las combine; contratar solo cámaras no equivale a contratar una alarma monitoreada."
+        },
+        {
+          "title": "Que también sea cómoda en el día a día",
+          "text": "La app puede facilitar el armado, desarmado y consulta del estado del sistema, de acuerdo con el plan y la conectividad. Si hay mascotas o distintas personas que ingresan al hogar, es importante hablarlo antes de definir los sensores y la configuración. Ningún sensor permite prometer que nunca habrá falsas alarmas."
+        },
+        {
+          "title": "Qué revisar en tu cotización",
+          "text": "Pedí el detalle de equipos, instalación, abono, vigencia de cualquier promoción y condiciones posteriores. También conviene confirmar el alcance de la asistencia y cómo se coordina la instalación en tu localidad. La propuesta tiene que responder a tu caso y dejar claras sus condiciones."
+        }
+      ],
+      "faqs": [
+        [
+          "¿Una casa y un departamento necesitan la misma alarma?",
+          "No necesariamente. Los accesos, la distribución, el uso de los ambientes y las mascotas importan tanto como la superficie. La propuesta se revisa según cada vivienda."
+        ],
+        [
+          "¿Puedo sumar una cámara?",
+          "Hay opciones que combinan alarma y cámara. La cantidad, ubicación, visualización y grabación deben confirmarse en la propuesta del equipo y plan elegidos."
+        ]
+      ],
+      "related": [
+        "alarmas-monitoreadas",
+        "alarma-o-camaras",
+        "alarma-cortes-luz-internet"
+      ],
+      "source_ids": [
+        "catalog",
+        "owner"
+      ],
+      "cta": "Contanos cómo es tu hogar"
+    },
+    {
+      "slug": "alarmas-para-comercios",
+      "brief_ids": [
+        "04",
+        "11"
+      ],
+      "kind": "service",
+      "label": "Comercios",
+      "topic": "Tu negocio, bien acompañado",
+      "title": "Alarmas para comercios y locales | Terra Seguridad",
+      "description": "Elegí la alarma para tu comercio según sus accesos, horarios y usuarios. Conocé qué revisar sobre monitoreo, cámaras y uso desde el celular.",
+      "h1": "Alarmas para comercios: seguridad para tu día a día",
+      "answer": "Una alarma para comercio se define según los accesos del local, sus espacios y la rutina de apertura y cierre. En Terra Seguridad te ayudamos a revisar qué necesitás controlar, quién usará el sistema y si conviene sumar cámaras a la alarma monitoreada.",
+      "sections": [
+        {
+          "title": "Antes de elegir, miremos cómo funciona tu local",
+          "text": "Un salón de ventas, un depósito y una oficina tienen rutinas distintas. Contanos qué sectores tiene tu comercio y quién abre o cierra. Con esa información podemos conversar sobre una propuesta que resulte útil para vos y para las personas que trabajan ahí.",
+          "items": [
+            "Entradas, ventanas y conexión entre salón, depósito y otros ambientes.",
+            "Horarios habituales y cambios de rutina durante la semana.",
+            "Personas autorizadas para operar la alarma.",
+            "Sectores que querés consultar por cámara y conectividad disponible."
+          ]
+        },
+        {
+          "title": "Apertura, cierre y usuarios",
+          "text": "Si la solución elegida dispone de gestión de usuarios e historial de armado y desarmado, estas funciones pueden ayudarte a revisar el uso del sistema. Confirmá cómo se asignan los accesos y qué información muestra la app. Ese registro no debe confundirse con un sistema completo de control de asistencia del personal."
+        },
+        {
+          "title": "Cámaras para ver lo que necesitás consultar",
+          "text": "Una cámara puede complementar la alarma y ayudarte a observar el sector que cubre desde la aplicación compatible. La ubicación, el campo de visión, la conexión y las condiciones de grabación deben evaluarse por separado. Ver imágenes desde el celular no significa que la central mire todas las cámaras de forma permanente."
+        },
+        {
+          "title": "Una propuesta con condiciones claras",
+          "text": "Antes de contratar, revisá qué incluye cada equipo, el monitoreo, la instalación y el abono. También consultá las condiciones de cualquier promoción, la disponibilidad en tu localidad y los pasos de soporte. El asesoramiento inicial es por teléfono; la instalación se coordina según la operación y disponibilidad correspondientes."
+        }
+      ],
+      "faqs": [
+        [
+          "¿Puedo usar la alarma desde el celular?",
+          "Las soluciones compatibles permiten operar y consultar funciones desde una app. El alcance depende del equipo, el plan y la conectividad; se confirma al preparar la propuesta."
+        ],
+        [
+          "¿Puedo consultar qué usuario armó o desarmó la alarma?",
+          "Si el plan incluye usuarios diferenciados e historial, podés consultar los registros de uso disponibles. Esos registros corresponden a la alarma; no acreditan por sí solos quién estuvo físicamente en el local."
+        ]
+      ],
+      "related": [
+        "alarmas-monitoreadas",
+        "alarma-o-camaras",
+        "cobertura"
+      ],
+      "source_ids": [
+        "catalog",
+        "owner"
+      ],
+      "cta": "Hablemos de tu comercio"
+    },
+    {
+      "slug": "alarmas-monitoreadas",
+      "brief_ids": [
+        "05",
+        "07"
+      ],
+      "kind": "service",
+      "label": "Monitoreo",
+      "topic": "Entender antes de elegir",
+      "title": "Qué es una alarma monitoreada y cómo funciona | Terra Seguridad",
+      "description": "Conocé la diferencia entre una alarma con monitoreo, una notificación en tu celular y una cámara. Qué consultar sobre señales, respaldo y servicio.",
+      "h1": "¿Qué significa tener una alarma monitoreada?",
+      "answer": "Una alarma monitoreada combina equipos de detección con un servicio que recibe y gestiona señales en una central. Para que una señal llegue, el sistema necesita alimentación y un canal de comunicación disponible. La gestión de cada evento depende del servicio y del protocolo aplicable.",
+      "sections": [
+        {
+          "title": "Del sensor a la gestión de una señal",
+          "text": "Los sensores detectan los eventos para los que fueron configurados y los comunican al panel. El panel procesa la información y puede transmitirla a la central mediante la conexión habilitada. La central gestiona la señal conforme al servicio contratado. La actuación concreta, las verificaciones y los contactos se deben confirmar en las condiciones del plan."
+        },
+        {
+          "title": "Monitoreo y notificación no son lo mismo",
+          "text": "Una notificación en el celular informa al usuario. Un servicio de monitoreo agrega la recepción y gestión de señales por una central. Antes de comparar opciones, preguntá qué señales se reciben, cómo se actúa y qué funciones corresponden al usuario. La disponibilidad de la app y la comunicación con la central pueden depender de conexiones diferentes."
+        },
+        {
+          "title": "Cuatro preguntas que vale la pena hacer",
+          "items": [
+            "¿Qué equipos y qué señales incluye el servicio?",
+            "¿Qué canal de comunicación usa el panel y qué respaldo tiene?",
+            "¿Qué contactos y acciones contempla el protocolo aplicable?",
+            "¿Qué instalación, mantenimiento, abono y condiciones de contratación corresponden?"
+          ]
+        },
+        {
+          "title": "Qué significa monitoreo las 24 horas",
+          "text": "Es la disponibilidad del servicio de recepción y gestión de señales durante el día y la noche, según el plan. No significa vigilancia visual permanente de todas las cámaras ni garantiza un tiempo de llegada de servicios de emergencia. En Terra Seguridad te ayudamos a revisar el alcance antes de contratar."
+        }
+      ],
+      "faqs": [
+        [
+          "¿Una cámara es una alarma monitoreada?",
+          "No. Una cámara permite ver y, según su configuración, grabar imágenes o generar avisos. Para hablar de alarma monitoreada debe existir un servicio de recepción y gestión de señales incluido en la contratación."
+        ],
+        [
+          "¿Qué pasa si no hay comunicación con la central?",
+          "La transmisión depende de los canales disponibles. La batería del panel y la conexión de respaldo son aspectos diferentes: hay que confirmar ambos para el equipo y servicio elegidos."
+        ]
+      ],
+      "related": [
+        "alarmas-para-hogares",
+        "alarmas-para-comercios",
+        "alarma-cortes-luz-internet"
+      ],
+      "source_ids": [
+        "catalog",
+        "owner"
+      ],
+      "cta": "Consultá qué servicio necesitás"
+    },
+    {
+      "slug": "alarma-o-camaras",
+      "brief_ids": [
+        "09",
+        "14"
+      ],
+      "kind": "guide",
+      "label": "Alarma y cámaras",
+      "topic": "Guía para decidir",
+      "title": "Alarma o cámaras: diferencias y cómo elegir | Terra Seguridad",
+      "description": "Alarma y cámaras cumplen funciones distintas. Compará detección, monitoreo, visualización y grabación antes de elegir para tu casa o comercio.",
+      "h1": "¿Alarma o cámaras? Primero, qué necesitás resolver",
+      "answer": "La alarma y las cámaras pueden complementarse. Una alarma usa sensores para detectar eventos; si incluye monitoreo, comunica señales a una central cuando el canal está disponible. Una cámara permite ver imágenes y puede grabarlas según su equipo y configuración. Una función no reemplaza automáticamente a la otra.",
+      "sections": [
+        {
+          "title": "Si querés detectar y contar con monitoreo",
+          "text": "Revisá una propuesta de alarma con sensores adecuados a los accesos y ambientes. Confirmá si incluye monitoreo, qué señales se gestionan y qué comunicación utiliza. Tener un dispositivo que avisa al celular no acredita por sí solo un servicio de central de monitoreo."
+        },
+        {
+          "title": "Si querés ver un sector desde el celular",
+          "text": "Consultá una cámara compatible con el uso previsto y la aplicación. Definí qué zona querés observar y si se trata de un interior o exterior. Para acceder a imágenes a distancia se necesita la alimentación y conectividad correspondientes. Las condiciones de grabación deben quedar claras: medio de almacenamiento, capacidad y acceso a lo guardado."
+        },
+        {
+          "title": "Si necesitás ambas funciones",
+          "text": "Podés consultar una solución que combine alarma y cámaras. Antes de decidir, pedí que se detalle qué aporta cada equipo y qué incluye el plan. La cámara no implica vigilancia visual continua por una central, y la batería del panel no mantiene necesariamente encendidas las cámaras."
+        },
+        {
+          "title": "Compará propuestas con las mismas preguntas",
+          "items": [
+            "Qué eventos detecta cada equipo y qué sectores cubre.",
+            "Si hay monitoreo y cuál es el alcance del servicio.",
+            "Qué se puede hacer desde la app y de qué conexión depende.",
+            "Dónde se guardan las imágenes y qué condiciones tiene la grabación.",
+            "Qué incluye el costo inicial y qué pagos periódicos corresponden."
+          ]
+        }
+      ],
+      "faqs": [
+        [
+          "¿Solo cámaras incluye monitoreo de alarma?",
+          "No debe darse por supuesto. En las opciones de Terra, solo cámaras es una familia distinta de alarma monitoreada y de alarma con cámara. Confirmá el alcance exacto en la cotización."
+        ],
+        [
+          "¿La cámara sigue funcionando si se corta la luz?",
+          "Depende de su alimentación y respaldo propio. La batería del panel de alarma no alimenta automáticamente la cámara ni el router."
+        ]
+      ],
+      "related": [
+        "alarmas-monitoreadas",
+        "alarmas-para-hogares",
+        "alarmas-para-comercios"
+      ],
+      "source_ids": [
+        "catalog",
+        "owner"
+      ],
+      "cta": "Te ayudamos a comparar opciones"
+    },
+    {
+      "slug": "alarma-cortes-luz-internet",
+      "brief_ids": [
+        "10"
+      ],
+      "kind": "guide",
+      "label": "Cortes de luz e internet",
+      "topic": "Respaldo, explicado claro",
+      "title": "¿La alarma funciona sin luz o internet? | Terra Seguridad",
+      "description": "La batería del panel y el respaldo de comunicación cumplen funciones diferentes. Qué revisar si se corta la luz, internet o ambos servicios.",
+      "h1": "¿Qué pasa con la alarma si se corta la luz o internet?",
+      "answer": "La batería de respaldo del panel puede mantenerlo encendido durante un corte de luz, dentro de la autonomía del equipo. Para enviar señales a la central hace falta además un canal de comunicación disponible. El funcionamiento del panel, las cámaras, el router y la app debe revisarse por separado.",
+      "sections": [
+        {
+          "title": "Si se corta la luz",
+          "text": "El panel con batería de respaldo puede continuar funcionando mientras tenga carga suficiente. La autonomía depende del equipo, el estado de la batería y el uso; no corresponde prometer una cantidad de horas sin comprobar la ficha y las condiciones aplicables. El router y las cámaras pueden apagarse si no cuentan con alimentación de respaldo propia."
+        },
+        {
+          "title": "Si se corta internet",
+          "text": "Que el panel siga encendido no confirma que pueda enviar señales. Hay que revisar qué canales de comunicación tiene habilitados y si dispone de un respaldo operativo. Una conexión alternativa solo ayuda cuando el equipo, el servicio y la cobertura correspondiente la admiten. El acceso remoto a cámaras o a ciertas funciones de la app también puede verse afectado."
+        },
+        {
+          "title": "Si primero se corta internet y después la luz",
+          "text": "Son dos dependencias distintas. Primero hay que comprobar si queda disponible una vía para transmitir las señales; después, si el panel y esa vía conservan alimentación suficiente. No se puede concluir que todo el sistema sigue conectado únicamente porque el panel tenga batería."
+        },
+        {
+          "title": "Qué confirmar antes de contratar",
+          "items": [
+            "Modelo y condiciones de la batería del panel, incluida su autonomía informada.",
+            "Canal principal de comunicación y respaldo habilitado, si corresponde.",
+            "Alimentación del router y de cada cámara.",
+            "Qué funciones quedan disponibles y cuáles se interrumpen en cada tipo de corte.",
+            "Procedimiento de soporte y revisión del respaldo según el servicio."
+          ]
+        },
+        {
+          "title": "Si ya tenés un sistema instalado",
+          "text": "Consultá el manual y el canal de soporte correspondiente a tu equipo. No desconectes equipos ni simules cortes de comunicación sin coordinación técnica: una prueba útil necesita saber qué se está verificando y cómo restablecer el servicio."
+        }
+      ],
+      "faqs": [
+        [
+          "¿Cuántas horas dura la batería?",
+          "No hay una autonomía única para todos los equipos. Debe confirmarse en la ficha del panel y según el estado de la batería y las condiciones de uso."
+        ],
+        [
+          "¿La batería del panel mantiene el Wi-Fi?",
+          "No. El router necesita su propia alimentación. También hay que revisar por separado las cámaras y el canal de comunicación del panel."
+        ]
+      ],
+      "related": [
+        "alarmas-monitoreadas",
+        "alarma-o-camaras",
+        "alarmas-para-hogares"
+      ],
+      "source_ids": [
+        "catalog",
+        "owner"
+      ],
+      "cta": "Consultá el respaldo de tu propuesta"
+    },
+    {
+      "slug": "cobertura",
+      "brief_ids": [
+        "02",
+        "18"
+      ],
+      "kind": "guide",
+      "label": "Cobertura",
+      "topic": "Primero, tu localidad",
+      "title": "Consultá cobertura de alarmas en tu localidad | Terra Seguridad",
+      "description": "Consultá la disponibilidad de Terra Seguridad para tu casa o comercio. La cobertura se confirma por localidad y condiciones de instalación.",
+      "h1": "Confirmemos la cobertura en tu localidad",
+      "answer": "La disponibilidad de una alarma y su instalación se confirma por localidad. Que Terra trabaje en una provincia no significa que todas sus ciudades y zonas tengan el mismo servicio. Contanos dónde está tu casa o comercio y revisamos tu consulta antes de avanzar con una propuesta.",
+      "sections": [
+        {
+          "title": "Qué información sirve para empezar",
+          "text": "Indicá provincia, localidad y si la consulta es para hogar o comercio. No hace falta publicar tu dirección exacta, planos ni información sobre tus horarios en redes o comentarios. Si el asesor necesita más detalles para verificar la disponibilidad, te los solicitará por el canal de atención correspondiente."
+        },
+        {
+          "title": "Cobertura y equipo se revisan juntos",
+          "text": "La propuesta puede depender de las condiciones de instalación y de comunicación disponibles en la zona. Por eso conviene confirmar el servicio para tu ubicación antes de elegir un kit o comparar una promoción. La disponibilidad también puede diferir entre una localidad y otra dentro de la misma provincia."
+        },
+        {
+          "title": "Cómo seguimos tu consulta",
+          "items": [
+            "Dejanos tus datos para que un asesor te contacte, o escribinos por WhatsApp indicando localidad y tipo de propiedad.",
+            "Revisamos la disponibilidad y conversamos sobre tus necesidades.",
+            "Si corresponde, te presentamos una propuesta con equipos y condiciones.",
+            "La instalación se coordina conforme a la disponibilidad aplicable, sin prometer una fecha antes de confirmarla."
+          ]
+        },
+        {
+          "title": "Asesoramiento por teléfono",
+          "text": "La conversación inicial con Terra es por teléfono. Podés completar el formulario para que un asesor te contacte o escribir por WhatsApp. Consultar cobertura no implica contratar ni confirma por sí solo una visita técnica."
+        }
+      ],
+      "faqs": [
+        [
+          "¿La cobertura abarca toda una provincia?",
+          "No necesariamente. La disponibilidad se confirma por localidad y condiciones de instalación y comunicación."
+        ],
+        [
+          "¿Consultar cobertura reserva una instalación?",
+          "No. Primero se verifica la disponibilidad y la propuesta; la instalación se coordina en la etapa correspondiente."
+        ]
+      ],
+      "related": [
+        "alarmas-para-hogares",
+        "alarmas-para-comercios",
+        "alarmas-monitoreadas"
+      ],
+      "source_ids": [
+        "coverage",
+        "owner"
+      ],
+      "cta": "Consultá por tu localidad"
+    },
+    {
+      "slug": "guias",
+      "brief_ids": [
+        "07"
+      ],
+      "kind": "hub",
+      "label": "Guías",
+      "topic": "Decidir con información",
+      "title": "Guías de alarmas, cámaras y monitoreo | Terra Seguridad",
+      "description": "Respuestas claras para elegir alarmas y cámaras: hogar, comercio, monitoreo, cortes de luz e internet y consulta de cobertura. Guías de Terra Seguridad.",
+      "h1": "Entendé tus opciones. Elegí con tranquilidad.",
+      "answer": "Elegir seguridad empieza por entender qué necesitás y qué incluye cada propuesta. Estas guías de Terra Seguridad reúnen preguntas para comparar alarmas, cámaras y monitoreo, con sus condiciones y diferencias. Si querés revisar tu caso, podemos conversar por teléfono.",
+      "sections": [
+        {
+          "title": "Una buena decisión empieza por estas preguntas",
+          "items": [
+            "¿Qué accesos y ambientes necesitás contemplar?",
+            "¿Buscás detección, monitoreo, imágenes o una combinación?",
+            "¿Qué respaldo hay ante cortes de electricidad o comunicación?",
+            "¿Está disponible la instalación en tu localidad?",
+            "¿Qué equipos, costos y condiciones incluye la propuesta escrita?"
+          ]
+        },
+        {
+          "title": "Información para tu caso",
+          "text": "Una guía orienta la conversación, pero no reemplaza la verificación del equipo, el servicio y la cobertura de tu propuesta. Cuando una prestación depende del plan o la conectividad, lo indicamos junto a la explicación. No necesitás elegir un kit de antemano para consultarnos."
+        }
+      ],
+      "faqs": [],
+      "related": [
+        "alarmas-para-hogares",
+        "alarmas-para-comercios",
+        "alarmas-monitoreadas",
+        "alarma-o-camaras",
+        "alarma-cortes-luz-internet",
+        "cobertura"
+      ],
+      "source_ids": [
+        "catalog",
+        "coverage",
+        "owner"
+      ],
+      "cta": "Conversemos sobre lo que necesitás"
+    }
+  ]
+}

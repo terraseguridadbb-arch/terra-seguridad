@@ -1,0 +1,19 @@
+brief,priority,intent,target,state,dependency
+01,P0,Identidad y función comercial,Home y futura identidad,parcial,Relación contractual y datos del responsable sin inventar entidad
+02,P0,Cobertura,cobertura.html,candidata,Revisión Dirección
+03,P1,Hogares,alarmas-para-hogares.html,candidata,Revisión Dirección
+04,P1,Comercios,alarmas-para-comercios.html,candidata,Revisión Dirección
+05,P1,Monitoreo,alarmas-monitoreadas.html,candidata,Revisión Dirección; sin protocolo específico inventado
+06,P1,Costos y condiciones,Sin URL hasta oferta vigente,pendiente,Oferta fechada y condiciones
+07,P1,Lista previa a contratar,guias.html y monitoreo,candidata,Revisión Dirección
+08,P1,Casa versus departamento,Sección hogares,candidata,Ampliar solo con diferencias útiles verificadas
+09,P1,Alarma y cámaras,alarma-o-camaras.html,candidata,Revisión Dirección
+10,P1,Cortes,alarma-cortes-luz-internet.html,candidata,No publicar autonomía sin ficha
+11,P1,Apertura y cierre,Sección comercios,candidata,Historial de alarma no presencia física
+12,P2,Mascotas,Sección hogares,parcial,Ficha técnica para consejos específicos
+13,P2,Instalación,Sin URL aún,pendiente,Procedimiento real y alcance
+14,P2,Grabación,Sección alarma y cámaras,parcial,Almacenamiento según equipo y plan
+15,P2,Uso y vacaciones,Sin URL aún,pendiente,Manual aplicable
+16,P2,Caso hogar,Sin URL aún,pendiente,Caso nuevo documentado y consentimiento
+17,P2,Caso comercio,Sin URL aún,pendiente,Caso nuevo documentado y consentimiento
+18,P2,Piloto local,Sin URL local aún,pendiente,Cobertura y aporte local únicos; no páginas masivas

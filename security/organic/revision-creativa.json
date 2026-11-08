@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "artifact": {
+    "sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+    "kind": "text"
+  },
+  "brief": {
+    "objective": "Siete páginas coordinadas SEO GEO AEO útiles y verificables para Terra",
+    "source_locator": "content.json; fuentes catálogo/cobertura/Dirección; encargo del 7/11/2026",
+    "primary_action": "Solicitar asesoramiento",
+    "destination": "Formulario existente /#contacto; WhatsApp 5491130089046; teléfono 5491124808478",
+    "reason_to_act": "Revisar opciones según hogar/comercio, condiciones y disponibilidad"
+  },
+  "reviewer": {
+    "id": "/root/revision_editorial_organica",
+    "mode": "separate_context"
+  },
+  "evidence": [
+    {
+      "id": "editorial",
+      "path": "evidence/review-notes.md",
+      "sha256": "4d1fda816f3b9fa28d773e9286643bfb858ece402a9ae9909038e0255c747c9f",
+      "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+      "locator": "Texto completo de las siete páginas; E01–E04 y límites"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "purpose",
+      "status": "pass",
+      "reason": "Cada intención tiene una respuesta y desarrollo propios.",
+      "evidence_ids": [
+        "editorial"
+      ]
+    },
+    {
+      "id": "accuracy",
+      "status": "pass",
+      "reason": "Beneficios condicionados y fuentes identificadas; sin promesas nuevas sin respaldo.",
+      "evidence_ids": [
+        "editorial"
+      ]
+    },
+    {
+      "id": "craft",
+      "status": "pass",
+      "reason": "Respuestas directas, secciones breves y FAQ; evaluación del texto completo.",
+      "evidence_ids": [
+        "editorial"
+      ]
+    },
+    {
+      "id": "brand",
+      "status": "pass",
+      "reason": "Tono argentino, identidad Terra, sin escenas de miedo ni marcas de equipos nuevas.",
+      "evidence_ids": [
+        "editorial"
+      ]
+    },
+    {
+      "id": "action",
+      "status": "pass",
+      "reason": "Asesoramiento por teléfono y canales existentes; formulario descrito correctamente.",
+      "evidence_ids": [
+        "editorial"
+      ]
+    },
+    {
+      "id": "traceability",
+      "status": "pass",
+      "reason": "Hash exacto, fuentes y revisión separada registrada; publicación pendiente.",
+      "evidence_ids": [
+        "editorial"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "modality": "text",
+      "coverage": "full",
+      "method": "Lectura independiente del JSON editorial completo y conciliación con formulario/catálogo/contexto",
+      "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+      "evidence_ids": [
+        "editorial"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "E01",
+      "severity": "major",
+      "status": "fixed",
+      "location": "cobertura",
+      "observation": "Se atribuían campos de localidad al formulario existente",
+      "impact": "Claridad y exactitud del contenido",
+      "fix": "Indicar que se dejan datos o se escribe localidad por WhatsApp",
+      "owner": "/root",
+      "closure": {
+        "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+        "evidence_ids": [
+          "editorial"
+        ],
+        "observation": "Revisor separado verificó la corrección sobre el hash final."
+      }
+    },
+    {
+      "id": "E02",
+      "severity": "major",
+      "status": "fixed",
+      "location": "alarmas-para-comercios",
+      "observation": "Historial podía confundirse con presencia física",
+      "impact": "Claridad y exactitud del contenido",
+      "fix": "Distinguir usuario que armó/desarmó de persona presente",
+      "owner": "/root",
+      "closure": {
+        "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+        "evidence_ids": [
+          "editorial"
+        ],
+        "observation": "Revisor separado verificó la corrección sobre el hash final."
+      }
+    },
+    {
+      "id": "E03",
+      "severity": "minor",
+      "status": "fixed",
+      "location": "Metadatos editoriales",
+      "observation": "Fecha podía sugerir aprobación comercial humana",
+      "impact": "Claridad y exactitud del contenido",
+      "fix": "Usar actualización editorial y conservar autorización pendiente",
+      "owner": "/root",
+      "closure": {
+        "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+        "evidence_ids": [
+          "editorial"
+        ],
+        "observation": "Revisor separado verificó la corrección sobre el hash final."
+      }
+    },
+    {
+      "id": "E04",
+      "severity": "minor",
+      "status": "fixed",
+      "location": "H1 de hogares y comercios",
+      "observation": "Tema poco explícito fuera de contexto",
+      "impact": "Claridad y exactitud del contenido",
+      "fix": "Incluir alarmas para hogares/comercios en los H1",
+      "owner": "/root",
+      "closure": {
+        "artifact_sha256": "ddd33d26834b8ca65844361c72eec00edc8292dcb79580fa2fcfa40baf102e52",
+        "evidence_ids": [
+          "editorial"
+        ],
+        "observation": "Revisor separado verificó la corrección sobre el hash final."
+      }
+    }
+  ]
+}

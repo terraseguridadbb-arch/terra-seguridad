@@ -1,0 +1,64 @@
+{
+  "deployment": "dpl_ACK8Vw7H6dJrnchDSrLSZvTN7FrC",
+  "commit": "521f2738709b4c3ea6c6cfb7dfaaf4e6fbe74247",
+  "mode": "Chromium desktop; narrow CSS viewport via browser zoom, not physical mobile",
+  "pages": [
+    {
+      "h1": "Entendé tus opciones. Elegí con tranquilidad.",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "Guías de alarmas, cámaras y monitoreo | Terra Seguridad",
+      "width": 337
+    },
+    {
+      "h1": "Alarmas para hogares, pensadas para tu rutina",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "Alarmas para hogares: elegí según tu vivienda | Terra Seguridad",
+      "width": 337
+    },
+    {
+      "h1": "Alarmas para comercios: seguridad para tu día a día",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "Alarmas para comercios y locales | Terra Seguridad",
+      "width": 337
+    },
+    {
+      "h1": "¿Qué significa tener una alarma monitoreada?",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "Qué es una alarma monitoreada y cómo funciona | Terra Seguridad",
+      "width": 337
+    },
+    {
+      "h1": "¿Alarma o cámaras? Primero, qué necesitás resolver",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "Alarma o cámaras: diferencias y cómo elegir | Terra Seguridad",
+      "width": 337
+    },
+    {
+      "h1": "¿Qué pasa con la alarma si se corta la luz o internet?",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "¿La alarma funciona sin luz o internet? | Terra Seguridad",
+      "width": 337
+    },
+    {
+      "h1": "Confirmemos la cobertura en tu localidad",
+      "logo": true,
+      "scrollWidth": 337,
+      "title": "Consultá cobertura de alarmas en tu localidad | Terra Seguridad",
+      "width": 337
+    }
+  ],
+  "desktop": {
+    "width": 1348,
+    "scrollWidth": 1348
+  },
+  "faqExpanded": true,
+  "formNavigationVerified": true,
+  "formSubmitted": false,
+  "deviceEmulationAvailable": false
+}
