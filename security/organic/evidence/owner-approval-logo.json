@@ -1,0 +1,15 @@
+{
+  "approval": "Berenise autorizó publicar PR #10 e indicó agregar el logo exacto; resto aprobado.",
+  "source_url": "https://drive.google.com/file/d/1xrTdV7a1sHOPIC1A6QxrP_5XSze3ekVH/view",
+  "asset_path": "assets/images/agente-oficial-adt-autorizado.png",
+  "sha256": "c48a5a8d733318012bab85e213329a50135ab040e123452249c62204c0714f8b",
+  "bytes": 26804,
+  "integrity": "Original PNG sin modificación; CSS recorta únicamente el margen blanco para encajar en la cabecera.",
+  "scope": "Siete páginas orgánicas; textos aprobados sin cambios.",
+  "checks": {
+    "python": 19,
+    "node": 80,
+    "csp": 12
+  },
+  "windsor": "Conectado según Berenise; sin herramientas expuestas en esta sesión al verificar."
+}

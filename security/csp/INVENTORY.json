@@ -40,50 +40,50 @@
     },
     {
       "path": "guias.css",
-      "bytes": 5436,
-      "sha256": "d631ba519322d10c2fa6968af99d1642e91a92bcbd39e62b1dddddb6f872feaa",
+      "bytes": 5783,
+      "sha256": "226c084f80623d11a49b5ad3bb1c14c4149c135ef320dc5585ca27a26e7a62e9",
       "line_endings": "LF"
     },
     {
       "path": "alarmas-para-hogares.html",
-      "bytes": 11188,
-      "sha256": "29df6e860af54ff0eb1f4a80ee5f86393505f33cad05da0c3edf5c434dcf4577",
+      "bytes": 11371,
+      "sha256": "e75fd8781767c5b71d6ab0966f88eef0e8e34b4c815767bf51b674e49a7b7a54",
       "line_endings": "LF"
     },
     {
       "path": "alarmas-para-comercios.html",
-      "bytes": 11184,
-      "sha256": "66f945ba8c136af257e48bfd6fe10b8aa28f68dccbaa00dee37838101ce447d0",
+      "bytes": 11367,
+      "sha256": "b18c1d2c7e640fd9a930580d564f088983f14c1a83dfb3e2bcad2c3ac0b4d4de",
       "line_endings": "LF"
     },
     {
       "path": "alarmas-monitoreadas.html",
-      "bytes": 11126,
-      "sha256": "7bef1f9fcc4d538459382f7c8addfaa3b3ea06b9a6e57f87647144afd778da72",
+      "bytes": 11309,
+      "sha256": "670401a70854781ecf6f00325f34644401e1e129e2d63221536d6d76b031ee00",
       "line_endings": "LF"
     },
     {
       "path": "alarma-o-camaras.html",
-      "bytes": 10965,
-      "sha256": "29f15c422ace7012bfe890ffaebc011ab7f74846c0f65cb337deab75fab6ee45",
+      "bytes": 11148,
+      "sha256": "ceb2b39b6c7055e79907421e6e20575259295543e04149b35380b63252f81716",
       "line_endings": "LF"
     },
     {
       "path": "alarma-cortes-luz-internet.html",
-      "bytes": 11401,
-      "sha256": "2f98470353d15c743ec0059be75cb5aa927a7daa74129c02b785fccf21cd8f17",
+      "bytes": 11584,
+      "sha256": "7217cc12aef3306c98bae8110af83ef81c2a5e2acdcf8f0e544fb6e0e72f5190",
       "line_endings": "LF"
     },
     {
       "path": "cobertura.html",
-      "bytes": 10632,
-      "sha256": "c6f76728c7ca035ab1af68092c7a89b72c62b15ed4556e382e7bd8edebfc056f",
+      "bytes": 10815,
+      "sha256": "629c8d8755150527c4bf6c4023fe1ea30d4fc8df6b9f3a515d54bbed23d871c3",
       "line_endings": "LF"
     },
     {
       "path": "guias.html",
-      "bytes": 9880,
-      "sha256": "b503a67937dace7f26faa67cc6378f8ae938c1388e7a0e6d9cc4079397f024ae",
+      "bytes": 10063,
+      "sha256": "d56f812c3471fb992447e10da7230b8d7d62fb126be776a7f7f7cdbb6c6b5d9b",
       "line_endings": "LF"
     }
   ],

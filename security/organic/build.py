@@ -67,7 +67,7 @@ def render_all(root=ROOT):
 {noscript}
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="site-header"><div class="header-inner">
-  <a class="brand" href="/" aria-label="Terra Seguridad, inicio"><img src="/assets/images/blueTerraLogo.webp" alt="Terra Seguridad" width="859" height="853" /></a>
+  <div class="brand-group"><a class="brand" href="/" aria-label="Terra Seguridad, inicio"><img src="/assets/images/blueTerraLogo.webp" alt="Terra Seguridad" width="859" height="853" /></a><img class="adt-agent-logo" src="/assets/images/agente-oficial-adt-autorizado.png" alt="Agente oficial ADT" width="512" height="512" decoding="async" /></div>
   <nav aria-label="Navegación principal"><a href="/guias.html">Guías</a><a href="/cobertura.html">Cobertura</a><a class="button small" href="/#contacto">Consultar</a></nav>
 </div></header>
 <main id="contenido">
